@@ -1,39 +1,66 @@
-const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
+$('#login  button').click(() => login());
+$('#logout button').click(() => solid.auth.logout());
 
-$('#logout').hide();$('#login').show();
+async function login(){
+  text = $('#provider').val(); 
+  if(text!=""){
+    alert(text);
+    solid.auth.login(text);
+  }
+}
+/** 
+async function getWebId() {
+  /* 1. Check if we've already got the user's WebID and access to their Pod: */
+  /*
+  let session = await auth.currentSession();
+  if (session) {
+    return session.webId;
+  }
+
+  /* 2. User has not logged in; ask for their Identity Provider: */
+  // Implement `getIdentityProvider` to get a string with the user's Identity Provider (e.g.
+  // `https://inrupt.net` or `https://solid.community`) using a method of your choice.
+  /*
+  const identityProvider = $('#provider').text; 
+  alert(identityProvider);
+  /* 3. Initiate the login process - this will redirect the user to their Identity Provider: */
+  /*
+  auth.login(identityProvider);
+}
+
+
+
+/*const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
+
 // Log the user in and out on click
 const popupUri = 'https://solid.github.io/solid-auth-client/dist/popup.html';
-$('#login  button').click(function () {
-                                    solid.auth.popupLogin({ popupUri }); 
-                                    $('#logout').show();
-                                    $('#login').hide();
-                                    $('#user').text(session.webId);
-                                    if (!$('#profile').val()){
-                                    $('#profile').val(session.webId);
-                                    }
-                                });
-$('#logout button').click(function () { 
-                                    solid.auth.logout();  
-                                    $('#logout').hide();
-                                    $('#login').show();
-                                });
+$('#login  button').click(() => solid.auth.popupLogin({ popupUri }));
+$('#logout button').click(() => solid.auth.logout());
 
 // Update components to match the user's login status
+
 solid.auth.trackSession(session => {
-  if (session) {
-    $('#logout').show();
-    $('#login').hide();
+  const loggedIn = !!session;
+  $('#login').toggle(!loggedIn);
+  $('#logout').toggle(loggedIn);
+  if (loggedIn) {
     $('#user').text(session.webId);
     // Use the user's WebID as default profile
     if (!$('#profile').val())
       $('#profile').val(session.webId);
   }
-  else{
-    $('#logout').hide();
-    $('#login').show();
-  }
 });
 
+
+/*
+solid.auth.trackSession(session => {
+  if (!session)
+  console.log('The user is not logged in')
+  else
+  console.log('The user is' + session.webId)
+  })
+*/
+/*
 $('#view').click(async function loadProfile() {
   // Set up a local data store and associated data fetcher
   const store = $rdf.graph();
@@ -60,3 +87,4 @@ $('#view').click(async function loadProfile() {
                 .click(loadProfile)));
   });
 });
+*/
