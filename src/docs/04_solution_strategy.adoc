@@ -1,6 +1,27 @@
 [[section-solution-strategy]]
 == Solution Strategy
 
+
+[role="arc42help"]
+****
+.Contents
+A short summary and explanation of the fundamental decisions and solution strategies, that shape the system's architecture. These include
+
+* technology decisions
+* decisions about the top-level decomposition of the system, e.g. usage of an architectural pattern or design pattern
+* decisions on how to achieve key quality goals
+* relevant organizational decisions, e.g. selecting a development process or delegating certain tasks to third parties.
+
+.Motivation
+These decisions form the cornerstones for your architecture. They are the basis for many other detailed decisions or implementation rules.
+
+.Form
+Keep the explanation of these key decisions short.
+
+Motivate what you have decided and why you decided that way,
+based upon your problem statement, the quality goals and key constraints.
+Refer to details in the following sections.
+****
 In this section, we are going to summarize the fundamental strategies and decisions during the development of our project.
 
 First of all, we have to remember that Viade is a decentralized routes management system based on the solid specifications and React framework, so our plans and resolutions need to be consistent with those characteristics.
@@ -13,9 +34,6 @@ Let's talk about Technical decisions:
 
 * *Pull request*: We decided that we are going to use the "pull request" functionality of GitHub because it seems that it helps you get better results in your commits.
 
-* *Cucumber*: We are going to use Cucumber to create our tests.
-
-* *WebStorm*: We will use WebStorm to develop our app because of all the facilities that it gives us for the React programming part
 We want to fulfill some quality goals:
 
 * *Usability*: Viade has to be intuitive. We are going to use the knowledge acquired during this career.
@@ -23,6 +41,7 @@ We want to fulfill some quality goals:
 * *Availability*: You should be able to manage a route at any moment, so Viade has to be consistent.
 * *Interoperability*: We want out routes to be exportable to other apps so we need to investigate it.
 * *Decentralization*: It is a constraint on this project.
+
 
 And this are our organization decisions:
 

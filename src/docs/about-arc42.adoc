@@ -18,6 +18,3 @@ Template Revision: 7.0 EN (based on asciidoc), January 2017
 We acknowledge that this document uses material from the
 arc 42 architecture template, http://www.arc42.de.
 Created by Dr. Peter Hruschka & Dr. Gernot Starke.
-
-(C)
-The Viade_ES2C team

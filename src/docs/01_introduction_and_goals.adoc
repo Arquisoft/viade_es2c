@@ -1,11 +1,20 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
 The aim of the project is to develop a decentralised route tracker, which has to be able to give an excellent performance meanwhile the privacy of the customer is well kept.
+[role="arc42help"]
+****
+Initial commit
+Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
+
+* underlying business goals, essential features and functional requirements for the system
+* quality goals for the architecture
+* relevant stakeholders and their expectations
+****
 
 === Requirements Overview
 According to the priority of each requirement, we can order them as you can read next.
 
-* The application must implement a decentralised architecture based in the SOLID (Social Linked Data) specifications, therefore stored data must be separated from the app.
+* The application must implement a decentralised architecture based in the SoLiD (Social Linked Data) specifications, therefore stored data must be separated from the app.
 * Information must be stored in pods.
 * Routes will be shown to users on the map.
 * A route should be fed back with relative data, such as shared pictures, videos or comments.
@@ -14,26 +23,17 @@ According to the priority of each requirement, we can order them as you can read
 * Interoperability is an essential part of our specific application, so several apps are able to work with the same information of a route.
 
 === Quality Goals
-* Consistency. The application should be a consistent.
-* Privacy. As a SOLID project, keeping the personal data is a main quality purpose.
-* Usability. The app must be easy to use, at least the average user should be able to interact easily with viade.
-* Interoperability with other Viade apps that our classmates are creating.
+* Availability. The application should be a consistent.
+* Privacy. As a SoLiD project, keeping the personal data is a main quality purpose.
+* Usability. The app must be easy to use, all sort of users should know how to use all the features.
 
 === Stakeholders
 
 [options="header",cols="1,2,2"]
 |===
 |Role/Name|Contact|Expectations
-| Teacher | https://github.com/labra | He will evaluate our project 
+| Teacher | labra@uniovi.es | They will evaluate our project 
 | Solid community | https://solid.mit.edu | Resource for the Solid project
 | Developers | https://github.com/Arquisoft/viade_es2c | They will develop the architecture and the code of the application
-|Technical Users | | People that have some experience in the route's world and know some technical concepts
-|Non-technical users | | People that is new in the world and have never used a route's management app before
-| Disabled users | | Users who have some kind of disability
-|Users without an account | | People new in the SOLID or Inrupt community and want to use our app
-|Users with an account | | User's from SOLID or Inrupt who want to use our app
-| Young users | | Young people who will use our app
-| Old users | | Old people who will use our app 
-| Users with computers | | Users that will use Viade through a computer
-| Users with phones | | Users that will use our app through a movile phone
+|Users | | People that want to keep track of their routes and their privacy
 |===

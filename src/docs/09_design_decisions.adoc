@@ -1,14 +1,35 @@
 [[section-design-decisions]]
 == Design Decisions
 
-[options="header",cols="1,2,2"]
-|===
-|Decision|Pro|Con
-| sliding menu stile like most of mobile applications | It will be easier to use in a mobile app | We will have to use a special library and maybe we will need to change some working code
-| Minimalist style | It will be more usable and simple to distinguise the options | It maybe would look boring if we dont do it properly
-| The timeline page will contain all routes ordered by time | It will be easier for the user to find his routes and will be more usable | It would be hard to do in the code (we will have to work with dates)
-| The profile will contain routes created by the user | More intuitive and organized for the user | We will have to contain all the data in an accesible POD
-| The new route page will users starting and creating a new route | Intuitive and usable | We have to learn how to create a map that allows the user to do that
-|===
+Application wil use sliding menu stile like most of mobile applications. For this, we are going to use a special library.
+
+Also, application will has a minimalist stile for a clearly use and will contain three parts: "Timeline", "Perfil" and "New route".
+
+- Timeline will contain all routes ordered by time.
+- Perfil will contain routes created by user.
+- New route will allow user starting and creating a new route.
 
 In a future we will update this section when we have more design decisions.
+
+[role="arc42help"]
+****
+.Contents
+Important, expensive, large scale or risky architecture decisions including rationals.
+With "decisions" we mean selecting one alternative based on given criteria.
+
+Please use your judgement to decide whether an architectural decision should be documented
+here in this central section or whether you better document it locally
+(e.g. within the white box template of one building block).
+
+Avoid redundancy. Refer to section 4, where you already captured the most important decisions of your architecture.
+
+.Motivation
+Stakeholders of your system should be able to comprehend and retrace your decisions.
+
+.Form
+Various options:
+
+* List or table, ordered by importance and consequences or:
+* more detailed in form of separate sections per decision
+* ADR (architecture decision record) for every important decision
+****
