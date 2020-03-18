@@ -10,16 +10,16 @@ class RouteToRdfParser {
         var information = this.getInformation();
         var viadePoints = this.getViadePoints();
         var media = this.getMedia();
-        alert("asdasds")
         FileWriter.handleSave(this.webID+"viade/"+this.route.name,(String)(prefixs+information+viadePoints+media))
     }
 
     getPrefix(){
+        var firstLine = "prefix :   <http://example.org/> \n";
         var viade = "prefix viade:  <http://arquisoft.github.io/viadeSpec/>\n";
         var schema = "prefix schema: <http://schema.org/>\n";
         var rdfs = "prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#>\n";
         var xsd = "prefix xsd:    <http://www.w3.org/2001/XMLSchema#>\n";
-        return (String)(viade+schema+rdfs+xsd);
+        return (String)(firstLine+viade+schema+rdfs+xsd);
     }
     getInformation(){
         var myRoute = ":myRoute a viade:Route ;\n";
