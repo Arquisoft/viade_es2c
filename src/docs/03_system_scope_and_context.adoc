@@ -1,9 +1,11 @@
 [[section-system-scope-and-context]]
 == System Scope and Context
 
-Viade must allow a user to share pictures, videos or information about a route with other friends and It should be possible to view routes loaded by users that are using a different app, so interoperability with other route management systems should be taken into account.
+Viade must allow a user to create and  view a route and share pictures, videos or information about a route with other friends. It should be possible to view routes loaded by users that are using a different app, so interoperability with other route management systems should be taken into account.
 
 Security and privacy is Viade priority. Users can store their routes in their own pods and Viade should have online independence, thats it, no central control of data.
+
+Viade can import created routes in some of the most used formats in the routes management apps.
 
 === Business & Technical Context
 

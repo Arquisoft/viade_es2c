@@ -63,6 +63,7 @@ class Ruta extends Component {
 
     render() {
         const {t} = this.props;
+        ruta = this.route;
         return (
             <section>
                 <button data-testid="button-open" id={"button-open-" + this.route.name}
@@ -84,7 +85,7 @@ class Ruta extends Component {
                             </FullGridSize>
                             <h4>{t('createRoute.media')}</h4>
                             <FullGridSize>
-                                <button data-testid="button-multimedia" onClick={this.verMultimedia}>ver multimedia
+                                <button data-testid="button-multimedia" onClick={this.verMultimedia}>{t('route.media')}
                                 </button>
                                 <div id={"foto" + this.route.fileName}></div>
                                 <div id={"video" + this.route.fileName}></div>

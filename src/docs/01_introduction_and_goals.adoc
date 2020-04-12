@@ -14,10 +14,15 @@ According to the priority of each requirement, we can order them as you can read
 * Interoperability is an essential part of our specific application, so several apps are able to work with the same information of a route.
 
 === Quality Goals
-* Consistency. The application should be a consistent.
-* Privacy. As a SOLID project, keeping the personal data is a main quality purpose.
-* Usability. The app must be easy to use, at least the average user should be able to interact easily with viade.
-* Interoperability with other Viade apps that our classmates are creating.
+[options="header",cols="1,2,2"]
+|===
+| Priority | Objective | Description 
+|1 | Privacy | As a SOLID project, keeping the personal data is a main quality purpose.
+|2 | Usability | The app must be easy to use, at least the average user should be able to interact comfortably with viade.
+|3 | Efficiency | The times of response of Viade should be within a minimum so that the user can interact dynamically and comfortably
+|4 | Consistency | The application should be consistent.
+|5 | Interoperability | with other Viade apps that our classmates are creating.
+|===
 
 === Stakeholders
 
