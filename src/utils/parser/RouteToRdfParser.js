@@ -20,7 +20,7 @@ class RouteToRdfParser {
         let schema = "@prefix schema: <http://schema.org/>.\n";
         let rdfs = "@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#>.\n";
         let xsd = "@prefix xsd:    <http://www.w3.org/2001/XMLSchema#>.\n";
-        return (String)(line+viade+schema+rdfs+xsd);
+        return (String)(viade+line+schema+rdfs+xsd);
     }
     getInformation(){
         let myRoute = ":myRoute a viade:Route ;\n";
@@ -30,15 +30,13 @@ class RouteToRdfParser {
     }
 
     getViadePoints(){
-        let cabecera = "viade:points (\n";
-        let final = " );\n";
         let puntos = "";
         let i;
         for (i = 0; i < this.route.points.length; i++) {
-            puntos += "[ schema:latitude "+this.route.points[i].position.lat+" ; schema:longitude "+this.route.points[i].position.lng+" ]\n";
+            puntos += "viade:point [ \n schema:latitude "+this.route.points[i].position.lat+" ;\n schema:longitude "+this.route.points[i].position.lng+" \n ];\n";
         }
 
-        return (String)(cabecera+puntos+final);
+        return (String)(puntos);
     }
 
     getComments(){
@@ -54,8 +52,6 @@ class RouteToRdfParser {
         if (this.route.image != null) {
         imagen = "viade:hasMediaAttached :img ;\n";
         imagenInfo = ":img schema:contentUrl \"" + this.route.image + "\" .\n";
-        }else{
-            imagen = "viade:hasMediaAttached \"null\" ;\n"
         }
         if(this.route.video!=null){
             video = "viade:hasMediaAttached :video .\n";

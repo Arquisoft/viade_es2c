@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom";
 import { renderToDOM } from "./index";
+//import "../utils/parser/fiddle/sparql-fiddle"
 
 describe("test ReactDOM.render", () => {
     const originalRender = ReactDOM.render;

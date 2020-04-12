@@ -14,7 +14,7 @@ const store = $rdf.graph();
 //const fetcher = new $rdf.Fetcher(store);
 
 //var person = null;
-var person = 'https://ruben.verborgh.org/profile/#me';//example person with friends
+// var person = 'https://ruben.verborgh.org/profile/#me';//example person with friends
 
 var friendsLi = null;
 
@@ -27,7 +27,6 @@ function FriendsList() {
     const {t} = useTranslation();
     //obtaining webId of the user in session
     trackSession(function(persona){
-        console.log("sesion",persona)
         loadFriends(persona,function(friendsUrls){
             if(friendsUrls == null || friendsUrls === undefined){
                 errorToaster(t('friends.errorObtaining'), "Error");
@@ -95,7 +94,6 @@ async function loadFriends(p,callback) {
     if(p == null){
         return callback(null);
     }else{
-        console.log("loadfriends", p)
         await fetcher.load(p);
         const friends = store.each($rdf.sym(p), FOAF('knows'));
 
@@ -113,8 +111,6 @@ function trackSession(callback) {
     const {t} = useTranslation();
     auth.trackSession(session => {
         if (session) {
-            //person = session.webId;
-            console.log('The user : ' + person + 'is logged in');
             return callback(session.webId);
         }
         else {

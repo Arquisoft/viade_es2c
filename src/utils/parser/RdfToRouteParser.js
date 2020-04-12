@@ -1,9 +1,10 @@
 import FileWriter from "../InOut/FileWriter";
 import Route from "../route/Route";
 import rutas from "../../constants/globals";
+import {errorToaster} from '@utils';
+var sparqlFiddle= require ("./fiddle/sparql-fiddle")
 
 class RdftoRouteParser {
-    regexForQuotationMarks=  /"/g;
 
     addRoute (fileName,url){
         FileWriter.handleLoad(url,fileName,this.singleParse.bind(this));
@@ -14,19 +15,43 @@ class RdftoRouteParser {
     }
 
     singleParse(fileName,text){
-        let name = this.getName(text);
-        let description = this.getDescription(text);
-        let points = this.getPoints(text);
-        let comments = this.getComments(text,points);
-        let image = this.getImage(text,points);
-        let video = null;
-        if(image != null){
-            video = this.getVideo(text,points, true);
-        }else{
-            video = this.getVideo(text,points, false);
-        }
-        let route = new Route(name,description, points,null,comments,image,video,fileName);
-        this.pushRoutes(route);
+
+        let querySparql =
+            `PREFIX schema: <http://schema.org/>
+      PREFIX viade:<http://arquisoft.github.io/viadeSpec/>
+      PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      
+      SELECT ?name ?description ?comments ?iri ?lat ?long WHERE {
+       ?route a viade:Route;
+       viade:point ?point ;
+       schema:name ?name;
+       schema:description ?description;
+       viade:hasComments ?comments;
+       viade:hasMediaAttached ?media.
+       OPTIONAL {?media schema:contentUrl ?iri.}
+       ?point schema:latitude ?lat ;
+              schema:longitude ?long.
+      }`;
+        let fiddle = {
+            data: text,
+            query: querySparql,
+            wanted: "Array"
+        };
+        sparqlFiddle.run(fiddle).then(
+            results => {
+                let name = results[0]["name"];
+                let description = results[0]["description"];
+                let points = this.getPoints(results);
+                let comments = results[0]["comments"];
+                let image = this.getImage(results);
+                let video = this.getVideo(results);
+                let route = new Route(name,description, points,null,comments,image,video,fileName);
+                this.pushRoutes(route);
+            },
+            err =>  errorToaster(err,"Error")
+        );
+
+
 
     }
 
@@ -45,71 +70,43 @@ class RdftoRouteParser {
         }
     }
 
-    getName(text){
-        let tx = text.split("\n");
-        let line = tx[6].split(" ");
-        let name = line[1].replace(this.regexForQuotationMarks,"");
-        return name;
-    }
-    getDescription(text){
-        let tx = text.split("\n");
-        let line = tx[7].split(" ");
-        let description = line[1].replace(this.regexForQuotationMarks,"")
-        return description;
-    }
 
-    getPoints(text){
-        let tx = text.split("\n");
-        let i = 9;
-        let line = tx[i];
-        let valores = line.split(" ");
+
+    getPoints(results){
         let points = [];
-        while (valores[0] ==="["){
-            points[i-9]= {position: {lat:valores[2],lng:valores[5]}};
-            i++;
-            line = tx[i];
-            valores = line.split(" ");
+        for(let i=0;i<results.length;i++){
+            if(results[i]["lat"]!== undefined){
+                points[i]={position: {lat:results[i]["lat"],lng:results[i]["long"]}};
+            }
         }
         return points;
     }
 
-    getComments(text,points){
-        let tx = text.split("\n");
-        let indice = 9+points.length+1;
-        let line = tx[indice].split(" ");
-        let comments = line[1].replace(this.regexForQuotationMarks,"")
-        if (comments==="null"){
-            comments = null;
+    getImage(results){
+        if(results[0]["iri"]!== undefined && this.notVideo(results[0]["iri"])){
+            return results[0]["iri"];
         }
-        return comments;
+        return null;
     }
 
-    getImage(text,points){
-        let tx = text.split("\n");
-        let indice = 9+points.length+2;
-        let line = tx[indice].split(" ");
-        if(line[1]==="\"null\""){
-            return null;
-        }
-        indice = indice + 2;
-        line = tx[indice].split(" ");
-        return line[2].replace(this.regexForQuotationMarks,"")
-    }
-
-    getVideo(text,points, imagen){
-        let tx = text.split("\n");
-        let indice = 9+points.length+3;
-        let line = tx[indice].split(" ");
-        if(line[1]==="\"null\""){
-            return null;
-        }
-        if(imagen){
-            indice = indice + 2;
+    getVideo(results){
+        if(results[1]["iri"]!== undefined && results[1]["iri"]!== results[0]["iri"]){
+            return results[1]["iri"];
         }else{
-            indice = indice + 1;
+            if(results[0]["iri"]!== undefined && !this.notVideo(results[0]["iri"])){
+                return results[0]["iri"];
+            }
         }
-        line = tx[indice].split(" ");
-        return line[2].replace(this.regexForQuotationMarks,"")
+        return null;
+    }
+
+    notVideo(image) {
+            let array = image.split(".");
+            let extension = array[array.length - 1];
+            if (extension === "mp4" || extension === "avi") {
+                return false;
+            }
+            return true;
     }
 
 }

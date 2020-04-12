@@ -1,2 +1,4 @@
 ignore:
   - "src/index.js"
+  - "src/utils/parser/fiddle/sparql-fiddle.js"
+
