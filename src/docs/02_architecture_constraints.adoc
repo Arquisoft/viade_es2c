@@ -1,7 +1,7 @@
 [[section-architecture-constraints]]
 == Architecture Constraints
 
-*Here are the tables that contain all the project constraints and their explanations.*
+*Here are the tables that include all the project constraints and their explanations.*
 
 === _Technical Constraints_
 
@@ -13,7 +13,8 @@ Previous architecture decisions that may impact the solution design.
 | SOLID for a decentralized  architecture | One of the aims of 'Viade' is to be a decentralized app, so we need a decentralized  technology like SOLID
 | React for presentation | We were told to use 'React' in our project
 | Use of GitHub | Our project is going to be hosted on a GitHub repository
-| Testing | We need to create tests so we can be sure that our project is correct and it is working like it has to work
+| Testing | We need to create tests so we can be sure that our project is correct and it is working like it has to work and we need to have at least a 60% of coverage
+| Cucumber | Our project needs to implements some cucumber tests
 |===
 
 === _Organizational Constraints_
@@ -23,8 +24,8 @@ The project's environment. It affects the developing process.
 |===
 |Constraint|Explanation
 | Time limit | We have to develop the project during our 'Architecture of Software' course, so we have less than 3 months
-| Team members | Our team is formed by 5 software engineering students at 'Universidad de Oviedo' university, so we only can use our free time and course lessons to develop it (and we need to organize our free time so we can study others subjects)
-| Course deadlines | We have 3 deadlines during our course and we need to accomplish the requirements of them during our project developing
+| Team members | Our team is formed by 4 software engineering students at 'Universidad de Oviedo' university, so we only can use our free time and course lessons to develop it (and we need to organize our free time so we can study others subjects)
+| Course deadlines | We have 4 deadlines during our course and we need to accomplish the requirements of them during our project developing
 |===
 
 === _Documentation Constraints_
