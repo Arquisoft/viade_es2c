@@ -1,17 +1,34 @@
 [[section-concepts]]
 == Cross-cutting Concepts
-=== _<Concept 1>_
+=== Dissecting Viade
+In Viade we can differentiate 2 parts:
 
-_<explanation>_
+    * Before the Route objects are created 
+    * After the Route objects are created 
+
+In the first part, the objective is to create a route that our app understands and can work with. That is the object Route. Our app will try to convert every route into this object (it can come from a POD, from another file or the user). The reason behind this is that we want to be able to work with different formats so the user won't have restrictions, but there are a lot of different extensions to represent a route and in the future, it can appear more.
+
+Creating parsers to transform the routes into the same object allows us to separate the logic that has come possibilities to change from the one that is more general and doesn't have that characteristic. We also can change the way our parsers get the information without the rest of the app noticing.
+
+After we have the Route objects, we can manipulate them. We can show the information, store it, share it,... and in the future we could edit it or show it in different styles.
+
+In our app, we work with routes but we also work with the user's information. We let him login and logout from different providers, we let him change its profile image, he can choose whether he wants to use Viade in English or Spanish and he can see his friends and share the routes with them.
 
 
 
-=== _<Concept 2>_
+=== _Folder Structure
+image::08-datafolders[Folder Srtructure]
 
-_<explanation>_
+Here you can see a general folder structure of Viade where you can see the important ones.
 
-...
+In the root directory, we have the configuration folder where we have some .config files like the webpack.config.js file that we use for the app tests ad the jest folder.
 
-=== _<Concept n>_
+Then we have the test_mocks_ folders that have some libraries and files that we use for our tests and through all the application like @fontawesome.
 
-_<explanation>_
+The src folder is the most important one because is where our source code is allocated. There you can see the components, constants, and containers of the app (some of the general logic and interface), the resources folder with all of the logos that we have created for Viade, the docs folder with the documentation related files and the utils folder with the parsers, the Route object, the I/O classes, etc.
+
+The feature folder has some other files for testing the app.
+
+The public folder has the images that viade is using (like icons or the actual logo) and the locales with the texts of the app in different folders so viade can be internationalized.
+
+At last, the scripts folder has some js scripts to start the app, build it and execute the tests, to run them you just have to type "npm run " + the name of the script without the extension.
