@@ -9,6 +9,5 @@
 | The timeline page will contain all routes ordered by time | It will be easier for the user to find his routes and will be more usable | It would be hard to do in the code (we will have to work with dates)
 | The profile will contain routes created by the user | More intuitive and organized for the user | We will have to contain all the data in an accesible POD
 | The new route page will users starting and creating a new route | Intuitive and usable | We have to learn how to create a map that allows the user to do that
+| The routes can be accessed from timeline in a popup | It reduces the loading time | It is not possible to open more than one route at the same time
 |===
-
-In a future we will update this section when we have more design decisions.
