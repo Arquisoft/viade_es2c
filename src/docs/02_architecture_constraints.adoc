@@ -15,6 +15,7 @@ Previous architecture decisions that may impact the solution design.
 | Use of GitHub | Our project is going to be hosted on a GitHub repository
 | Testing | We need to create tests so we can be sure that our project is correct and it is working like it has to work and we need to have at least a 60% of coverage
 | Cucumber | Our project needs to implements some cucumber tests
+| Docker | Viade has to have a Dockerfile and a docker-compose.yml file
 |===
 
 === _Organizational Constraints_
