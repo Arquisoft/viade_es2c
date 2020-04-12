@@ -27,6 +27,8 @@ Giving a deeper insight into ViaDe application.
 |===
 | **Name** | **Responsibility**
 | App | Decentralized route tracker.
+| Components and containers | They describe the code to show the different parts of the application and ints functionality
+|Parsers | They let the user import a created route from other app
 | Test units | Should be passed as long as integrity is required in the app.
 | Libraries | Every needed library will be a component of the app.
 |===
