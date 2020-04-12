@@ -1,28 +1,11 @@
 [[section-technical-risks]]
 == Risks and Technical Debts
 
-In this first demo, we have some technical debts:
-
-* We have not implemented the use of gpx for the routes
-* Our RDF structure it's simple
-* We have created our demo using an app generator, so we still have to learn mode about the code and quit some extra lines
-* We still don't fully understand cucumber
-* We have put a "Route" link in the nav just for testing, we need to find the way of accesing using a button
-* Some code is "poor done" and have to make it more elegant
-* We have to do documentation in the code
-
 [options="header",cols="1,2,2,2"]
 |===
 | Priority | Risk | Consequence | Possible Solution
-|1| Route loaded in timeline page | Application requires more resources | Separate map with route in other page
-|2| Using a deprecated library | Impossibility of using new features | Find a new library or include new complementary library
-|3| Using png instead of PlantUML | It is difficult to do changes of diagrams | Implement diagram in PlantUML
-|===
-
-[options="header",cols="1,2,2,2"]
-|===
-|Priority|Risk |Consequence | Possible Solution
-| 1|Not being used to the technology | Be slow at developing or make mistakes and waste time | Reading and learning about React, SOLID and RDF. We should do some tutorials and use the SOLID forum and gitter.
-|2| First time forming a team| We don't know how to work with each other so we may not understand each other and consume time or be uncomfortable | Communication and interest
-|3|  Not having much time | We only have 3 months to create this app and just have the course hours and some free time that we need to organize with other subjects | Organization
+|1| Using a deprecated library | Impossibility of using new features | Find a new library or include new complementary library
+|2| Using png instead of PlantUML | It is difficult to do changes of diagrams | Implement diagram in PlantUML
+|3| Groups were not implemented | It is no possible to share routes with more than one user at the same time | Create and share groups option
+|4|  |  |
 |===
