@@ -56,4 +56,4 @@ sudo docker-compose up -d
 ```
 
 ### Use the gh-pages version
-The easiest way to try Viade is to go to this link. It shows the master branch version of Viade and you wont need to download anything
+The easiest way to try Viade is to go to this link [https://arquisoft.github.io/viade_es2c/](https://arquisoft.github.io/viade_es2c/). It shows the master branch version of Viade and you wont need to download anything
