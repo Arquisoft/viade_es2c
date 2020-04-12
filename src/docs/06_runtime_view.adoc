@@ -25,7 +25,7 @@ User -> Viade: 5. routes management
 The users use the application to manage their routes.
 
 1. The user creates a new route.
-2. The user shares a route to a friend or a group of friends.
+2. The user shares a route to a friend.
 
 [plantuml,"Routes creation secuence diagram",png]
 ----
@@ -33,9 +33,11 @@ title User creates a new route
 actor User1
 participant Viade1
 database POD
-User1 -> Viade1: 1. create new route
-Viade1 -> POD: saves the route
-POD -> Viade1: returns a message of correct stored
+User1 -> Viade1: 1. goes to create new route page
+User1 -> Viade1: 2. select one of the available methods to create it
+User1 -> Viade1: 3. fill in the route information and add multimedia
+Viade1 -> POD: 4. saves the route
+Viade1 -> User1: returns a message of correct stored
 ----
 
 [plantuml,"Routes share 1 secuence diagram",png]
@@ -43,29 +45,17 @@ POD -> Viade1: returns a message of correct stored
 title User shares route to a friend
 actor User1
 participant Viade1
-database POD
+database User1POD
+database User2POD
 participant Viade2
 actor User2
 User1 -> Viade1: 1. create new route
-Viade1 -> POD: saves the route
-User1 -> Viade1: 2. shares route
-Viade1 -> POD: allows to see the route
-Viade2 -> POD: access route
-Viade2 -> User2: show route
-----
-
-[plantuml,"Routes share 2 secuence diagram",png]
-----
-title User shares route to a group of friends
-actor User1
-participant Viade1
-database POD
-participant ViadeX
-collections User_group
-User1 -> Viade1: 1. create new route
-Viade1 -> POD: saves the route
-User1 -> Viade1: 2. shares route
-Viade1 -> POD: allows to see the route
-ViadeX -> POD: recieve route
-ViadeX -> User_group: show route
+Viade1 -> User1POD: 1. saves the route
+User1 -> Viade1: 2. user search his route in the route list page
+User1 -> Viade1: 3. user type friend's weID
+Viade1 -> User1POD: 4. gives read permissions to the friend
+Viade1 -> User2POD: 5. send notification with route uri
+Viade2 -> User2POD: 6. read inbox to search shared routes
+Viade2 -> User1POD: 7. access route
+Viade2 -> User2: 8. show route
 ----
