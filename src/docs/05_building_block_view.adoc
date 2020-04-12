@@ -6,31 +6,33 @@
 
 === Whitebox Overall System
 
-Level 1::
+*Level 1*
 
-App description.
-
-[cols="1,2" options="header"]
-|===
-| **Name** | **Responsibility**
-| Customer | Person who requires the functionality of this application.
-| ViaDe | Decentralised route tracker.
-| SOLID |  Specification used in order to build up this app.
-| POD | Decentralised store unit of the user data.
-|===
-
-Level 2::
-
-Giving a deeper insight into ViaDe application.
+image::05_viadeDescription.png[Viade Description]
 
 [cols="1,2" options="header"]
 |===
 | **Name** | **Responsibility**
-| App | Decentralized route tracker.
+| User | Person who requires the functionality of this application. Is the one who interacts with the application and give the orders.
+| Viade | Decentralised route tracker. It interacts with the POD to store and load the routes, media, information about the user, etc
+| SOLID POD | Decentralised store unit of the user data. Is the part that contains tha information Viade uses.
+|===
+
+*Level 2*
+
+image::05_viadeRepresentation.png[Viade Representation]
+
+Giving a deeper insight into Viade application.
+
+[cols="1,2" options="header"]
+|===
+| **Name** | **Responsibility**
+| Viade | Decentralized route tracker.
 | Components and containers | They describe the code to show the different parts of the application and ints functionality
 |Parsers | They let the user import a created route from other app
-| Test units | Should be passed as long as integrity is required in the app.
-| Libraries | Every needed library will be a component of the app.
+| PODs | Where Viade obtains the routes information, media or user's data and where viade stores the routes and media created in their classes.
+|User | Same user as the last level
+| Routes in a non-turtle format | Viade can create a route to work with from a GEP or Geojson route and then create a turtle version to store it in the User's POD
 |===
 
 Level 3::
