@@ -208,6 +208,7 @@
   "route" : {
     "share" : "Compartir",
     "open" : "Abrir ruta",
-    "close" : "Cerrar ruta"
+    "close" : "Cerrar ruta",
+    "media" : "Ver Multimedia"
   }
 }

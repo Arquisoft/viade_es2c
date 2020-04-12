@@ -204,6 +204,7 @@
   "route" : {
     "share" : "Share",
     "open" : "Open route",
-    "close" : "Close route"
+    "close" : "Close route",
+    "media" : "Display Media"
   }
 }
