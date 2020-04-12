@@ -15,7 +15,7 @@ export const Header = styled.div`
   background-image: url('img/pattern-geo.png'),
     linear-gradient(135deg, #00B020 0%, #00B020 30%, #00B020 50%);
   background-repeat: repeat, no-repeat;
-  padding: 30px 20px;
+  padding: 5px;
 `;
 
 export const Form = styled.div`

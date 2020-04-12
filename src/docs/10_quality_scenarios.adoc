@@ -6,21 +6,12 @@
 image::10_QualityRequirements.png[Quality Tree]
 
 === Quality Scenarios
-[options="header",cols="1,2,1,1"]
+[options="header",cols="1,2,1"]
 |===
-|Quality attribute|Quality scenario| Measure |Priority
-| Privacy | The user is the owner of his data according to the SOLID principles | |HIGH, HIGH
-| Usability | The user must have to use all the features of the application easily  | |HIGH, HIGH
-| Maintainability | The architecture of the system should be well designed, this will allow to the developers to add features and modify it easily | |MEDIUM, LOW
-|Scalability | The response times of the app must be reasonable when the number of users grows reasonably and the features of the application must perform in the same way with a high number of users  | |MEDIUM, HIGH
-| Availability | The users must have his routes available when they want to look for it | |HIGH, HIGH
-|===
-
-|===
-|Quality attribute|Quality scenario| Priority
+| Quality attribute | Quality scenario | Priority
 | Privacy | The user is the owner of his data according to the SOLID principles | HIGH 
 | Usability | The user must have to use all the features of the application easily  | HIGH
 | Maintainability | The architecture of the system should be well designed, this will allow to the developers to add features and modify it easily | MEDIUM
-|Scalability | The response times of the app must be reasonable when the number of users grows reasonably and the features of the application must perform in the same way with a high number of users  | MEDIUM
+| Scalability | The response times of the app must be reasonable when the number of users grows reasonably and the features of the application must perform in the same way with a high number of users | MEDIUM
 | Availability | The users must have his routes available when they want to look for it | HIGH
 |===
