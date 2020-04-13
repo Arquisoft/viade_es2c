@@ -37,6 +37,6 @@ Giving a deeper insight into Viade application.
 
 Level 3::
 
-ViaDe will have to be meant as a decentralised route tracker application, which will also have to implement several requirements such as services, models & any other needed component. SOLID is the decentralisation specification that the team is going to be following all over the project development.
+Viade will have to be meant as a decentralised route tracker application, which will also have to implement several requirements such as services, models & any other needed component. SOLID is the decentralisation specification that the team is going to be following all over the project development.
 
 Some essential technologies such as RDF, which coordinates the POD data, are going to be establishing the foundation of the project.

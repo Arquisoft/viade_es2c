@@ -1,33 +1,27 @@
 [[section-glossary]]
 == Glossary
 
-
-
-[role="arc42help"]
-****
-.Contents
-The most important domain and technical terms that your stakeholders use when discussing the system.
-
-You can also see the glossary as source for translations if you work in multi-language teams.
-
-.Motivation
-You should clearly define your terms, so that all stakeholders
-
-* have an identical understanding of these terms
-* do not use synonyms and homonyms
-
-.Form
-A table with columns <Term> and <Definition>.
-
-Potentially more columns in case you need translations.
-
-****
-
 [options="header"]
 |===
 | Term              | Definition
-| React             | A declarative, efficient, and flexible JavaScript library for building user interfaces.
-| SOLID             | A web decentralization project. Its mission is to reshape the web as we know it.
+| Asciidoctor | Lightweight markup language for authoring notes, articles, documentation, books, web pages, ...
+|Cucumber | Software tool that supports behavior-driven development (BDD).
+| Descentralized    | Something that is not controlled from one central place.
+| Docker | Open source software platform to create, deploy and manage virtualized application containers on a common operating system (OS).
+| Framework | A basic structure underlying a system, concept, or text..
+| GitHub | Web-based version-control and collaboration platform for software developers.
+| I/O | Short for input/output (pronounced "eye-oh"). The term I/O is used to describe any program, operation or device that transfers data to or from a computer and to or from a peripheral device.
+|JavaScript | An object-oriented computer programming language commonly used to create interactive effects within web browsers.
+| Kanban | Visual system for managing work as it moves through a process.
+| Minimalist | Design approach that is characterized by austerity and laconism in decoration.
+| Parser | Compiler or interpreter component that breaks data into smaller elements for easy translation into another language.
 | POD               | A personal storage space in SOLID.
-| Descentralized    | Something that is not controlled from one central place
+|Popup | Graphical user interface (GUI) display area, usually a small window, that suddenly appears ("pops up") in the foreground of the visual interface.
+| Puppeteer | Node library which provides a high-level API to control headless Chrome or Chromium over the DevTools Protocol. It can also be configured to use full (non-headless) Chrome or Chromium.
+| React             | A declarative, efficient, and flexible JavaScript library for building user interfaces.
+|Script | A type of language for programming computers that is used for finding and showing websites on the internet.
+| SOLID             | A web decentralization project. Its mission is to reshape the web as we know it.
+| Viade | Decentralized routes management system based on the solid specifications and React framework. It's the project that we are talking about.
+| WebStorm | Powerful IDE for modern JavaScript development.
+| WhatsApp | Free to download messenger app for smartphones.
 |===
