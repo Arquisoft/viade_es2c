@@ -16,7 +16,7 @@ In our app, we work with routes but we also work with the user's information. We
 
 
 
-=== _Folder Structure
+=== Folder Structure
 image::08-datafolders.png[Folder Structure]
 
 Here you can see a general folder structure of Viade where you can see the important ones.
