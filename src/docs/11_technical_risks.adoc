@@ -1,31 +1,13 @@
 [[section-technical-risks]]
 == Risks and Technical Debts
-This project had some risks that we could solve:
-
-[options="header",cols="1,2,2,2"]
+[options="header",cols="1,3,3,3"]
 |===
 | Priority | Risk | Consequence | Possible Solution
-|1| Not being used to the technology | Be slow at developing or make mistakes and waste time | Reading and learning about React, SOLID and RDF. We should do some tutorials and use the SOLID forum and gitter.
-|2| First time forming a team | We didn't know how to work with each other so sometimes we didn't understand each other | Communication and interest
-|===
-
-At this moment, our risks are these:
-[options="header",cols="1,2,2,2"]
-|===
-| Priority | Risk | Consequence | Possible Solution
-|1| Using a deprecated library | Impossibility of using new features | Find a new library or include new complementary library
-|2| Using png instead of PlantUML | It is difficult to do changes of diagrams | Implement diagram in PlantUML
-|3| Group of 4 students | At the start we were meant to be 6 persons, however now we are 4 and we need to work harder | Try to have more time for this subject and focus on the important parts of the application
-|===
-
-And right now we have some technical debts
-[options="header",cols="1,2,2,2"]
-|===
-| Priority | Technical debt | Description | Consecuence
-|1| Some parsers don't use sparql | We have just find out how to use sparql to get the information from a turtle file but we didn0t have time to implement it in all the parsers for this deadline | The code is not elegant and can easily fail
-|2| Groups were not implemented | We didn't have time to implement that functionality | It is no possible to share routes with more than one user at the same time
-|3| Comments were not implemented | We didn't have time to implement that functionality | The user's can't add comments to the routes
-|4| Our project lacks documentation | We didn't have time to document all the code | Some parts are hard to understand
-|5| There are some bugs and error | We need time to improve the app | It can occur an error
-|6| We need more security | We have to add more security to the code, now it is a little vulnerable | The user can see the code if it occurs an error
+| LOW | Using a deprecated library | Impossibility of using new features | Find a new library or include new complementary library
+| LOW | Using png instead of PlantUML | It is difficult to do changes of diagrams | Implement diagram in PlantUML
+| HIGH | Groups were not implemented | It is not possible to share routes with more than one user at the same time | Create and share groups option
+| HIGH | Comments were not implemented | It is not possible to comment the route | The user's can't add comments to the routes
+| MEDIUM | Low documented code | Difficulty to understand some parts | Document the most important methods
+| MEDIUM | Not all parsers use sparql | The code can fail in some situations | Add sparql to all parsers
+| HIGH | Lack of security | Vulnerable code | Implement some security techniques or using any security library
 |===
