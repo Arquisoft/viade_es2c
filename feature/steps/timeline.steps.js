@@ -81,10 +81,10 @@ defineFeature(feature, test => {
 
         when('I try to see a route', async () => {
 
-            await page.waitFor(5000);
+            await page.waitFor(7000);
 
             await page.evaluate(() => {
-                let btns = document.getElementById("button-open-Compartir");
+                let btns = document.getElementById("button-open-gpx ");
                 btns.click();
             });
 
@@ -92,7 +92,7 @@ defineFeature(feature, test => {
 
         then('I can see the route', async () => {
             await page.waitFor(1000);
-            await page.waitForSelector("[id='route-title-Compartir']", {visible: true});
+            await page.waitForSelector("[id='route-title-gpx ']", {visible: true});
             expect(page.url()).toBe("http://localhost:3000/#/timeline")
         });
     })
