@@ -15,7 +15,6 @@ class RdftoRouteParser {
     }
 
     singleParse(fileName,text){
-
         let querySparql =
             `PREFIX schema: <http://schema.org/>
       PREFIX viade:<http://arquisoft.github.io/viadeSpec/>
@@ -50,9 +49,6 @@ class RdftoRouteParser {
             },
             err =>  errorToaster(err,"Error")
         );
-
-
-
     }
 
     pushRoutes(route){
