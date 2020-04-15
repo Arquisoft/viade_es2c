@@ -1,19 +1,21 @@
 import React, {useCallback} from 'react';
 import moment from 'moment';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {Body, Delete, Img, Item, MarkAsRead, Message, Meta} from './notification-item.style';
+//import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+//{Body, Delete, Img, Item, MarkAsRead, Message, Meta}
+import {Body, Img, Item, Message, Meta} from './notification-item.style';
 
 type Props = {
   notification: Object,
   markAsRead: Function,
-  children: React.ReactNode,
-  deleteNotification: (fileName: string) => void
+  children: React.ReactNode
+  //deleteNotification: (fileName: string) => void
 };
 
 /**
  * Notification item to be shown for each notification in the notification list
  */
-const NotificationItem = ({ notification, markAsRead, children, deleteNotification }: Props) => {
+//{ notification, markAsRead, children, deleteNotification }
+const NotificationItem = ({ notification, markAsRead, children }: Props) => {
   const { read } = notification;
   const currentRead = read ? JSON.parse(read) : false;
   const { actor } = notification;
@@ -31,7 +33,7 @@ const NotificationItem = ({ notification, markAsRead, children, deleteNotificati
    * @TODO: send boolean to pod like boolean and not string
    */
 
-  const opCurrentRead = !currentRead;
+  //const opCurrentRead = !currentRead;
   const defaultImage = 'img/icon/empty-profile.svg';
   const actorImage =
     notification && notification.actor && notification.actor.image
@@ -58,24 +60,7 @@ const NotificationItem = ({ notification, markAsRead, children, deleteNotificati
           {children}
         </Meta>
       </Body>
-      <MarkAsRead
-        type="button"
-        className="delete"
-        onClick={() =>
-          markAsRead(notification.path, notification.id, opCurrentRead ? 'true' : 'false')
-        }
-      >
-        <FontAwesomeIcon icon={currentRead ? 'eye-slash' : 'eye'} />
-      </MarkAsRead>
-      <Delete
-        type="button"
-        className="delete"
-        onClick={() => deleteNotification(notification.path)}
-      >
-        <FontAwesomeIcon icon="times-circle" />
-      </Delete>
     </Item>
   );
 };
-
 export default NotificationItem;
