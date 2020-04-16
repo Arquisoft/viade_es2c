@@ -20,7 +20,7 @@ export const Header = styled.div`
 
 export const Form = styled.div`
   overflow: auto;
-  max-height: 25em;
+  max-height: 70vh;
   padding: 20px 40px;
   align-items: center;
   display: grid;

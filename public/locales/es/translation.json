@@ -209,6 +209,7 @@
     "share" : "Compartir",
     "open" : "Abrir ruta",
     "close" : "Cerrar ruta",
-    "media" : "Ver Multimedia"
+    "media" : "Ver Multimedia",
+    "comments": "Comentarios"
   }
 }
