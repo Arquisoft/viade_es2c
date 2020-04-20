@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import ReactDOM from 'react-dom';
 import Modal from 'react-awesome-modal'
-import {Form, FullGridSize, Header, RouteContainer} from "./Ruta.style";
+import {Form, FullGridSize, RouteContainer} from "./Ruta.style";
 import Map from "../../components/Map";
 import Route from "../../utils/route/Route";
 import {withTranslation} from 'react-i18next';
@@ -117,14 +117,12 @@ class Ruta extends Component {
             <section>
                 <button data-testid="button-open" id={"button-open-" + this.route.name}
                         onClick={() => this.openModal()}> {t('route.open')}</button>
-                <Modal visible={this.state.visible} width="70%" effect="fadeInDown"
+                <Modal visible={this.state.visible} width="75%" effect="fadeInDown"
                        onClickAway={() => this.closeModal()}>
                     <RouteContainer>
-                        <Header data-testid="route-header">
-                            <h1 id={"route-title-" + this.route.name} className="text--white">{this.route.name}</h1>
-                        </Header>
                         <Form>
                             <FullGridSize>
+                                <h1 id={"route-title-" + this.route.name} className="text--white">{this.route.name}</h1>
                                 <h4>{t('createRoute.description')}</h4>
                                 <p>{this.route.description}</p>
                             </FullGridSize>
