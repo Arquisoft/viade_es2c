@@ -9,6 +9,7 @@ import CreateRoute from "./CreateRoute";
 import CreateRouteSelector from "./CreateRouteSelector";
 import CreateRouteGPX from "./CreateRouteGPX";
 import CreateRouteGeoJSON from "./CreateRouteGeoJSON";
+import CreateRouteJSONLD from "./CreateRouteJSONLD";
 
 export {
     Login,
@@ -22,5 +23,6 @@ export {
     CreateRoute,
     CreateRouteSelector,
     CreateRouteGPX,
-    CreateRouteGeoJSON
+    CreateRouteGeoJSON,
+    CreateRouteJSONLD
 };

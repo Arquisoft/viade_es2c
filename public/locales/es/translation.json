@@ -192,6 +192,7 @@
     "addVideo": "Agregar video",
     "saveRoute" : "Guardar ruta",
     "uploadGeoJson" : "Sube tu archivo GeoJson",
+    "uploadJsonLD" : "Sube tu archivo Json-LD",
     "uploadGPX" : "Sube tu archivo GPX",
     "archive" : "A partir de un archivo:",
     "map": "Crea tu propia ruta usando el mapa:",

@@ -14,7 +14,8 @@ import {
     RegistrationSuccess,
     Ruta,
     TimeLine,
-    Welcome
+    Welcome,
+    CreateRouteJSONLD
 } from './containers';
 import FriendsList from './containers/FriendsList/FriendsList';
 
@@ -59,6 +60,11 @@ const privateRoutes = [
         id: 'createroutegeojson',
         path: '/createroutegeojson',
         component: CreateRouteGeoJSON
+    },
+    {
+        id: 'createroutejsonld',
+        path: '/createroutejsonld',
+        component: CreateRouteJSONLD
     },
     {
         id: 'createrouteselector',

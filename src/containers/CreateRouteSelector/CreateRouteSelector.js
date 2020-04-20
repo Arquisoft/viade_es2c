@@ -38,6 +38,13 @@ const CreateRouteSelector = ({ webId }: Props) => {
                     >
                         GeoJSON
                     </Button>
+                    <Button
+                        variant="outline-success"
+                        onClick={() => goTo('#/createroutejsonld')}
+                        data-testid="goTo-jsonld"
+                    >
+                        JSON-LD
+                    </Button>
                 </SelectorOption>
                 <SelectorOption data-testid="selector-option-map">
                     <h3>{t('createRoute.map')}</h3>
