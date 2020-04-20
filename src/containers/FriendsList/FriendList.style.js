@@ -21,7 +21,12 @@ ul {
   padding: 0;
   font-size: 2em;
 }
-
+ul img {
+  width: 10vh;
+  height: 10vh;
+  float: left; 
+  margin: 15px 15px 15px 0px;
+}
 li {
   padding: 5px 10px;
   background-color: #EEEEEE;

@@ -19,7 +19,7 @@ const store = $rdf.graph();
 
 let friendsLi = [];
 
-//const defaultProfilePhoto = 'img/icon/empty-profile.svg';
+const defaultProfilePhoto = 'img/icon/empty-profile.svg';
 
 
 /**
@@ -43,11 +43,21 @@ function FriendsList() {
 
                     const name = nameLd && nameLd.value.trim().length > 0 ? nameLd.value : friend.toString();
 
+                    const imageLd = await user.vcard_hasPhoto;
 
+                    let image;
+                    if (imageLd && imageLd.value) {
+                        image = imageLd.value;
+                    } else {
+                        image = defaultProfilePhoto;
+                    }
 
                     friendsLi.push(
                         <li key={friend.toString()}>
-                            <p>{name}</p>
+                            <section>
+                                <img alt={""} src={image} />
+                                <p>{name}</p>
+                            </section>
                             <a href={friend}>{t("friends.profile")}</a>
                         </li>
                     );
@@ -57,32 +67,6 @@ function FriendsList() {
     });
 
     return renderFriendsList();
-}
-
-async function getProfileData(webId, nombre) {
-
-    //let hasImage;
-
-    const user = await data[webId];
-    const nameLd = await user.vcard_fn;
-
-    const name = nameLd && nameLd.value.trim().length > 0 ? nameLd.value : webId.toString();
-    /*
-    const imageLd = await user.vcard_hasPhoto;
-
-    let image;
-    if (imageLd && imageLd.value) {
-        image = imageLd.value;
-        hasImage = true;
-    } else {
-        hasImage = false;
-        image = defaultProfilePhoto;
-    }
-    */
-
-    nombre = name;
-
-    return nombre;
 }
 
 /**
