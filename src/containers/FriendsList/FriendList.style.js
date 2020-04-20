@@ -19,7 +19,9 @@ flex: 1 0 auto;
 ul {
   list-style: none;
   padding: 0;
+  font-size: 2em;
 }
+
 li {
   padding: 5px 10px;
   background-color: #EEEEEE;
