@@ -17,7 +17,7 @@ const store = $rdf.graph();
 //var person = null;
 // var person = 'https://ruben.verborgh.org/profile/#me';//example person with friends
 
-let friendsLi = [];
+let friendsLi = null;
 
 const defaultProfilePhoto = 'img/icon/empty-profile.svg';
 
@@ -35,6 +35,7 @@ function FriendsList() {
             if (friendsUrls == null || friendsUrls === undefined) {
                 errorToaster(t('friends.errorObtaining'), "Error");
             } else {
+                friendsLi = [];
                 for(let i=0; i<friendsUrls.length; i++){
                     let friend = friendsUrls[i];
 
