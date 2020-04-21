@@ -11,6 +11,7 @@ import {useTranslation} from "react-i18next";
 import MediaLoader from "../../utils/InOut/MediaLoader";
 import {Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import JsonldToRouteParser from "../../utils/parser/JsonldToRouteParser";
 
 type Props = { webId: String, test: boolean };
 
@@ -33,57 +34,7 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
     let img = React.createRef();
     let video = React.createRef();
 
-    function parsergeojson(file) {
-        // var json = JSON.parse( $('script[type="application/ld+json"]').text() );
-        var jsonld = JSON.parse(file);
-        let name = jsonld.name;
-        let description = jsonld.description;
-        let points = [];
-        let author = webID;
-        let commentsAux = jsonld.comments;
-        let media = jsonld.media;
-        let filename = name.trim().replace(/ /g, "") + new Date().getTime();
-        let images = [];
-        let videos = [];
-        let comments = [];
-        try {
-            media.map(function (media) {
-                if (media["@id"].toString().includes(".mp4")) {
-                    videos.push(media["@id"]);
-                }
-                if (media["@id"].toString().includes(".jpg")) {
-                    images.push(media["@id"]);
-                }
-                if (media["@id"].toString().includes(".png")) {
-                    images.push(media["@id"]);
-                }
-
-            });
-        } catch (e) {}
-
-        try {
-            commentsAux.map(function (comment) {
-                if (comment.text != null && comment.createdAt != null) {
-                    let text = comment.text;
-                    let createdAt = comment.createdAt;
-                    let comentario = {comment: {text: text, createdAt: createdAt}};
-                    comments.push(comentario)
-                }
-            });
-        } catch (e) {}
-
-        try {
-            jsonld.points.map(function (point) {
-                points.push({position: {lat: point.latitude, lng: point.longitude}});
-            });
-        } catch (e) {}
-
-        let route = new Route(name, description, points, author, comments, images, videos, filename);
-        console.log(route)
-    }
-
     function handleSave(event) {
-        parsergeojson(test ? geojsontest : geojson);
         if (title.length === 0) {
             errorToaster(t('notifications.title'), t('notifications.error'));
         } else if (description.length === 0) {
@@ -92,8 +43,7 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
             if (!test && geojson === "") {
                 errorToaster("suba un archivo", t('notifications.error'));
             } else {
-                parsergeojson(test ? geojsontest : geojson);
-                if (markers.length === 0) {
+                if (markers === 0) {
                     errorToaster("error en el parser: es posible que su archivo no sea valido", t('notifications.error'));
                 } else {
                     let loader = new MediaLoader();
@@ -125,6 +75,15 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
 
     function loaded(file) {
         geojson = file.target.result.toString();
+        let parser = new JsonldToRouteParser(webID, geojson);
+        let route = parser.parse();
+        const title = document.getElementById("input-title");
+        title.value = route.name;
+        setTitle(route.name);
+        const description = document.getElementById("input-description");
+        description.value = route.description;
+        setDescription(route.description);
+        markers = route.points;
     }
 
     function handleUpload(event) {
@@ -165,12 +124,12 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
                             {t('createRoute.title')}
                             <Input type="text" size="20" placeholder={t('createRoute.newRoute')}
                                    onChange={handleTitleChange}
-                                   data-testid="input-title"/>
+                                   data-testid="input-title" id="input-title"/>
                         </Label>
 
                         <Label>{t('createRoute.description')}
                             <Input type="text" size="100" placeholder={t('createRoute.description')}
-                                   onChange={handleDescriptionChange} data-testid="input-description"/>
+                                   onChange={handleDescriptionChange} data-testid="input-description" id="input-description"/>
                         </Label>
 
                         <Label>{t('createRoute.uploadJsonLD')}
