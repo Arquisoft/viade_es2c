@@ -28,6 +28,8 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
     const [description, setDescription] = useState('');
     const [photoURL, setPhotoURL] = useState("");
     const [videoURL, setVideoURL] = useState("");
+    const [photoURLJSON, setPhotoURLJSON] = useState([]);
+    const [videoURLJSON, setVideoURLJSON] = useState([]);
     const [videoFile, setVideoFile] = useState(null);
     const [imgFile, setImgFile] = useState(null);
     let file = React.createRef();
@@ -50,7 +52,21 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
                     loader.saveImage(photoURL, imgFile);
                     loader.saveVideo(videoURL, videoFile);
                     let filename = title.trim().replace(/ /g, "") + new Date().getTime();
-                    let route = new Route(title, description, markers, webID, null, photoURL === "" ? null : photoURL, videoURL === "" ? null : videoURL, filename);
+                    let photos = [];
+                    let videos = [];
+                    if (photoURL !== "") {
+                        photos.push(photoURL);
+                    }
+                    if (videoURL !== "") {
+                        videos.push(videoURL);
+                    }
+                    if (photoURLJSON.length !== 0) {
+                        photoURLJSON.forEach(x => photos.push(x));
+                    }
+                    if (videoURLJSON.length !== 0) {
+                        videoURLJSON.forEach(x => videos.push(x));
+                    }
+                    let route = new Route(title, description, markers, webID, null, photos , videos, filename);
                     let parser = new RouteToRdfParser(route, webID);
                     parser.parse();
                     successToaster(t('notifications.save'), t('notifications.success'));
@@ -84,6 +100,12 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
         description.value = route.description;
         setDescription(route.description);
         markers = route.points;
+        if (route.image.length !== 0) {
+            route.image.forEach(x => setPhotoURLJSON(photoURLJSON.push(x)));
+        }
+        if (route.video.length !== 0) {
+            route.video.forEach(x => setVideoURLJSON(videoURLJSON.push(x)));
+        }
     }
 
     function handleUpload(event) {
@@ -129,7 +151,8 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
 
                         <Label>{t('createRoute.description')}
                             <Input type="text" size="100" placeholder={t('createRoute.description')}
-                                   onChange={handleDescriptionChange} data-testid="input-description" id="input-description"/>
+                                   onChange={handleDescriptionChange} data-testid="input-description"
+                                   id="input-description"/>
                         </Label>
 
                         <Label>{t('createRoute.uploadJsonLD')}
