@@ -30,6 +30,7 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
     const [videoURL, setVideoURL] = useState("");
     const [photoURLJSON, setPhotoURLJSON] = useState([]);
     const [videoURLJSON, setVideoURLJSON] = useState([]);
+    const [commentsJSON, setcommentsJSON] = useState([]);
     const [videoFile, setVideoFile] = useState(null);
     const [imgFile, setImgFile] = useState(null);
     let file = React.createRef();
@@ -66,7 +67,7 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
                     if (videoURLJSON.length !== 0) {
                         videoURLJSON.forEach(x => videos.push(x));
                     }
-                    let route = new Route(title, description, markers, webID, null, photos , videos, filename);
+                    let route = new Route(title, description, markers, webID, commentsJSON, photos , videos, filename);
                     let parser = new RouteToRdfParser(route, webID);
                     parser.parse();
                     successToaster(t('notifications.save'), t('notifications.success'));
@@ -105,6 +106,9 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
         }
         if (route.video.length !== 0) {
             route.video.forEach(x => setVideoURLJSON(videoURLJSON.push(x)));
+        }
+        if (route.comments.length !== 0) {
+            route.comments.forEach(x => setcommentsJSON(commentsJSON.push(x)));
         }
     }
 
