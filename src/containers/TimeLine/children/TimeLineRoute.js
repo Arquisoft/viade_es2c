@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TimeLineRoute = props => {
     let cadena = null;
+    let webId = "";
     const [friendWebID, setFriendWebID] = useState("");
     let route = props.route;
     const title = route.name;
@@ -21,6 +22,7 @@ const TimeLineRoute = props => {
         auth.trackSession(session => {
             if (session) {
                 cadena = session.webId;
+                webId = session.webId;
             }
         });
     });
@@ -44,6 +46,8 @@ const TimeLineRoute = props => {
                 ];
                 const ACLFile = new AccessControlList(cadena, url);
                 ACLFile.createACL(permissions);
+                //const carpetaViade = new AccessControlList(cadena,url.replace("/"+route.fileName,"/"));
+                //carpetaViade.createACL(permissions);
                 successToaster(t('notifications.accessGranted'));
 
                 const contentNotif = {

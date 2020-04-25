@@ -1,9 +1,8 @@
 import FileWriter from "../InOut/FileWriter";
 class RouteToRdfParser {
 
-    constructor (route, webID){
+    constructor (route){
         this.route = route;
-        this.webID = webID;
     }
     parse(){
         let prefixs = this.getPrefix();
@@ -11,7 +10,16 @@ class RouteToRdfParser {
         let viadePoints = this.getViadePoints();
         let comments = this.getComments();
         let media = this.getMedia();
-        FileWriter.handleSave(this.webID+"viade/"+this.route.fileName,(String)(prefixs+information+viadePoints+comments+media))
+        FileWriter.handleSave(this.route.author.replace("/profile/card#me","/") +"viade/"+this.route.fileName,(String)(prefixs+information+viadePoints+comments+media))
+    }
+
+    ovewrite(){
+        let prefixs = this.getPrefix();
+        let information = this.getInformation();
+        let viadePoints = this.getViadePoints();
+        let comments = this.getComments();
+        let media = this.getMedia();
+        FileWriter.overWrite(this.route.author.replace("/profile/card#me","/")+"viade/"+this.route.fileName,(String)(prefixs+information+viadePoints+comments+media))
     }
 
     getPrefix(){
@@ -41,6 +49,13 @@ class RouteToRdfParser {
 
     getComments(){
         let comments = "viade:hasComments \""+this.route.comments+"\" ;\n";
+        if(this.route.comments != null){
+            let i;
+            comments = "";
+            for(i = 0; i<this.route.comments.length; i++){
+                comments += "viade:hasComments [ \n schema:text \""+this.route.comments[i].comment.text +
+                    "\" ; \n schema:publishedDate \""+this.route.comments[i].comment.createdAt+"\" \n ];\n"            }
+        }
         return comments;
     }
 

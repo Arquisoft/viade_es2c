@@ -6,30 +6,32 @@ var sparqlFiddle= require ("./fiddle/sparql-fiddle")
 
 class RdftoRouteParser {
 
-    addRoute (fileName,url){
-        FileWriter.handleLoad(url,fileName,this.singleParse.bind(this));
+    addRoute (fileName,url,webId){
+        FileWriter.handleLoad(url,fileName,this.singleParse.bind(this),webId);
     }
 
-    addRoutes (url){
-        FileWriter.readFolder(url, this.multiParse.bind(this));
+    addRoutes (url, webId){
+        FileWriter.readFolder(url, this.multiParse.bind(this),webId);
     }
 
-    singleParse(fileName,text){
+    singleParse(fileName,text, webID){
         let querySparql =
             `PREFIX schema: <http://schema.org/>
       PREFIX viade:<http://arquisoft.github.io/viadeSpec/>
       PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       
-      SELECT ?name ?description ?comments ?iri ?lat ?long WHERE {
+      SELECT ?name ?description ?commentText ?createdAt ?iri ?lat ?long WHERE {
        ?route a viade:Route;
        viade:point ?point ;
        schema:name ?name;
        schema:description ?description;
-       viade:hasComments ?comments;
+       viade:hasComments ?comment;
        viade:hasMediaAttached ?media.
        OPTIONAL {?media schema:contentUrl ?iri.}
        ?point schema:latitude ?lat ;
               schema:longitude ?long.
+        OPTIONAL {?comment schema:text ?commentText;
+                           schema:publishedDate ?createdAt.}
       }`;
         let fiddle = {
             data: text,
@@ -41,10 +43,10 @@ class RdftoRouteParser {
                 let name = results[0]["name"];
                 let description = results[0]["description"];
                 let points = this.getPoints(results);
-                let comments = results[0]["comments"];
+                let comments = this.getComments(results);
                 let image = this.getImage(results);
                 let video = this.getVideo(results);
-                let route = new Route(name,description, points,null,comments,image,video,fileName);
+                let route = new Route(name,description, points,webID,comments,image,video,fileName);
                 this.pushRoutes(route);
             },
             err =>  errorToaster(err,"Error")
@@ -60,9 +62,9 @@ class RdftoRouteParser {
         rutas.push(route);
     }
 
-    multiParse(url, documentos){
+    multiParse(url, documentos, webID){
         for (let i=0;i<documentos.length;i++){
-            FileWriter.handleLoad(url + documentos[i],documentos[i],this.singleParse.bind(this));
+            FileWriter.handleLoad(url + documentos[i],documentos[i],this.singleParse.bind(this), webID);
         }
     }
 
@@ -76,6 +78,17 @@ class RdftoRouteParser {
             }
         }
         return points;
+    }
+
+    getComments(results){
+        let comments = [];
+        for(let i=0;i<results.length;i++){
+            if(results[i]["commentText"]!== undefined){
+                comments[i]={comment: {text: results[i]["commentText"],createdAt: results[i]["createdAt"] }};
+            }
+        }
+        alert(comments.length)
+        return comments;
     }
 
     getImage(results){

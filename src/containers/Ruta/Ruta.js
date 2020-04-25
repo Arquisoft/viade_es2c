@@ -7,6 +7,7 @@ import Route from "../../utils/route/Route";
 import {withTranslation} from 'react-i18next';
 import {Button, Card, FormControl, InputGroup} from "react-bootstrap";
 import MediaLoader from "../../utils/InOut/MediaLoader";
+import RouteToRdfParser from "../../utils/parser/RouteToRdfParser";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 type Props = {
@@ -73,6 +74,8 @@ class Ruta extends Component {
                 createdAt: date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay()
             }
         });
+        let parser = new RouteToRdfParser(ruta);
+        parser.ovewrite();
         comentario = "";
         this.comments();
         const domContainer = document.querySelector('#input-comentario' + ruta.fileName);
@@ -84,11 +87,10 @@ class Ruta extends Component {
         comentario = event.target.value;
     }
 
-
     comments() {
         try {
             let commentarios = [];
-            for (let i = 0; i < ruta.comments.length; i++) {
+            for (let i = 0; i < ruta.comments.length/2; i++) {
                 commentarios.push(<Card><Card.Body> <Card.Title>{ruta.comments[i].comment.text}</Card.Title>
                     <footer className="blockquote-footer"> Publicado
                         el: {ruta.comments[i].comment.createdAt}</footer>
@@ -107,12 +109,12 @@ class Ruta extends Component {
     render() {
         const {t} = this.props;
         ruta = this.route;
-        ruta.comments = [{comment: {text: "hola", createdAt: "2020-04-15"}}, {
-            comment: {
-                text: "hola2",
-                createdAt: "2020-04-15"
-            }
-        }, {comment: {text: "hola3", createdAt: "2020-04-15"}}];
+    //    ruta.comments = [{comment: {text: "hola", createdAt: "2020-04-15"}}, {
+    //        comment: {
+    //            text: "hola2",
+    //            createdAt: "2020-04-15"
+  //          }
+ //       }, {comment: {text: "hola3", createdAt: "2020-04-15"}}];
         return (
             <section>
                 <button data-testid="button-open" id={"button-open-" + this.route.name}

@@ -11,7 +11,7 @@ class SharedNotificationToRouteParser {
 
     addRoutes(url) {
         url = url.replace("viade", "inbox");
-        FileWriter.readFolder(url, this.multiParse.bind(this));
+        FileWriter.readFolder(url, this.multiParse.bind(this), this.user);
     }
 
     compruebaNotificacionValida(results) {
@@ -64,7 +64,8 @@ class SharedNotificationToRouteParser {
                         let array = routeurl.split("/");
                         let fileName = array[array.length - 1];
                         let parser = new RdftoRouteParser();
-                        parser.addRoute(fileName, routeurl);
+                        alert(results[0]["friend"])
+                        parser.addRoute(fileName, routeurl,results[0]["friend"]);
                     } else {
                         errorToaster("err", "Error")
                     }
@@ -74,9 +75,9 @@ class SharedNotificationToRouteParser {
         }//if
     } // singleParse
 
-    multiParse(url, documentos) {
+    multiParse(url, documentos,webID) {
         for (let i = 0; i < documentos.length; i++) {
-            FileWriter.handleLoad(url + documentos[i], documentos[i], this.singleParse.bind(this));
+            FileWriter.handleLoad(url + documentos[i], documentos[i], this.singleParse.bind(this),webID);
         }
     }
 
