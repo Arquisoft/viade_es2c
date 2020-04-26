@@ -7,6 +7,7 @@ import {errorToaster, notification, successToaster} from '@utils';
 import {useTranslation} from 'react-i18next';
 import {Button, InputGroup, FormControl} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Name from "@solid/react/lib/components/Name";
 
 const TimeLineRoute = props => {
     let cadena = null;
@@ -114,7 +115,7 @@ const TimeLineRoute = props => {
 
         <TimelineRouteCard className="card">
             <TimelineRouteDetail data-testid="welcome-detail">
-                <h3>{title} - {route.author}</h3>
+                <h3>{title} - <Name src={"["+ route.author + "]"}/></h3>
                 <p>{description}</p>
                 <Ruta route={route}/>
                 <InputGroup>
