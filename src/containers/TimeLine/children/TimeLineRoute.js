@@ -11,7 +11,6 @@ import Name from "@solid/react/lib/components/Name";
 
 const TimeLineRoute = props => {
     let cadena = null;
-    let webId = "";
     const [friendWebID, setFriendWebID] = useState("");
     let route = props.route;
     const title = route.name;
@@ -23,7 +22,6 @@ const TimeLineRoute = props => {
         auth.trackSession(session => {
             if (session) {
                 cadena = session.webId;
-                webId = session.webId;
             }
         });
     });
