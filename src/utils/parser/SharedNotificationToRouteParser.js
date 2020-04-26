@@ -6,7 +6,6 @@ var sparqlFiddle= require ("./fiddle/sparql-fiddle");
 class SharedNotificationToRouteParser {
     constructor(webId) {
         this.user = webId;
-        this.loadFriends();
     }
 
     addRoutes(url) {
@@ -18,7 +17,7 @@ class SharedNotificationToRouteParser {
         if(results === undefined ||results[0] === undefined){
             return false;
         }
-        if(results[0]["me"] === this.user && this.isFriend(results[0]["friend"])){
+        if(results[0]["me"] === this.user){
             return true;
         }
         return false;
@@ -27,15 +26,6 @@ class SharedNotificationToRouteParser {
         let tx = text.split("\n");
         if (tx[0] === "@prefix terms: <http://purl.org/dc/terms#>.") {
             return true;
-        }
-        return false;
-    }
-
-    isFriend(possibleFriend){
-        for (let indice in this.friendsUrls){
-            if(this.friendsUrls[indice] === possibleFriend){
-                return true;
-            }
         }
         return false;
     }
@@ -77,29 +67,6 @@ class SharedNotificationToRouteParser {
     multiParse(url, documentos,webID) {
         for (let i = 0; i < documentos.length; i++) {
             FileWriter.handleLoad(url + documentos[i], documentos[i], this.singleParse.bind(this),webID);
-        }
-    }
-
-    async loadFriends() {
-        const $rdf = require('rdflib');
-        const store = $rdf.graph();
-        const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
-        const fetcher = new $rdf.Fetcher(store);
-        await fetcher.load(this.user);
-        const friends = store.each($rdf.sym(this.user), FOAF('knows'));
-
-        this.friendsUrls = friends.map(friend =>
-            friend.value
-        );
-        for(var f in this.friendsUrls){
-            let fr = this.friendsUrls[f]
-            let array = fr.split("/")
-            if (array[array.length-2]!=="profile"){
-                this.friendsUrls[f] = fr.concat("profile/card#me");
-            }
-            else if(array[array.length-1]!=="card#me"){
-                this.friendsUrls[f].concat("card#me");
-            }
         }
     }
 }

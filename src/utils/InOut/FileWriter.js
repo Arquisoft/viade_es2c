@@ -16,7 +16,7 @@ class FileWriter {
     }
     static async overWrite(url,text){
         const fc = new FC(auth);
-        await fc.deleteFile(url).then(() => this.handleSave(url,text));
+        await fc.delete(url).then(() => this.handleSave(url,text));
     }
     static handleLoad(url,fileName,callback, webID) {
         const doc = SolidAuth.fetch(url);

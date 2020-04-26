@@ -42,13 +42,11 @@ const TimeLineRoute = props => {
                 const permissions = [
                     {
                         agents: [friendWebID],
-                        modes: [AccessControlList.MODES.READ]
+                        modes: [AccessControlList.MODES.READ,AccessControlList.MODES.WRITE]
                     }
                 ];
                 const ACLFile = new AccessControlList(cadena, url);
                 ACLFile.createACL(permissions);
-                //const carpetaViade = new AccessControlList(cadena,url.replace("/"+route.fileName,""));
-                //carpetaViade.createACL(permissions);
                 successToaster(t('notifications.accessGranted'));
 
                 const contentNotif = {
