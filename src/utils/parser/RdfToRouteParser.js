@@ -82,12 +82,17 @@ class RdftoRouteParser {
 
     getComments(results){
         let comments = [];
+        let set = new Set();
+        let indice = 0;
         for(let i=0;i<results.length;i++){
             if(results[i]["commentText"]!== undefined){
-                comments[i]={comment: {text: results[i]["commentText"],createdAt: results[i]["createdAt"] }};
+                if(!set.has(results[i]["commentText"]+", "+ results[i]["createdAt"])){
+                    comments[indice]={comment: {text: results[i]["commentText"],createdAt: results[i]["createdAt"]}};
+                    indice++;
+                    set.add(results[i]["commentText"]+", "+ results[i]["createdAt"]);
+                }
             }
         }
-        alert(comments.length)
         return comments;
     }
 

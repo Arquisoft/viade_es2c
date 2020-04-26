@@ -90,7 +90,7 @@ class Ruta extends Component {
     comments() {
         try {
             let commentarios = [];
-            for (let i = 0; i < ruta.comments.length/2; i++) {
+            for (let i = 0; i < ruta.comments.length; i++) {
                 commentarios.push(<Card><Card.Body> <Card.Title>{ruta.comments[i].comment.text}</Card.Title>
                     <footer className="blockquote-footer"> Publicado
                         el: {ruta.comments[i].comment.createdAt}</footer>

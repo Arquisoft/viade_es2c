@@ -16,7 +16,6 @@ class FileWriter {
     }
     static async overWrite(url,text){
         const fc = new FC(auth);
-        alert("se va a sobreescribir")
         await fc.deleteFile(url).then(() => this.handleSave(url,text));
     }
     static handleLoad(url,fileName,callback, webID) {

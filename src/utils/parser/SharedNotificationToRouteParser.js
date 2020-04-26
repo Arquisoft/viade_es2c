@@ -64,7 +64,6 @@ class SharedNotificationToRouteParser {
                         let array = routeurl.split("/");
                         let fileName = array[array.length - 1];
                         let parser = new RdftoRouteParser();
-                        alert(results[0]["friend"])
                         parser.addRoute(fileName, routeurl,results[0]["friend"]);
                     } else {
                         errorToaster("err", "Error")

@@ -46,7 +46,7 @@ const TimeLineRoute = props => {
                 ];
                 const ACLFile = new AccessControlList(cadena, url);
                 ACLFile.createACL(permissions);
-                //const carpetaViade = new AccessControlList(cadena,url.replace("/"+route.fileName,"/"));
+                //const carpetaViade = new AccessControlList(cadena,url.replace("/"+route.fileName,""));
                 //carpetaViade.createACL(permissions);
                 successToaster(t('notifications.accessGranted'));
 
