@@ -23,7 +23,10 @@
     "description": "La ruta debe tener una descripción.",
     "save": "La ruta se ha guardado correctamente.",
     "notShareRoute" : "No se ha podido compartir la ruta",
-    "sendNotification": "Error: RouteConst > sendNotification"
+    "sendNotification": "Error: RouteConst > sendNotification",
+    "markers": "Añada marcadores al mapa para crear la ruta",
+    "uploadfile": "Suba un archivo",
+    "parsererror": "Algo ha salido mal. Es posible que su archivo no sea válido"
   },
   "login": {
     "title": "Hola! Bienvenido a Viade",
@@ -192,6 +195,7 @@
     "addVideo": "Agregar video",
     "saveRoute" : "Guardar ruta",
     "uploadGeoJson" : "Sube tu archivo GeoJson",
+    "uploadJsonLD" : "Sube tu archivo Json-LD",
     "uploadGPX" : "Sube tu archivo GPX",
     "archive" : "A partir de un archivo:",
     "map": "Crea tu propia ruta usando el mapa:",
