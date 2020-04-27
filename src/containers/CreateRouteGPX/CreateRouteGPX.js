@@ -60,7 +60,9 @@ const CreateRouteGPX = ({webId, test}: Props) => {
                     loader.saveImage(photoURL, imgFile);
                     loader.saveVideo(videoURL, videoFile);
                     let filename = title.trim().replace(/ /g, "") + new Date().getTime();
-                    let route = new Route(title, description, markers, webID, null, photoURL === "" ? null : photoURL, videoURL === "" ? null : videoURL, filename);
+                    let arrayphoto = [photoURL];
+                    let arrayvideo = [videoURL];
+                    let route = new Route(title, description, markers, webID, null, arrayphoto, arrayvideo, filename);
                     let parser = new RouteToRdfParser(route, webID);
                     parser.parse();
                     successToaster(t('notifications.save'), t('notifications.success'));
