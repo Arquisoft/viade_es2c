@@ -12,7 +12,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 type Props = {
     route: Route,
-    t: Function
+    t: Function,
+    test: boolean
 };
 
 let ruta = null;
@@ -20,7 +21,7 @@ let comentario = "";
 
 class Ruta extends Component {
 
-    constructor({route}: Props) {
+    constructor({route, test}: Props) {
         super();
 
         this.route = route;
@@ -29,6 +30,7 @@ class Ruta extends Component {
             visible: false,
             comment: ""
         }
+        this.test = test;
     }
 
     openModal() {
@@ -73,8 +75,10 @@ class Ruta extends Component {
                 createdAt: date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay()
             }
         });
-        let parser = new RouteToRdfParser(rutaAux);
-        parser.ovewrite();
+        if(!this.test){
+            let parser = new RouteToRdfParser(rutaAux);
+            parser.ovewrite();
+        }
         comentario = "";
         this.comments(rutaAux);
         const domContainer = document.querySelector('#input-comentario' + rutaAux.fileName);
