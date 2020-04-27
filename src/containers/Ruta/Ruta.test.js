@@ -9,7 +9,7 @@ const markers = [
     {position: {lat: 43.361836, lng: -5.850547}}
 ];
 
-const ruta = new Route("prueba", "prueba", markers, null, null, "https://viades2c.solid.community/viade/resources/image.png","https://viades2c.solid.community/viade/resources/video.mp4");
+const ruta = new Route("prueba", "prueba", markers, null, [], "https://viades2c.solid.community/viade/resources/image.png","https://viades2c.solid.community/viade/resources/video.mp4");
 
 const props = {
     route: ruta
