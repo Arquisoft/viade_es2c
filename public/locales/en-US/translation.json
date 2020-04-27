@@ -199,7 +199,8 @@
     "profile" : "Check profile",
     "errorObtaining": "Error obtaining the friends",
     "erroruser" : "Error getting the user's session",
-    "userlogged" : "The user is not logged in"
+    "userlogged" : "The user is not logged in",
+    "noFriends" : "You don't have any friends :("
   },
   "route" : {
     "share" : "Share",

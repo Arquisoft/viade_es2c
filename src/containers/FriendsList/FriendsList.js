@@ -3,7 +3,6 @@ import {Loader} from '@util-components'
 import {FriendListContainer, FriendListWrapper, Header} from './FriendList.style';
 import {useTranslation} from 'react-i18next';
 import {errorToaster} from '@utils';
-/*import { render } from 'react-testing-library';*/
 import auth from "solid-auth-client";
 import data from "@solid/query-ldflex";
 
@@ -12,15 +11,10 @@ import data from "@solid/query-ldflex";
 const $rdf = require('rdflib');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
 const store = $rdf.graph();
-//const fetcher = new $rdf.Fetcher(store);
-
-//var person = null;
-// var person = 'https://ruben.verborgh.org/profile/#me';//example person with friends
 
 let friendsLi = null;
 
 const defaultProfilePhoto = 'img/icon/empty-profile.svg';
-
 
 /**
  * Container component to show the user´s friends
@@ -63,6 +57,15 @@ function FriendsList() {
                         </li>
                     );
                 }
+                if(friendsLi.length == 0){
+                    friendsLi.push(
+                        <li key="noFriends">
+                            <section>
+                                <p>{t("friends.noFriends")}</p>
+                            </section>
+                        </li>
+                    );
+                }
             }
         });
     });
@@ -77,10 +80,10 @@ function FriendsList() {
 function renderFriendsList() {
     const {t} = useTranslation();
     const [isLoading, setIsLoading] = useState(true);
-    var loaded = () => setIsLoading(false);
+    let loaded = () => setIsLoading(false);
+    setTimeout(loaded, 3000);
     return (
         <FriendListWrapper>
-            {setTimeout(loaded, 3000)}
             <FriendListContainer>
                 <div>
                     <Header>
