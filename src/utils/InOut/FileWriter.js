@@ -14,13 +14,17 @@ class FileWriter {
             }
         });
     }
-    static handleLoad(url,fileName,callback) {
+    static async overWrite(url,text){
+        const fc = new FC(auth);
+        await fc.delete(url).then(() => this.handleSave(url,text));
+    }
+    static handleLoad(url,fileName,callback, webID) {
         const doc = SolidAuth.fetch(url);
         doc
             .then(async response => {
                 const text = await response.text();
                 if (response.ok) {
-                    callback(fileName,text);
+                    callback(fileName,text, webID);
                 } else if (response.status === 404) {
                     errorToaster("Error 404 Not Found "+url, "Error")
                 } else {
@@ -29,7 +33,7 @@ class FileWriter {
             });
     }
 
-    static readFolder(url,callback){
+    static readFolder(url,callback, webID){
         const fc = new FC(auth);
 
         fc.readFolder(url,[]).then(promesa => {
@@ -38,7 +42,7 @@ class FileWriter {
             for (i=0;i<promesa.files.length;i++){
                 carpetas[i]=promesa.files[i].name;
             }
-            callback(url,carpetas);
+            callback(url,carpetas, webID);
         }, err => errorToaster("Error: "+err+", "+url));
     }
 }

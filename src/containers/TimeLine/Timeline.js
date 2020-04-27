@@ -24,7 +24,7 @@ class TimeLine extends React.Component {
         this.parserShared = new SharedNotificationToRouteParser(webId);
         this.webID = webId.replace("profile/card#me", "viade/");
         this.parser = new RdftoRouteParser();
-        this.parser.addRoutes(this.webID);
+        this.parser.addRoutes(this.webID, webId);
         this.parserShared.addRoutes(this.webID);
     }
 

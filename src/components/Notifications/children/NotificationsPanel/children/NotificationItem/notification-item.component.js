@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+//import React, {useCallback} from 'react';
 import moment from 'moment';
 //import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 //{Body, Delete, Img, Item, MarkAsRead, Message, Meta}
@@ -22,13 +22,14 @@ const NotificationItem = ({ notification, markAsRead, children }: Props) => {
   /**
    * Redirect notification if it's coming with target
    * @type {Function}
-   */
+   *
   const redirectTo = useCallback(async () => {
     if (notification.target) {
       await markAsRead(notification.path, notification.id);
       window.location = notification.target;
     }
   }, [notification]);
+   */
   /**
    * @TODO: send boolean to pod like boolean and not string
    */
@@ -52,7 +53,7 @@ const NotificationItem = ({ notification, markAsRead, children }: Props) => {
         />
       </a>
       <Body>
-        <Message onClick={redirectTo}>
+        <Message>
           <strong>{actor && actor.name}</strong> {notification.summary}
         </Message>
         <Meta>
@@ -63,4 +64,5 @@ const NotificationItem = ({ notification, markAsRead, children }: Props) => {
     </Item>
   );
 };
+//<Message onClick={redirectTo}>
 export default NotificationItem;
