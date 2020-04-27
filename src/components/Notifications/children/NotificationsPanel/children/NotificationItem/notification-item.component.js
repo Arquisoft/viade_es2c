@@ -52,7 +52,7 @@ const NotificationItem = ({ notification, markAsRead, children }: Props) => {
         />
       </a>
       <Body>
-        <Message onClick={redirectTo}>
+        <Message>
           <strong>{actor && actor.name}</strong> {notification.summary}
         </Message>
         <Meta>
@@ -63,4 +63,5 @@ const NotificationItem = ({ notification, markAsRead, children }: Props) => {
     </Item>
   );
 };
+//<Message onClick={redirectTo}>
 export default NotificationItem;
