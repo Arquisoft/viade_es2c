@@ -44,4 +44,15 @@ describe.only('Ruta', () => {
         fireEvent.click(button_media);
     });
 
+    test('add comment', () => {
+        const button_comment = getByTestId(container, 'button-add-comment');
+        const input_comment = getByTestId(container, 'input-add-comment');
+
+        fireEvent.change(input_comment, {target: {value: "comentario"}});
+
+        fireEvent.click(button_comment);
+    });
+
+
+
 });

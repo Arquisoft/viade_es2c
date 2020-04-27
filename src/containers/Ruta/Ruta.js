@@ -108,12 +108,6 @@ class Ruta extends Component {
     render() {
         const {t} = this.props;
         ruta = this.route;
-    //    ruta.comments = [{comment: {text: "hola", createdAt: "2020-04-15"}}, {
-    //        comment: {
-    //            text: "hola2",
-    //            createdAt: "2020-04-15"
-  //          }
- //       }, {comment: {text: "hola3", createdAt: "2020-04-15"}}];
         return (
             <section>
                 <button data-testid="button-open" id={"button-open-" + this.route.name}
@@ -169,7 +163,7 @@ class Ruta extends Component {
                                             {t('comment.add')}
                                         </Button>
                                     </InputGroup.Prepend>
-                                    <FormControl aria-describedby="basic-addon1" onChange={this.handleCommentChange} id={"input-comentario"+ this.route.fileName}/>
+                                    <FormControl aria-describedby="basic-addon1" onChange={this.handleCommentChange} data-testid="input-add-comment" id={"input-comentario"+ this.route.fileName}/>
                                 </InputGroup>
                             </FullGridSize>
                             <FullGridSize>
