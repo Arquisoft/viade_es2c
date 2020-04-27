@@ -203,7 +203,8 @@
     "profile" : "Ver perfil",
     "errorObtaining": "Error obteniendo los amigos",
     "erroruser" : "Error obteniendo la sesión del usuario",
-    "userlogged" : "El usuario no está loggeado"
+    "userlogged" : "El usuario no está loggeado",
+    "noFriends" : "No tienes ningún amigo :("
   },
   "route" : {
     "share" : "Compartir",
