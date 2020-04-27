@@ -75,7 +75,7 @@ class Ruta extends Component {
                 createdAt: date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay()
             }
         });
-        if(!this.test){
+        if(this.test){
             let parser = new RouteToRdfParser(rutaAux);
             parser.ovewrite();
         }
