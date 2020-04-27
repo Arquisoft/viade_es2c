@@ -62,6 +62,7 @@
     "timeline":"Routes",
     "createroute":"New route",
     "friends":"Friends",
+    "friendsGroups":"Groups of friends",
     "languages": {
       "en": "EN",
       "es": "ES"
