@@ -49,9 +49,15 @@ const CreateRoute = ({webId, test}: Props) => {
             loader.saveImage(photoURL, imgFile);
             loader.saveVideo(videoURL, videoFile);
             let filename = title.trim().replace(/ /g, "") + new Date().getTime();
-            let arrayphoto = [photoURL];
-            let arrayvideo = [videoURL];
-            let route = new Route(title, description, markers, webID, null, arrayphoto, arrayvideo, filename);
+            let arrayphoto = [];
+            if(photoURL !== ""){
+                arrayphoto.push(photoURL);
+            }
+            let arrayvideo = [];
+            if(videoURL !== ""){
+                arrayvideo.push(videoURL);
+            }
+            let route = new Route(title, description, markers, webID, [], arrayphoto, arrayvideo, filename);
             let parser = new RouteToRdfParser(route, webID);
             parser.parse();
             successToaster(t('notifications.save'), t('notifications.success'));
