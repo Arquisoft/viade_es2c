@@ -54,11 +54,11 @@ const CreateRouteGeoJSON = ({webId, test}: Props) => {
             errorToaster(t('notifications.description'), t('notifications.error'));
         } else {
             if (!test && geojson === "") {
-                errorToaster("suba un archivo", t('notifications.error'));
+                errorToaster(t('notifications.uploadfile'), t('notifications.error'));
             } else {
                 parsergeojson(test ? geojsontest : geojson);
                 if (markers.length === 0) {
-                    errorToaster("error en el parser: es posible que su archivo no sea valido", t('notifications.error'));
+                    errorToaster(t('notifications.parsererror'), t('notifications.error'));
                 } else {
                     let loader = new MediaLoader();
                     loader.saveImage(photoURL, imgFile);
