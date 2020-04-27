@@ -60,7 +60,7 @@ class RouteToRdfParser {
     }
 
     getMedia() {
-        let media = "viade:hasMediaAttached \"null\" ;\n";
+        let media = "viade:hasMediaAttached \"null\" .\n";
         if(this.route.image.length !==0 || this.route.video.length !== 0 ){
             let i;
             media = "";
@@ -68,7 +68,11 @@ class RouteToRdfParser {
                 media += "viade:hasMediaAttached [ \n schema:contentUrl \""+this.route.image[i] +"\" \n ];\n"
             }
             for(i = 0; i<this.route.video.length; i++){
-                media += "viade:hasMediaAttached [ \n schema:contentUrl \""+this.route.video[i] +"\" \n ];\n"
+                if(i=== this.route.video.length-1){
+                    media += "viade:hasMediaAttached [ \n schema:contentUrl \""+this.route.video[i] +"\" \n ] ."
+                }else{
+                    media += "viade:hasMediaAttached [ \n schema:contentUrl \""+this.route.video[i] +"\" \n ];\n"
+                }
             }
 
         }
