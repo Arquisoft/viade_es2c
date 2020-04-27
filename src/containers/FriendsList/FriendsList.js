@@ -57,7 +57,7 @@ function FriendsList() {
                         </li>
                     );
                 }
-                if(friendsLi.length == 0){
+                if(friendsLi.length === 0){
                     friendsLi.push(
                         <li key="noFriends">
                             <section>
