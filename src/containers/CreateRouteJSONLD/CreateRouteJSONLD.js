@@ -17,7 +17,6 @@ type Props = { webId: String, test: boolean };
 
 let markers = [];
 
-let geojsontest = '{"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {}, "geometry": {"type": "LineString", "coordinates": [[28.67431640625, 51.74743863117572], [28.037109375, 50.33844888725473], [30.684814453125004, 50.00067775723633], [30.223388671874996, 51.303145259199056], [29.68505859375, 49.1888842152458], [26.400146484375, 51.31688050404585]]}}]}'
 let geojson = '';
 
 
@@ -38,9 +37,6 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
     let video = React.createRef();
 
     function handleSave(event) {
-        console.log(photoURLJSON)
-        console.log(videoURLJSON)
-        console.log(commentsJSON)
         if (title.length === 0) {
             errorToaster(t('notifications.title'), t('notifications.error'));
         } else if (description.length === 0) {
