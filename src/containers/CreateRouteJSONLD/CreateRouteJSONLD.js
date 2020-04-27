@@ -38,6 +38,9 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
     let video = React.createRef();
 
     function handleSave(event) {
+        console.log(photoURLJSON)
+        console.log(videoURLJSON)
+        console.log(commentsJSON)
         if (title.length === 0) {
             errorToaster(t('notifications.title'), t('notifications.error'));
         } else if (description.length === 0) {
@@ -61,6 +64,7 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
                     if (videoURL !== "") {
                         videos.push(videoURL);
                     }
+                    console.log(photoURLJSON)
                     if (photoURLJSON.length !== 0) {
                         photoURLJSON.forEach(x => photos.push(x));
                     }
@@ -101,14 +105,15 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
         description.value = route.description;
         setDescription(route.description);
         markers = route.points;
+
         if (route.image.length !== 0) {
-            route.image.forEach(x => setPhotoURLJSON(photoURLJSON.push(x)));
+            setPhotoURLJSON(route.image)
         }
         if (route.video.length !== 0) {
-            route.video.forEach(x => setVideoURLJSON(videoURLJSON.push(x)));
+            setVideoURLJSON(route.video);
         }
         if (route.comments.length !== 0) {
-            route.comments.forEach(x => setcommentsJSON(commentsJSON.push(x)));
+            setcommentsJSON(route.comments);
         }
     }
 
