@@ -97,21 +97,35 @@ class RdftoRouteParser {
     }
 
     getImage(results){
-        if(results[0]["iri"]!== undefined && this.notVideo(results[0]["iri"])){
-            return results[0]["iri"];
+        let images = [];
+        let set = new Set();
+        let indice = 0;
+        for(let i=0;i<results.length;i++){
+            if(results[i]["iri"]!== undefined){
+                if(!set.has(results[i]["iri"]) && this.notVideo(results[i]["iri"])){
+                    images[indice]= results[i]["iri"];
+                    indice++;
+                    set.add(results[i]["iri"]);
+                }
+            }
         }
-        return null;
+        return images
     }
 
     getVideo(results){
-        if(results[1]["iri"]!== undefined && results[1]["iri"]!== results[0]["iri"]){
-            return results[1]["iri"];
-        }else{
-            if(results[0]["iri"]!== undefined && !this.notVideo(results[0]["iri"])){
-                return results[0]["iri"];
+        let videos = [];
+        let set = new Set();
+        let indice = 0;
+        for(let i=0;i<results.length;i++){
+            if(results[i]["iri"]!== undefined){
+                if(!set.has(results[i]["iri"]) && !this.notVideo(results[i]["iri"])){
+                    videos[indice]= results[i]["iri"];
+                    indice++;
+                    set.add(results[i]["iri"]);
+                }
             }
         }
-        return null;
+        return videos
     }
 
     notVideo(image) {

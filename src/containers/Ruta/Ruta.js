@@ -15,8 +15,7 @@ type Props = {
     t: Function
 };
 
-let ruta = null; // <------------------------------------------------ AQUI !!!!! este objeto contiene lo mismo que la ruta que se saca del pod pero con los comentarios que se han añadido nuevos
-// ----------- la ruta deberia guardarse en el pod en la funcion addComment()
+let ruta = null;
 let comentario = "";
 
 class Ruta extends Component {

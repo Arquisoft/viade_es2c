@@ -48,8 +48,8 @@ class RouteToRdfParser {
     }
 
     getComments(){
-        let comments = "viade:hasComments \""+this.route.comments+"\" ;\n";
-        if(this.route.comments != null){
+        let comments = "viade:hasComments \"null\" ;\n";
+        if(this.route.comments.length !==0){
             let i;
             comments = "";
             for(i = 0; i<this.route.comments.length; i++){
@@ -60,22 +60,19 @@ class RouteToRdfParser {
     }
 
     getMedia() {
-        let imagen = "";
-        let video = "";
-        let imagenInfo = "";
-        let videoInfo = "";
-        if (this.route.image != null) {
-        imagen = "viade:hasMediaAttached :img ;\n";
-        imagenInfo = ":img schema:contentUrl \"" + this.route.image + "\" .\n";
-        }
-        if(this.route.video!=null){
-            video = "viade:hasMediaAttached :video .\n";
-            videoInfo = ":video schema:contentUrl \""+this.route.video+"\" .\n"
-        }else{
-            video = "viade:hasMediaAttached \"null\" .\n"
-        }
+        let media = "viade:hasMediaAttached \"null\" ;\n";
+        if(this.route.image.length !==0 || this.route.video.length !== 0 ){
+            let i;
+            media = "";
+            for(i = 0; i<this.route.image.length; i++){
+                media += "viade:hasMediaAttached [ \n schema:contentUrl \""+this.route.image[i] +"\" \n ];\n"
+            }
+            for(i = 0; i<this.route.video.length; i++){
+                media += "viade:hasMediaAttached [ \n schema:contentUrl \""+this.route.video[i] +"\" \n ];\n"
+            }
 
-        return imagen+video+imagenInfo+videoInfo;
+        }
+       return media;
 
     }
 
