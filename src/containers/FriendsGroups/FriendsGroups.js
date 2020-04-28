@@ -11,16 +11,40 @@ let groupsLi = null;
 function FriendsGroups(){
     groupsLi = [];
     
-    if(groupsLi.length === 0){
+    /*if(groupsLi.length === 0){
         groupsLi.push(
             <li key = 'noGroups'>
                 <section>
                     <p>Aun no tienes ningun grupo :'(</p>
                 </section>
             </li>
-        )
-    }
+        );
+    }*/
     
+    groupsLi.push(
+        <li key = 'ejemplo'>
+                <section>
+                    <p>Nombre del grupo ejemplo 1</p>
+                </section>
+                <Button variant="success" 
+                        onClick={() => goTo('#/Group')}>
+                    Entrar al grupo
+                </Button>
+            </li>
+    );
+
+    groupsLi.push(
+        <li key = 'ejemplo'>
+                <section>
+                    <p>Nombre del grupo ejemplo 2</p>
+                </section>
+                <Button variant="success" 
+                        onClick={() => goTo('#/Group')}>
+                    Entrar al grupo
+                </Button>
+            </li>
+    )
+
     return renderFriendsGroups();
 }
 

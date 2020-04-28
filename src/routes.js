@@ -20,6 +20,7 @@ import {
 import FriendsList from './containers/FriendsList/FriendsList';
 import FriendsGroups from './containers/FriendsGroups/FriendsGroups';
 import CreateGroup from './containers/CreateGroup';
+import Group from './containers/FriendsGroups/children/Group';
 
 const privateRoutes = [
     {
@@ -81,6 +82,16 @@ const privateRoutes = [
         id: 'createGroup',
         path: '/createGroup',
         component : CreateGroup
+    }
+    ,{
+        id: 'friendsGroups',
+        path: '/friendsGroups',
+        component : FriendsGroups
+    },
+    {
+        id:'group',
+        path: '/group',
+        component : Group
     }
 ];
 
