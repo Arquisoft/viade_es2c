@@ -26,20 +26,8 @@ export const Header = styled.div`
   align-items: center;
   justify-content: center;
   background-image: url('img/pattern-geo.png'),
-    linear-gradient(135deg, #00B020 0%, #00B020 30%, #00B020 50%);
   background-repeat: repeat, no-repeat;
   padding: 30px 20px;
-  p {
-    color: white;
-  }
-  .edit-button {
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid white;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 1rem;
-  }
 `;
 
 export const Form = styled.form`

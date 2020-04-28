@@ -4,6 +4,7 @@ import {useTranslation} from 'react-i18next';
 import {ImageWrapper, WelcomeCard, WelcomeLogo, WelcomeName, WelcomeProfile, WelcomeWrapper} from './welcome.style';
 import {ImageProfile} from '@components';
 import {errorToaster} from '@utils';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 /**
  * Welcome Page UI component, containing the styled components for the Welcome Page
@@ -16,7 +17,7 @@ export const WelcomePageContent = props => {
   const limit = 2100000;
   return (
     <WelcomeWrapper data-testid="welcome-wrapper">
-      <WelcomeCard className="card">
+      <WelcomeCard className="card mx-auto my-auto">
         <WelcomeLogo data-testid="welcome-logo">
           <img src="img/logo.svg" alt="Viade" />
         </WelcomeLogo>

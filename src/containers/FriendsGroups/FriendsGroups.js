@@ -32,7 +32,7 @@ function renderFriendsGroups(){
             <FriendsGroupsContainer>
                 <div>
                     <Header>
-                    <h1>Grupos de Amigos</h1>
+                    <h1 className={"text--white"}>Grupos de Amigos</h1>
                     </Header>
                     <Button variant="outline-success">
                         Crear nuevo grupo

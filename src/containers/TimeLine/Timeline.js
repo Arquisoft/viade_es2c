@@ -37,7 +37,7 @@ class TimeLine extends React.Component {
             <TimelineWrapper data-testid="timeline-wrapper">
                 <TimelineContainer data-testid="timeline-container">
                     <Header data-testid="timeline-header">
-                        <h1>{t('timeline.seeRoutes')}</h1>
+                        <h1 className={"text--white"}>{t('timeline.seeRoutes')}</h1>
                     </Header>
                     <SmallRow webID={this.webID}/>
                 </TimelineContainer>

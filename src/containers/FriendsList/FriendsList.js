@@ -87,7 +87,7 @@ function renderFriendsList() {
             <FriendListContainer>
                 <div>
                     <Header>
-                        <h1>{t("friends.list")}</h1>
+                        <h1 className={"text--white"}>{t("friends.list")}</h1>
                     </Header>
                     <ul>
                         {friendsLi}

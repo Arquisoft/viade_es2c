@@ -3,11 +3,11 @@
 /* eslint-disable no-console */
 
 import React from 'react';
-import {SelectorCard, SelectorOption, SelectorWrapper} from "./RouteSelector.style";
 import {withRouter} from 'react-router-dom';
 import {useTranslation} from 'react-i18next';
-import {Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {SelectorCard, SelectorOption, SelectorWrapper} from "./RouteSelector.style";
+import {Button} from "react-bootstrap";
 
 
 type Props = {webId: String};
