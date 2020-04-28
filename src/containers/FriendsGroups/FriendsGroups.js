@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Loader} from '@util-components'
 import {FriendsGroupsWrapper,FriendsGroupsContainer,Header} from './FriendsGroups.style';
 import { Button } from 'react-bootstrap';
+import {withRouter} from 'react-router-dom';
 
 let groupsLi = null;
 /**
@@ -10,16 +11,40 @@ let groupsLi = null;
 function FriendsGroups(){
     groupsLi = [];
     
-    if(groupsLi.length === 0){
+    /*if(groupsLi.length === 0){
         groupsLi.push(
             <li key = 'noGroups'>
                 <section>
                     <p>Aun no tienes ningun grupo :'(</p>
                 </section>
             </li>
-        )
-    }
+        );
+    }*/
     
+    groupsLi.push(
+        <li key = 'ejemplo'>
+                <section>
+                    <p>Nombre del grupo ejemplo 1</p>
+                </section>
+                <Button variant="success" 
+                        onClick={() => goTo('#/Group')}>
+                    Entrar al grupo
+                </Button>
+            </li>
+    );
+
+    groupsLi.push(
+        <li key = 'ejemplo'>
+                <section>
+                    <p>Nombre del grupo ejemplo 2</p>
+                </section>
+                <Button variant="success" 
+                        onClick={() => goTo('#/Group')}>
+                    Entrar al grupo
+                </Button>
+            </li>
+    )
+
     return renderFriendsGroups();
 }
 
@@ -34,7 +59,10 @@ function renderFriendsGroups(){
                     <Header>
                     <h1 className={"text--white"}>Grupos de Amigos</h1>
                     </Header>
-                    <Button variant="outline-success">
+                    <Button 
+                        variant="outline-success" 
+                        onClick={() => goTo('#/createGroup')}
+                    >
                         Crear nuevo grupo
                     </Button>
                     <ul>
@@ -47,4 +75,8 @@ function renderFriendsGroups(){
     );
 }
 
-export default FriendsGroups;
+function goTo(path) {
+    window.location.href=path;
+}
+
+export default withRouter(FriendsGroups) ;
