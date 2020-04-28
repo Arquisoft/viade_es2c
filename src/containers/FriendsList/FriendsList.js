@@ -18,8 +18,7 @@ const defaultProfilePhoto = 'img/icon/empty-profile.svg';
 
 /**
  * Container component to show the user´s friends
- * TODO: retornar ademas de la url el nombrey pasarselo al callback,
- * funcionamiento cuando usuario no tenga amigos, arreglar que se carguen datos antes de vista
+ * 
  */
 function FriendsList() {
     const {t} = useTranslation();
