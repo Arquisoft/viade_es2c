@@ -1,6 +1,6 @@
 import FileWriter from "../InOut/FileWriter";
 import Route from "../route/Route";
-import rutas from "../../constants/globals";
+import rutasGlobales from "../../constants/rutasGlobales";
 import {errorToaster} from '@utils';
 var sparqlFiddle= require ("./fiddle/sparql-fiddle")
 
@@ -54,12 +54,12 @@ class RdftoRouteParser {
     }
 
     pushRoutes(route){
-        for (let i=0;i<rutas.length;i++){
-            if(rutas[i].name === route.name){
+        for (let i=0; i<rutasGlobales.length; i++){
+            if(rutasGlobales[i].name === route.name){
                 return
             }
         }
-        rutas.push(route);
+        rutasGlobales.push(route);
     }
 
     multiParse(url, documentos, webID){

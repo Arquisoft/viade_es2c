@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDelayRender from 'react-delay-render';
-import routes from "../../constants/globals";
+import routes from "../../constants/rutasGlobales";
 import TimeLineRoute from "../TimeLine/children/TimeLineRoute";
 
 const SmallRow = () => {

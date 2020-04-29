@@ -8,6 +8,7 @@ import {useTranslation} from 'react-i18next';
 import {Button, InputGroup, FormControl} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Name from "@solid/react/lib/components/Name";
+import Share from "../../Share/Share";
 
 const TimeLineRoute = props => {
     let cadena = null;
@@ -25,12 +26,11 @@ const TimeLineRoute = props => {
         });
     });
 
-
     function isValidURL(string) {
         // eslint-disable-next-line no-useless-escape
         var res = string.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)()/g);
         return (res !== null)
-    };
+    }
 
     function handleShare() {
         if (isValidURL(friendWebID)) {
@@ -92,7 +92,6 @@ const TimeLineRoute = props => {
         }
     };
 
-
     async function sendNotification(content, to, type, license) {
         try {
             await createNotification(content, to, type, license);
@@ -107,12 +106,12 @@ const TimeLineRoute = props => {
     }
 
     return (
-
         <TimelineRouteCard className="card">
             <TimelineRouteDetail data-testid="welcome-detail">
                 <h3>{title} - <Name src={"["+ route.author + "]"}/></h3>
                 <p>{description}</p>
                 <Ruta route={route}/>
+                <Share route={route}/>
                 <InputGroup>
                     <InputGroup.Prepend>
                         <Button variant="outline-success" onClick={handleShare}>{t('route.share')}</Button>
@@ -125,5 +124,3 @@ const TimeLineRoute = props => {
 };
 
 export default TimeLineRoute;
-
-
