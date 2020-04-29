@@ -7,6 +7,7 @@ import Route from "../../utils/route/Route";
 import {withTranslation} from 'react-i18next';
 import {Button, Card, FormControl, InputGroup} from "react-bootstrap";
 import MediaLoader from "../../utils/InOut/MediaLoader";
+import {errorToaster} from '@utils';
 import RouteToRdfParser from "../../utils/parser/RouteToRdfParser";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -68,21 +69,23 @@ class Ruta extends Component {
     }
 
     addComment(rutaAux) {
-        let date = new Date();
-        rutaAux.comments.push({
-            comment: {
-                text: comentario,
-                createdAt: date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay()
+        if (comentario.trim().length !== 0 && comentario !== "" && comentario !== null) {
+            let date = new Date();
+            rutaAux.comments.push({
+                comment: {
+                    text: comentario,
+                    createdAt: date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay()
+                }
+            });
+            if (!this.test) {
+                let parser = new RouteToRdfParser(rutaAux);
+                parser.ovewrite();
             }
-        });
-        if(!this.test){
-            let parser = new RouteToRdfParser(rutaAux);
-            parser.ovewrite();
+            comentario = "";
+            this.comments(rutaAux);
+            const domContainer = document.querySelector('#input-comentario' + rutaAux.fileName);
+            domContainer.value = "";
         }
-        comentario = "";
-        this.comments(rutaAux);
-        const domContainer = document.querySelector('#input-comentario' + rutaAux.fileName);
-        domContainer.value = "";
     }
 
     handleCommentChange(event) {
@@ -91,21 +94,19 @@ class Ruta extends Component {
     }
 
     comments(rutaAux) {
-        try {
-            let commentarios = [];
-            for (let i = 0; i < rutaAux.comments.length; i++) {
-                commentarios.push(<Card><Card.Body> <Card.Title>{rutaAux.comments[i].comment.text}</Card.Title>
-                    <footer className="blockquote-footer"> Publicado
-                        el: {rutaAux.comments[i].comment.createdAt}</footer>
-                </Card.Body> </Card>)
-            }
-            const domContainer = document.querySelector('#comentarios' + rutaAux.fileName);
-            ReactDOM.render(commentarios, domContainer);
+        let commentarios = [];
+        for (let i = 0; i < rutaAux.comments.length; i++) {
+            commentarios.push(<Card><Card.Body> <Card.Title>{rutaAux.comments[i].comment.text}</Card.Title>
+                <footer className="blockquote-footer"> Publicado
+                    el: {rutaAux.comments[i].comment.createdAt}</footer>
+            </Card.Body> </Card>)
         }
-        catch (e) {
-            const domContainer = document.querySelector('#comentarios' + rutaAux.fileName);
+        const domContainer = document.querySelector('#comentarios' + rutaAux.fileName);
+        if (commentarios.length === 0) {
             ReactDOM.render(<Card><Card.Body><Card.Title>No hay comentarios en esta
                 ruta</Card.Title></Card.Body></Card>, domContainer);
+        } else {
+            ReactDOM.render(commentarios, domContainer);
         }
     }
 
@@ -167,7 +168,9 @@ class Ruta extends Component {
                                             {t('comment.add')}
                                         </Button>
                                     </InputGroup.Prepend>
-                                    <FormControl aria-describedby="basic-addon1" onChange={this.handleCommentChange} data-testid="input-add-comment" id={"input-comentario"+ this.route.fileName}/>
+                                    <FormControl aria-describedby="basic-addon1" onChange={this.handleCommentChange}
+                                                 data-testid="input-add-comment"
+                                                 id={"input-comentario" + this.route.fileName}/>
                                 </InputGroup>
                             </FullGridSize>
                             <FullGridSize>
