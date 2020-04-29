@@ -8,7 +8,7 @@ const SmallRow = () => {
     for(let i=0; i<routes.length; i++){
         rutas.push(
             <TimeLineRoute
-                route={routes[i]}
+                route={routes[i]} key={i}
             />
         );
     }

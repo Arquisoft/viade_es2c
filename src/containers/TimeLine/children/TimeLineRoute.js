@@ -17,7 +17,6 @@ const TimeLineRoute = props => {
     const description = route.description;
     const {createNotification} = useNotification(cadena);
     const {t} = useTranslation();
-
     useEffect(() => {
         auth.trackSession(session => {
             if (session) {
