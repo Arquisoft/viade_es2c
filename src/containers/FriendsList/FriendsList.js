@@ -18,7 +18,7 @@ const defaultProfilePhoto = 'img/icon/empty-profile.svg';
 
 /**
  * Container component to show the user´s friends
- * 
+ *
  */
 function FriendsList() {
     const {t} = useTranslation();
@@ -29,7 +29,7 @@ function FriendsList() {
                 errorToaster(t('friends.errorObtaining'), "Error");
             } else {
                 friendsLi = [];
-                for(let i=0; i<friendsUrls.length; i++){
+                for (let i = 0; i < friendsUrls.length; i++) {
                     let friend = friendsUrls[i];
 
                     const user = await data[friend];
@@ -49,14 +49,14 @@ function FriendsList() {
                     friendsLi.push(
                         <li key={friend.toString()}>
                             <section>
-                                <img alt={""} src={image} />
+                                <img alt={""} src={image}/>
                                 <p>{name}</p>
                             </section>
                             <a href={friend}>{t("friends.profile")}</a>
                         </li>
                     );
                 }
-                if(friendsLi.length === 0){
+                if (friendsLi.length === 0) {
                     friendsLi.push(
                         <li key="noFriends">
                             <section>
