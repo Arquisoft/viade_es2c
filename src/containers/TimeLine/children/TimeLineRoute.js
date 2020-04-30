@@ -39,7 +39,7 @@ const TimeLineRoute = props => {
                 const permissions = [
                     {
                         agents: [friendWebID],
-                        modes: [AccessControlList.MODES.READ,AccessControlList.MODES.WRITE]
+                        modes: [AccessControlList.MODES.READ, AccessControlList.MODES.WRITE]
                     }
                 ];
                 const ACLFile = new AccessControlList(cadena, url);
@@ -108,7 +108,7 @@ const TimeLineRoute = props => {
     return (
         <TimelineRouteCard className="card">
             <TimelineRouteDetail data-testid="welcome-detail">
-                <h3>{title} - <Name src={"["+ route.author + "]"}/></h3>
+                <h3>{title} - <Name src={"[" + route.author + "]"}/></h3>
                 <p>{description}</p>
                 <Ruta route={route}/>
                 <Share route={route}/>

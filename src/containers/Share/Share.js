@@ -5,7 +5,8 @@ import Route from "../../utils/route/Route";
 import {withTranslation} from 'react-i18next';
 import {Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import FriendsList from "../FriendsList";
+import data from "@solid/query-ldflex";
+import {useLDflexList} from "@solid/react";
 
 type Props = {
     route: Route,
@@ -13,17 +14,14 @@ type Props = {
     test: boolean
 };
 
-let ruta = null;
+let friendsList = null;
 
-
-
-class Ruta extends Component {
+class Share extends Component {
 
     constructor({route, test}: Props) {
         super();
 
         this.route = route;
-        ruta = route;
 
         this.state = {
             visible: false,
@@ -44,13 +42,62 @@ class Ruta extends Component {
         });
     }
 
-    cargarAmigos(){
-        return FriendsList();
+    async cargarAmigos(amigos) {
+        const {t} = this.props;
+        friendsList = [];
+        for (let i = 0; i < amigos.length; i++) {
+            let friend = amigos[i];
+
+            const user = await data[friend];
+            const nameLd = await user.vcard_fn;
+
+            const name = nameLd && nameLd.value.trim().length > 0 ? nameLd.value : friend.toString();
+
+            const imageLd = await user.vcard_hasPhoto;
+
+            let image;
+            if (imageLd && imageLd.value) {
+                image = imageLd.value;
+            } else {
+                image = 'img/icon/empty-profile.svg';
+            }
+
+            friendsList.push(
+                <li key={friend.toString()}>
+                    <section>
+                        <img alt={""} src={image}/>
+                        <p>{name}</p>
+                    </section>
+                    <a href={friend}>{t("friends.profile")}</a>
+                </li>
+            );
+        }
+        return friendsList;
+    }
+
+    Elmer() {
+        const {t} = this.props;
+        const friends = useLDflexList('user.friends');
+        let a = [];
+        for (let i = 0; i < friends.length; i++) {
+            //a.push(friends[i].value);
+            a.push(
+                //<Name src={"[" + friends[i].value + "]"}/>
+                //friends[i].value
+                <Button variant="outline-success" onClick={this.hola()}>{t('route.share')}</Button>
+            )
+        }
+        return a;
+
+    }
+
+    hola(){
+
     }
 
     render() {
         const {t} = this.props;
-        ruta = this.route;
+
         return (
             <section>
                 <button data-testid="button-open" id={"button-open-" + this.route.name}
@@ -60,7 +107,7 @@ class Ruta extends Component {
                     <RouteContainer>
                         <Form>
                             <FullGridSize>
-                                {}
+                                <this.Elmer />
                             </FullGridSize>
                             <FullGridSize>
                                 <Button
@@ -82,5 +129,5 @@ class Ruta extends Component {
     }
 }
 
-export {Ruta};
-export default withTranslation()(Ruta);
+export {Share};
+export default withTranslation()(Share);

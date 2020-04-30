@@ -7,7 +7,6 @@ import Route from "../../utils/route/Route";
 import {withTranslation} from 'react-i18next';
 import {Button, Card, FormControl, InputGroup} from "react-bootstrap";
 import MediaLoader from "../../utils/InOut/MediaLoader";
-import {errorToaster} from '@utils';
 import RouteToRdfParser from "../../utils/parser/RouteToRdfParser";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
