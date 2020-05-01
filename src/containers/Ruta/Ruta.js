@@ -7,7 +7,6 @@ import Route from "../../utils/route/Route";
 import {withTranslation} from 'react-i18next';
 import {Button, Card, FormControl, InputGroup} from "react-bootstrap";
 import MediaLoader from "../../utils/InOut/MediaLoader";
-import {errorToaster} from '@utils';
 import RouteToRdfParser from "../../utils/parser/RouteToRdfParser";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -115,8 +114,10 @@ class Ruta extends Component {
         ruta = this.route;
         return (
             <section>
-                <button data-testid="button-open" id={"button-open-" + this.route.name}
-                        onClick={() => this.openModal()}> {t('route.open')}</button>
+                <Button variant="outline-success" onClick={() => this.openModal()} data-testid="button-open"
+                        id={"button-open-" + this.route.name} block="lg" className={"mb-2"}>
+                    {t('route.open')}
+                </Button>
                 <Modal visible={this.state.visible} width="75%" effect="fadeInDown"
                        onClickAway={() => this.closeModal()}>
                     <RouteContainer>
