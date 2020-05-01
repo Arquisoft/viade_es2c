@@ -3,7 +3,7 @@
 /* eslint-disable no-console */
 
 import React, {useState} from 'react';
-import {Header, Input, Label, RouteWrapper, RouteContainer, Form, FullGridSize} from "./CreateRouteJSONLD.style";
+import {Form, FullGridSize, Header, Input, Label, RouteContainer, RouteWrapper} from "./CreateRouteJSONLD.style";
 import RouteToRdfParser from "../../utils/parser/RouteToRdfParser"
 import Route from "../../utils/route/Route"
 import {errorToaster, successToaster} from '@utils';
@@ -60,7 +60,6 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
                     if (videoURL !== "") {
                         videos.push(videoURL);
                     }
-                    console.log(photoURLJSON)
                     if (photoURLJSON.length !== 0) {
                         photoURLJSON.forEach(x => photos.push(x));
                     }
@@ -111,6 +110,16 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
         if (route.comments.length !== 0) {
             setcommentsJSON(route.comments);
         }
+        const domContainer = document.querySelector('#multimediacargada');
+        let multimediacargada = '<h5>Archivos multimedia cargados:</h5><ul>';
+        for(let i = 0; i<route.image.length; i++){
+            multimediacargada += '<li>'+route.image[i]+'</li>';
+        }
+        for(let i = 0; i<route.video.length; i++){
+            multimediacargada += '<li>'+route.video[i]+'</li>';
+        }
+        multimediacargada += '</ul>';
+        domContainer.innerHTML = multimediacargada;
     }
 
     function handleUpload(event) {
@@ -168,6 +177,7 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
                     </FullGridSize>
                     <h4>{t('createRoute.media')}</h4>
                     <FullGridSize>
+                        <div id={"multimediacargada"} data-testid={"multimediacargada"}></div>
                         <Label>{t('createRoute.addPhoto')}</Label>
                         <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img"
                                accept={".png"}/>

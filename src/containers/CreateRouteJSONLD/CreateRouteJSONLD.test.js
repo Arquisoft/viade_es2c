@@ -33,6 +33,7 @@ describe.only('CreateRouteJSONLD', () => {
         const button_save = getByTestId(container, 'button-save');
         const input_img = getByTestId(container, 'input-img');
         const input_video = getByTestId(container, 'input-video');
+        const divmultimedia = getByTestId(container, 'multimediacargada');
 
         expect(route_wrapper).not.toBe(null);
         expect(route_header).not.toBe(null);
@@ -42,6 +43,7 @@ describe.only('CreateRouteJSONLD', () => {
         expect(button_save).not.toBe(null);
         expect(input_img).not.toBe(null);
         expect(input_video).not.toBe(null);
+        expect(divmultimedia).not.toBe(null);
 
     });
 
