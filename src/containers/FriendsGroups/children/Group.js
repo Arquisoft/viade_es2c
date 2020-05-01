@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header,GroupContainer,GroupWrapper } from './Group.style';
 
-let friendsLi = null//amigos del grupo
+// let friendsLi = null//amigos del grupo
 let image = null;
 const defaultProfilePhoto = 'img/icon/empty-profile.svg';
 
@@ -9,7 +9,7 @@ const defaultProfilePhoto = 'img/icon/empty-profile.svg';
  * Component for the view of each group
  */
 function Group(){
-    friendsLi = [];
+    // friendsLi = [];
     if(image == null){
         image = defaultProfilePhoto;
     }
@@ -34,14 +34,14 @@ function renderGroup(){
                             <img alt={""} src={image} />
                                 <p>Amigo1</p>
                             </section>                                
-                            <a href='#'>Ver perfil</a>
+                            <a href='/#'>Ver perfil</a>
                         </li>
                         <li key='ejemplo2'>
                                 <section>
                                     <img alt={""} src={image} />
                                     <p>Amigo2</p>
                                 </section>                                
-                            <a href='#'>Ver perfil</a>
+                            <a href='/#'>Ver perfil</a>
                         </li>
                     </ul>
                 </div>
