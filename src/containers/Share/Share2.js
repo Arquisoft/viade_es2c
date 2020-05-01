@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Button, Modal} from "react-bootstrap";
+import {Button, Card, Modal} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useLDflexList} from "@solid/react";
 import ShareCard from "./ShareCard/ShareCard";
@@ -18,6 +18,15 @@ const Share2 = props => {
     for (let i = 0; i < friends.length; i++) {
         friendList.push(
             <ShareCard friendWebID={friends[i].value} WebID={route.author} url={routeFileName}/>
+        )
+    }
+    if(friendList.length===0){
+        friendList.push(
+            <Card className="text-left my-2" bg="secondary">
+                <Card.Body>
+                    <Card.Title className="text-white">{t("friends.noFriends")}</Card.Title>
+                </Card.Body>
+            </Card>
         )
     }
 
