@@ -14,7 +14,7 @@ const markers = [
     {position: {lat: 43.361836, lng: -5.850547}}
 ];
 
-const ruta = new Route("prueba", "prueba", markers, null, null, null);
+const ruta = new Route("prueba", "prueba", markers, "https://viades2c.solid.community/profile/card#me", null, null, null, "hola");
 
 const props = {
     route: ruta
@@ -22,7 +22,7 @@ const props = {
 
 describe.only('TimelineRoute', () => {
     afterAll(cleanup);
-    const {container, getByTestId} = render(
+    const {container} = render(
         <Router>
             <TimeLineRoute {...{...props}} />
         </Router>

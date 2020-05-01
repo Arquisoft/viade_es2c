@@ -32,23 +32,23 @@ const Share2 = props => {
 
     return(
         <>
-            <Button variant="outline-success" onClick={handleShow} block="lg">
+            <Button variant="outline-success" onClick={handleShow} block="lg" data-testid="share-button-open">
                 {t('route.share')}
             </Button>
 
             <Modal show={show} onHide={handleClose} size="lg"
                    aria-labelledby="contained-modal-title-vcenter"
-                   centered >
+                   centered data-testid="share-modal">
                 <Modal.Header closeButton>
-                    <Modal.Title>{t('route.share')}: {route.name}</Modal.Title>
+                    <Modal.Title data-testid="share-title">{t('route.share')}: {route.name}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{maxHeight: "calc(75vh - 200px)"}} className="overflow-auto">
+                <Modal.Body style={{maxHeight: "calc(75vh - 200px)"}} className="overflow-auto" data-testid="share-body">
                     <div >
                         {friendList}
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick={handleClose} data-testid="share-button-close">
                         Close
                     </Button>
                 </Modal.Footer>
