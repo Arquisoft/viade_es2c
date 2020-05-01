@@ -26,24 +26,10 @@ const CreateRouteSelector = ({ webId }: Props) => {
                     <h3>{t('createRoute.archive')}</h3>
                     <Button
                         variant="outline-success"
-                        onClick={() => goTo('#/createroutegpx')}
-                        data-testid="goTo-gpx"
-                    >
-                        Gpx
-                    </Button>
-                    <Button
-                        variant="outline-success"
-                        onClick={() => goTo('#/createroutegeojson')}
-                        data-testid="goTo-geojson"
-                    >
-                        GeoJSON
-                    </Button>
-                    <Button
-                        variant="outline-success"
-                        onClick={() => goTo('#/createroutejsonld')}
+                        onClick={() => goTo('#/createroutefile')}
                         data-testid="goTo-jsonld"
                     >
-                        JSON-LD
+                        {t('createRoute.here')}
                     </Button>
                 </SelectorOption>
                 <SelectorOption data-testid="selector-option-map">

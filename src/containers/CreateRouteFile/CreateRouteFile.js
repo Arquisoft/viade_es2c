@@ -61,7 +61,7 @@ const CreateRouteFile = ({webId, test}: Props) => {
                 errorToaster(t('notifications.uploadfile'), t('notifications.error'));
             } else {
                 parseFile(test ? geojsontest : geojson);
-                if (markers.length !== 0) {
+                if (markers.length === 0) {
                     errorToaster(t('notifications.parsererror'), t('notifications.error'));
                 } else {
                     let loader = new MediaLoader();
