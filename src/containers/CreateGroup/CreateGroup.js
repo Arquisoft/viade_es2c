@@ -1,7 +1,8 @@
 import React from 'react';
 import { Header,Form,GroupContainer,GroupWrapper,FullGridSize,Label, Input,Button } from './CreateGroup.style';
 import {errorToaster, successToaster} from '@utils';
-
+import GroupToRdfParser from '../../utils/parser/GroupToRdfParser'
+import auth from "solid-auth-client";
 let name = '';
 let description = '';
 
@@ -46,17 +47,39 @@ function renderCreateGroup(){
  * function for Creating the group 
  */
 function handleCreate(){
+    let friends = [];
     if(name.length === 0){
         errorToaster('El grupo debe tener un nombre','Error');
     }else{
-        console.log('Nombre de el grupo: ' + name);
-        console.log('Descripcion de el grupo: ' + description);
-        cleanInputs();
-        successToaster('Creando grupo', 'Éxito');
-        setTimeout(function () {
+        trackSession(function(author){
+            console.log('Nombre de el grupo: ' + name);
+            console.log('Descripcion de el grupo: ' + description);
+            console.log(author);
+            let filename = name.trim().replace(/ /g, "") + new Date().getTime();
+            let parser = new GroupToRdfParser(friends,name,description,filename,author);
+
+            parser.parse();
+            cleanInputs();
+            successToaster('Creando grupo', 'Éxito');
+            setTimeout(function () {
             window.location.href = '#/friendsGroups'
-        }, 3000)
+            }, 3000);
+        });
+        
     }
+}
+/**
+ * This function is used for tracking the user session
+ */
+function trackSession(callback) {
+    auth.trackSession(session => {
+        if (session) {
+            return callback(session.webId);
+        } else {
+            errorToaster("Error","No autenticado");
+            return callback(null);
+        }
+    });
 }
 /**
  * Function for clean up all the inputs
