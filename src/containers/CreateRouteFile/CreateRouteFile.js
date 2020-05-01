@@ -3,7 +3,7 @@
 /* eslint-disable no-console */
 
 import React, {useState} from 'react';
-import {Header, Input, Label, RouteWrapper, RouteContainer, Form, FullGridSize} from "./RouteGeoJSON.style";
+import {Header, Input, Label, RouteWrapper, RouteContainer, Form, FullGridSize} from "./RouteFile.style";
 import RouteToRdfParser from "../../utils/parser/RouteToRdfParser"
 import Route from "../../utils/route/Route"
 import {errorToaster, successToaster} from '@utils';
@@ -11,6 +11,9 @@ import {useTranslation} from "react-i18next";
 import MediaLoader from "../../utils/InOut/MediaLoader";
 import {Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import GeoJSONToRoute from "../../utils/parser/GeoJSONToRoute";
+import GPXToRoute from "../../utils/parser/GPXToRoute";
+import JsonldToRouteParser from "../../utils/parser/JsonldToRouteParser";
 
 type Props = { webId: String, test: boolean };
 
@@ -20,7 +23,7 @@ let geojsontest = '{"type": "FeatureCollection", "features": [{"type": "Feature"
 let geojson = '';
 
 
-const CreateRouteGeoJSON = ({webId, test}: Props) => {
+const CreateRouteFile = ({webId, test}: Props) => {
     const {t} = useTranslation();
     const webID = webId.replace("profile/card#me", "");
     const [title, setTitle] = useState('');
@@ -29,21 +32,22 @@ const CreateRouteGeoJSON = ({webId, test}: Props) => {
     const [videoURL, setVideoURL] = useState("");
     const [videoFile, setVideoFile] = useState(null);
     const [imgFile, setImgFile] = useState(null);
+    const [fileObject, setFileObject] = useState(null);
     let file = React.createRef();
     let img = React.createRef();
     let video = React.createRef();
 
-    function parsergeojson(file) {
-        var geoObject = JSON.parse(file);
-        var features = [];
-        features = geoObject.features;
-        if (features.length === 1) {
-            if (features[0].geometry.type === "LineString") {
-                var coordinates = features[0].geometry.coordinates;
-                for (var i = 0; i < coordinates.length; i++) {
-                    markers.push({position: {lat: coordinates[i][0], lng: coordinates[i][1]}});
-                }
-            }
+    function parseFile(file) {
+        let ext = fileObject.name.split('.').pop();
+        if(ext==="geojson"){
+            let parserGeoJson = new GeoJSONToRoute(file);
+            markers = parserGeoJson.parse();
+        }else if(ext==="gpx"){
+            let parserGPX = new GPXToRoute(file);
+            markers = parserGPX.parse();
+        }else if (ext === "jsonld"){
+            let parserJsonLD = new JsonldToRouteParser(webID, file);
+            markers = parserJsonLD.parse().points;
         }
     }
 
@@ -56,8 +60,8 @@ const CreateRouteGeoJSON = ({webId, test}: Props) => {
             if (!test && geojson === "") {
                 errorToaster(t('notifications.uploadfile'), t('notifications.error'));
             } else {
-                parsergeojson(test ? geojsontest : geojson);
-                if (markers.length === 0) {
+                parseFile(test ? geojsontest : geojson);
+                if (markers.length !== 0) {
                     errorToaster(t('notifications.parsererror'), t('notifications.error'));
                 } else {
                     let loader = new MediaLoader();
@@ -98,17 +102,13 @@ const CreateRouteGeoJSON = ({webId, test}: Props) => {
     }
 
     function loaded(filea) {
-        var ext = file.current.files[0].name.split('.').pop();
-        console.log(ext);
         geojson = filea.target.result.toString();
     }
 
     function handleUpload(event) {
-
-
-        // console.log(file.current.files[0].name.sl)
         event.preventDefault();
         if (file.current.files.length > 0) {
+            setFileObject(file.current.files[0]);
             var reader = new FileReader();
             reader.readAsText(file.current.files[0]);
             reader.onload = loaded;
@@ -153,7 +153,7 @@ const CreateRouteGeoJSON = ({webId, test}: Props) => {
                         </Label>
 
                         <Label>{t('createRoute.uploadGeoJson')}
-                            <Input type="file" ref={file} onChange={handleUpload} data-testid="input-file" aceppt={".geojson"}/>
+                            <Input type="file" ref={file} onChange={handleUpload} data-testid="input-file"/>
                         </Label>
 
                     </FullGridSize>
@@ -185,4 +185,4 @@ const CreateRouteGeoJSON = ({webId, test}: Props) => {
 
 };
 
-export default CreateRouteGeoJSON;
+export default CreateRouteFile;

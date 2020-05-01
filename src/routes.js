@@ -17,6 +17,7 @@ import {
     Welcome,
     CreateRouteJSONLD
 } from './containers';
+import CreateRouteFile from "./containers/CreateRouteFile/CreateRouteFile";
 import FriendsList from './containers/FriendsList/FriendsList';
 import FriendsGroups from './containers/FriendsGroups/FriendsGroups';
 import CreateGroup from './containers/CreateGroup';
@@ -92,6 +93,11 @@ const privateRoutes = [
         id:'group',
         path: '/group',
         component : Group
+    },
+    {
+        id:'createroutefile',
+        path: '/createroutefile',
+        component : CreateRouteFile
     }
 ];
 
