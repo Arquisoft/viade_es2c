@@ -7,9 +7,7 @@ import TimeLine from "./TimeLine";
 import Ruta from './Ruta';
 import CreateRoute from "./CreateRoute";
 import CreateRouteSelector from "./CreateRouteSelector";
-import CreateRouteGPX from "./CreateRouteGPX";
-import CreateRouteGeoJSON from "./CreateRouteGeoJSON";
-import CreateRouteJSONLD from "./CreateRouteJSONLD";
+import CreateRouteFile from "./CreateRouteFile/CreateRouteFile";
 
 export {
     Login,
@@ -22,7 +20,5 @@ export {
     Ruta,
     CreateRoute,
     CreateRouteSelector,
-    CreateRouteGPX,
-    CreateRouteGeoJSON,
-    CreateRouteJSONLD
+    CreateRouteFile
 };
