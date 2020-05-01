@@ -14,9 +14,11 @@ const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
 const store = $rdf.graph();
 
 let friendsLi = null;
+let friendsSelected = [];
+
 const defaultProfilePhoto = 'img/icon/empty-profile.svg';
 
-function FriendSelector(){
+const FriendSelector = ({parentCallback}) => {
     const {t} = useTranslation();
     trackSession(function(person){
         loadFriends(person, async function(friendsUrls){
@@ -43,7 +45,7 @@ function FriendSelector(){
                     friendsLi.push(
                         <li key={friend.toString()}>
                             <section>
-                                <input type="checkbox" id={friend.toString()} name={friend.toString()}/>
+                                <input type="checkbox" id={friend.toString()} name={friend.toString()} onChange={parentCallback}/>
                                 <img alt={""} src={image} />
                                 <p>{name}</p>
                             </section>
@@ -60,6 +62,7 @@ function FriendSelector(){
                         </li>
                     );
                 }
+
             }
         });
     });
@@ -68,7 +71,7 @@ function FriendSelector(){
     return renderFriendSelector(friendsLi);
 }
 
-function renderFriendSelector(friends){
+function renderFriendSelector(){
     const [isLoading, setIsLoading] = useState(true);
     let loaded = () => setIsLoading(false);
     setTimeout(loaded, 3000);
@@ -85,7 +88,7 @@ function renderFriendSelector(friends){
                     </ul>
                 </div>
             </FriendSelectorContainer>
-            
+            {isLoading && <Loader absolute/>}
         </FriendSelectorWrapper>
         
     )

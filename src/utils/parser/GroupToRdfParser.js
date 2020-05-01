@@ -47,7 +47,11 @@ class GroupToRdfParser{
         let participants = "";
         let i;
         for (i = 0; i < this.friends.length; i++) {
-            participants += "viade:participants [ \n schema:participantUrl \"" +this.friend[i] +"\" \n ] .";
+            if(i === this.friends.length -1 ){//if its the last
+                participants += "viade:participants [ \n schema:participantUrl \"" +this.friends[i] +"\" \n ] .";
+            }else{
+                participants += "viade:participants [ \n schema:participantUrl \"" +this.friends[i] +"\" \n ];\n";
+            }
         }
 
         return (String)(participants);
