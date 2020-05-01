@@ -3,7 +3,7 @@ import {cleanup, fireEvent, getByTestId, render} from 'react-testing-library';
 import {HashRouter as Router} from 'react-router-dom';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas} from '@fortawesome/free-solid-svg-icons';
-import CreateRouteFile from "./CreateRouteGeoJSON";
+import CreateRouteFile from "./CreateRouteFile";
 
 library.add(fas);
 
