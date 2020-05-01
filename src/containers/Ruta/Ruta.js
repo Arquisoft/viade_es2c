@@ -114,8 +114,10 @@ class Ruta extends Component {
         ruta = this.route;
         return (
             <section>
-                <button data-testid="button-open" id={"button-open-" + this.route.name}
-                        onClick={() => this.openModal()}> {t('route.open')}</button>
+                <Button variant="outline-success" onClick={() => this.openModal()} data-testid="button-open"
+                        id={"button-open-" + this.route.name} block="lg" className={"mb-2"}>
+                    {t('route.open')}
+                </Button>
                 <Modal visible={this.state.visible} width="75%" effect="fadeInDown"
                        onClickAway={() => this.closeModal()}>
                     <RouteContainer>
