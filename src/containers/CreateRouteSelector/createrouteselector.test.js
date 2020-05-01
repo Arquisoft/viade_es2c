@@ -26,38 +26,23 @@ describe.only('CreateRouteSelector', () => {
     test('renders with styled components', () => {
         const selector_wrapper = getByTestId(container, 'selector-wrapper');
         const selector_option_parsers = getByTestId(container, 'selector-option-parsers');
-        const gpx = getByTestId(container, 'goTo-gpx');
-        const geojson = getByTestId(container, 'goTo-geojson');
+        const file = getByTestId(container, 'goTo-file');
         const selector_option_map = getByTestId(container, 'selector-option-map');
         const map = getByTestId(container, 'goTo-map');
 
         expect(selector_wrapper).not.toBe(null);
         expect(selector_option_parsers).not.toBe(null);
-        expect(gpx).not.toBe(null);
-        expect(geojson).not.toBe(null);
         expect(selector_option_map).not.toBe(null);
         expect(map).not.toBe(null);
+        expect(file).not.toBe(null);
 
         expect(document.querySelector('.card')).toBeTruthy();
     });
 
     test('go to gpx', () => {
-        const gpxButton = getByTestId(container, "goTo-gpx");
+        const gpxButton = getByTestId(container, "goTo-file");
         fireEvent.click(gpxButton);
-        expect(window.location.href).toBe('http://localhost/#/createroutegpx');
+        expect(window.location.href).toBe('http://localhost/#/createroutefile');
     });
-
-    test('go to geojson', () => {
-        const geojsonButton = getByTestId(container, "goTo-geojson");
-        fireEvent.click(geojsonButton);
-        expect(window.location.href).toBe('http://localhost/#/createroutegeojson');
-    });
-
-    test('go to map', () => {
-        const mapButton = getByTestId(container, 'goTo-map');
-        fireEvent.click(mapButton);
-        expect(window.location.href).toBe('http://localhost/#/createroute');
-    });
-
 
 });

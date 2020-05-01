@@ -27,7 +27,7 @@ const CreateRouteSelector = ({ webId }: Props) => {
                     <Button
                         variant="outline-success"
                         onClick={() => goTo('#/createroutefile')}
-                        data-testid="goTo-jsonld"
+                        data-testid="goTo-file"
                     >
                         {t('createRoute.here')}
                     </Button>
