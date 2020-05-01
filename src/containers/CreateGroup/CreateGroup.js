@@ -3,6 +3,8 @@ import { Header,Form,GroupContainer,GroupWrapper,FullGridSize,Label, Input,Butto
 import {errorToaster, successToaster} from '@utils';
 import GroupToRdfParser from '../../utils/parser/GroupToRdfParser'
 import auth from "solid-auth-client";
+import FriendSelector from './children/FriendSelector';
+
 let name = '';
 let description = '';
 
@@ -15,7 +17,7 @@ function CreateGroup(){
 }
 
 //TODO: seleccionar amigos para añadir
-function renderCreateGroup(){
+function renderCreateGroup(friends){
     return(
         <GroupWrapper>
             <GroupContainer>
@@ -30,6 +32,7 @@ function renderCreateGroup(){
                             Descripción
                             <Input type="text" size="100" placeholder="Descripción del grupo" onChange={handleDescriptionChange}/>
                         </Label>
+                        <FriendSelector/>
                     </FullGridSize>
                     <FullGridSize>
                         <Button variant="success" onClick={handleCreate}>
@@ -42,6 +45,8 @@ function renderCreateGroup(){
        
     )
 }
+
+
 
 /**
  * function for Creating the group 
