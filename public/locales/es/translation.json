@@ -211,6 +211,24 @@
     "userlogged" : "El usuario no está loggeado",
     "noFriends" : "No tienes ningún amigo :("
   },
+  "friendsGroups": {
+    "errorParticipants" : "Aún no hay participantes",
+    "errorDescription" : "Aún no hay descripción",
+    "description" : "Descripción ",
+    "participants": "Participantes : ",
+    "title" : "Grupos de amigos",
+    "create" : "Crear nuevo grupo",
+    "groupName" : "Nombre del grupo",
+    "name" : "Nombre",
+    "newGroup" : "Nuevo grupo",
+    "groupDescription": "Descripción del grupo",
+    "select" : "Selecciona amigos para añadir al grupo",
+    "errorGroupName" : "El grupo necesita un nombre",
+    "errorFriend" : "Necesitas añadir al menos un amigo al grupo",
+    "creating" : "Creando el grupo",
+    "done" : "Éxito",
+    "mapTitle": "Mapa"
+  },
   "route" : {
     "share" : "Compartir",
     "open" : "Abrir ruta",

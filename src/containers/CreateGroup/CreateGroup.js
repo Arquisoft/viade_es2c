@@ -23,25 +23,26 @@ function CreateGroup(){
 
 //TODO: seleccionar amigos para añadir
 function renderCreateGroup(){
+    const {t} = useTranslation();
     return(
         <GroupWrapper>
             <GroupContainer>
-                <Header> <h1>Nuevo grupo</h1> </Header>
+                <Header> <h1>{t('friendsGroups.newGroup')}</h1> </Header>
                 <Form>
                     <FullGridSize>
                         <Label>
-                            Nombre
-                            <Input data-testid={"input-nombre"} type="text" size="100" placeholder="Nombre del grupo" onChange={handleNameChange}/>
+                            {t('friendsGroups.name')}
+                            <Input data-testid={"input-nombre"} type="text" size="100" placeholder={t('friendsGroups.groupName')} onChange={handleNameChange}/>
                         </Label>
                         <Label>
-                            Descripción
-                            <Input data-testid={"input-descripcion"} type="text" size="100" placeholder="Descripción del grupo" onChange={handleDescriptionChange}/>
+                            {t('friendsGroups.description')}
+                            <Input data-testid={"input-descripcion"} type="text" size="100" placeholder={t('friendsGroups.groupDescription')} onChange={handleDescriptionChange}/>
                         </Label>
                         <FriendSelector parentCallback = {handleFriendSelected}/>
                     </FullGridSize>
                     <FullGridSize>
                         <Button variant="success" onClick={handleCreate} data-testid={"buttonsubmit"}>
-                            Crear Grupo
+                            {t('friendsGroups.create')}
                         </Button>
                     </FullGridSize>
                 </Form>
@@ -64,18 +65,19 @@ function handleFriendSelected(event){
  * function for Creating the group into the POD
  */
 function handleCreate(){
+    const {t} = useTranslation();
     if(name.trim().length === 0){
-        errorToaster('El grupo debe tener un nombre','Error');
+        errorToaster(t('friendsGroups.errorGroupName'),'Error');
     }
     else if(friendsSelected.length === 0){
-        errorToaster('Debes añadir al menos un amigo','Error');
+        errorToaster(t('friendsGroups.errorFriend'),'Error');
     }
     else if(name.trim().length > 0 && friendsSelected.length > 0){
             let filename = name.trim().replace(/ /g, "") + new Date().getTime();
             let parser = new GroupToRdfParser(friendsSelected,name,description,filename,author);
             parser.parse();
             cleanInputs();
-            successToaster('Creando grupo', 'Éxito');
+            successToaster(t('friendsGroups.creating'), t('friendsGroups.done'));
             setTimeout(function () {
             window.location.href = '#/friendsGroups'
             }, 3000);
