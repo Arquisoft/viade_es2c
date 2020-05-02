@@ -216,6 +216,14 @@
     "open" : "Abrir ruta",
     "close" : "Cerrar ruta",
     "media" : "Ver Multimedia",
-    "comments": "Comentarios"
+    "comments": "Comentarios",
+    "closeFriends": "Cerrar"
+  },
+  "comment": {
+    "add": "Añadir comentario",
+    "show": "Mostrar comentarios",
+    "noComments": "No hay comentarios en esta ruta.",
+    "createdAt": "Creado el "
+
   }
 }

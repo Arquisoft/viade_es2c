@@ -45,25 +45,50 @@ class Ruta extends Component {
         });
     }
 
-    verMultimedia() {
+    verMultimedia(rutaAux) {
         const loader = new MediaLoader();
-        if (ruta.image != null) {
-            loader.loadMedia(ruta.image, function (file) {
-                var urlCreator = window.URL || window.webkitURL;
-                var imageUrl = urlCreator.createObjectURL(file);
-                const domContainer = document.querySelector('#foto' + ruta.fileName);
-                ReactDOM.render(<img src={imageUrl} alt={"foto" + ruta.fileName}/>, domContainer);
-            });
+        if (rutaAux.image != null) {
+            if(rutaAux.image.length > 0){
+                const domContainer = document.querySelector('#foto' + rutaAux.fileName);
+                let html = '<ul>';
+                for(let i = 0; i<rutaAux.image.length; i++){
+                    html += '<li></li><img src="" alt="foto'+ rutaAux.fileName+i+'" id="foto'+rutaAux.fileName+i+'" style="max-width:100%;max-height:100%;"/></li>';
+                }
+                html += '</ul>';
+                domContainer.innerHTML = html;
+            }
+            for(let i = 0; i<rutaAux.image.length; i++){
+                // eslint-disable-next-line no-loop-func
+                loader.loadMedia(rutaAux.image, function (file) {
+                    let urlCreator = window.URL || window.webkitURL;
+                    let imageUrl = urlCreator.createObjectURL(file);
+                    const domContainer = document.querySelector('#foto' + rutaAux.fileName+i);
+                    domContainer.src = imageUrl;
+                });
+            }
+
         }
-        if (ruta.video != null) {
-            loader.loadMedia(ruta.video, function (file) {
-                var urlCreator = window.URL || window.webkitURL;
-                var imageUrl = urlCreator.createObjectURL(file);
-                const domContainer = document.querySelector('#video' + ruta.fileName);
-                ReactDOM.render(<video width="320" height="240" controls>
-                    <source src={imageUrl} type="video/mp4"/>
-                </video>, domContainer);
-            });
+        if (rutaAux.video != null) {
+            if(rutaAux.video.length > 0){
+                const domContainer = document.querySelector('#video' + rutaAux.fileName);
+                let html = '<ul>';
+                for(let i = 0; i<rutaAux.image.length; i++){
+                    html += '<li><video width="320" height="240" controls> <source src="" type="video/mp4"/ id=video"'+rutaAux.fileName+i+'"> </video></li>';
+                }
+                html += '</ul>';
+                domContainer.innerHTML = html;
+            }
+            
+            for(let i = 0; i<rutaAux.video.length; i++){
+                // eslint-disable-next-line no-loop-func
+                loader.loadMedia(rutaAux.video, function (file) {
+                    var urlCreator = window.URL || window.webkitURL;
+                    var imageUrl = urlCreator.createObjectURL(file);
+                    const domContainer = document.querySelector('#video' + rutaAux.fileName+i);
+                    domContainer.src = imageUrl;
+                });
+            }
+
         }
     }
 
@@ -73,7 +98,7 @@ class Ruta extends Component {
             rutaAux.comments.push({
                 comment: {
                     text: comentario,
-                    createdAt: date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay()
+                    createdAt: date.toLocaleDateString()
                 }
             });
             if (!this.test) {
@@ -93,17 +118,16 @@ class Ruta extends Component {
     }
 
     comments(rutaAux) {
+        const {t} = this.props;
         let commentarios = [];
         for (let i = 0; i < rutaAux.comments.length; i++) {
             commentarios.push(<Card><Card.Body> <Card.Title>{rutaAux.comments[i].comment.text}</Card.Title>
-                <footer className="blockquote-footer"> Publicado
-                    el: {rutaAux.comments[i].comment.createdAt}</footer>
+                <footer className="blockquote-footer"> {t('comment.createdAt')} {rutaAux.comments[i].comment.createdAt}</footer>
             </Card.Body> </Card>)
         }
         const domContainer = document.querySelector('#comentarios' + rutaAux.fileName);
         if (commentarios.length === 0) {
-            ReactDOM.render(<Card><Card.Body><Card.Title>No hay comentarios en esta
-                ruta</Card.Title></Card.Body></Card>, domContainer);
+            ReactDOM.render(<Card><Card.Body><Card.Title>{t('comment.noComments')}</Card.Title></Card.Body></Card>, domContainer);
         } else {
             ReactDOM.render(commentarios, domContainer);
         }
@@ -137,7 +161,7 @@ class Ruta extends Component {
                                     variant="success"
                                     data-testid="button-multimedia"
                                     size="sm"
-                                    onClick={() => this.verMultimedia()}
+                                    onClick={() => this.verMultimedia(this.route)}
                                 >
                                     {t('route.media')}
                                 </Button>

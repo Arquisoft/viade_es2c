@@ -49,7 +49,7 @@ const Share2 = props => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose} data-testid="share-button-close">
-                        Close
+                        {t('route.closeFriends')}
                     </Button>
                 </Modal.Footer>
             </Modal>

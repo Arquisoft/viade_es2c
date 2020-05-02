@@ -212,6 +212,13 @@
     "open" : "Open route",
     "close" : "Close route",
     "media" : "Display Media",
-    "comments": "Comments"
+    "comments": "Comments",
+    "closeFriends": "Close"
+  },
+  "comment": {
+    "add": "Add comment",
+    "show": "Show comment",
+    "noComments": "No comments.",
+    "createdAt": "Created at "
   }
 }
