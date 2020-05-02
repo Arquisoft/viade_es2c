@@ -65,14 +65,14 @@ class RouteToRdfParser {
             let i;
             media = "";
             for(i = 0; i<this.route.image.length; i++){
-                if(i===this.route.image.length-1){
+                if(i === this.route.image.length-1 && this.route.video.length === 0){
                     media += "viade:hasMediaAttached [ \n schema:contentUrl \""+this.route.image[i] +"\" \n ]."
                 }else{
                     media += "viade:hasMediaAttached [ \n schema:contentUrl \""+this.route.image[i] +"\" \n ];\n"
                 }
             }
             for(i = 0; i<this.route.video.length; i++){
-                if(i=== this.route.video.length-1){
+                if(i === this.route.video.length-1){
                     media += "viade:hasMediaAttached [ \n schema:contentUrl \""+this.route.video[i] +"\" \n ] ."
                 }else{
                     media += "viade:hasMediaAttached [ \n schema:contentUrl \""+this.route.video[i] +"\" \n ];\n"
