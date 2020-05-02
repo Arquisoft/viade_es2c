@@ -22,7 +22,7 @@ flex: 1 0 auto;
 ul {
   list-style: none;
   padding: 0;
-  font-size: 2em;
+  font-size: 1em;
 }
 ul img {
   width: 10vh;

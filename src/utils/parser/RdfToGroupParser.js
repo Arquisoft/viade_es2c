@@ -1,12 +1,12 @@
 import FileWriter from "../InOut/FileWriter";
 import {errorToaster} from '@utils';
-
+import Group from '../group/Group';
 var sparqlFiddle= require ("./fiddle/sparql-fiddle")
 
 let groups = [];
 
 class RdfToGroupParse {
-    addGroups(url, webId, callback) {
+        async addGroups(url, webId, callback) {
         FileWriter.readFolder(url, this.multiParse.bind(this), webId);
         callback(groups);
     }
@@ -40,11 +40,13 @@ class RdfToGroupParse {
                 let name = results[0]["name"];
                 let description = results[0]["description"];
                 let participants = this.getParticipants(results);
-
-                this.pushGroup(name);
+                let group = new Group(name,description,participants);
+                this.pushGroup(group);
             },
             err =>  errorToaster(err,"Error")
         );
+        console.log(groups);
+
     }
     pushGroup(group) {
         if (!this.containsGroup(group)) {
@@ -53,7 +55,7 @@ class RdfToGroupParse {
     }
     containsGroup(group) {
         for (let i = 0; i < groups.length; i++) {
-            if (groups[i] === group) {
+            if (groups[i].name === group.name) {
                 return true;
             }
         }
