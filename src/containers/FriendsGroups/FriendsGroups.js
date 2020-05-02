@@ -14,6 +14,7 @@ let groupsLi = null;
  * Container for group of friends
  */
 function FriendsGroups(){
+    const {t} = useTranslation();
     trackSession(function(webId){
         let url = webId.replace("profile/card#me", "viade/groups/");
         loadGroups(url,webId,async function(groups){
@@ -26,10 +27,10 @@ function FriendsGroups(){
                 let description = await group.description;
                 let participants = await group.participants;
                 if(participants.length===0){
-                    participants = "Aun no hay participantes";
+                    participants = t('friendsGroups.errorParticipants');
                 }
                 if(description.length === 0){
-                    description = "Este grupo no tiene descripción";
+                    description = t('friendsGroups.errorDescription');
                 }
                 groupsLi.push(
                     <li key={name.toString()}>
@@ -37,11 +38,11 @@ function FriendsGroups(){
                             <h1>{name.toString()}</h1>
                         </section>
                         <section>
-                            <h2>Descripción:</h2>
+                            <h2>{t('friendsGroups.description')}:</h2>
                             <p>{description.toString()}</p>
                         </section>
                         <ul>
-                            <h2>Participantes:</h2>
+                            <h2>{t('friendsGroups.participants')}</h2>
                             <li>{participants}</li>
                         </ul>
                     </li>
@@ -90,6 +91,7 @@ function FriendsGroups(){
 }
 
 function renderFriendsGroups(){
+    const {t} = useTranslation();
     const [isLoading, setIsLoading] = useState(true);
     let loaded = () => setIsLoading(false);
     setTimeout(loaded,3000);
@@ -98,14 +100,14 @@ function renderFriendsGroups(){
             <FriendsGroupsContainer>
                 <div>
                     <Header>
-                    <h1 className={"text--white"}>Grupos de Amigos</h1>
+                    <h1 className={"text--white"}>{t('friendsGroups.title')}</h1>
                     </Header>
                     <Button 
                         variant="outline-success" 
                         onClick={() => goTo('#/createGroup')}
                         data-testid={"createGroup"}
                     >
-                        Crear nuevo grupo
+                        {t('friendsGroups.create')}
                     </Button>
                     <ul>
                         {groupsLi}

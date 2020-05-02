@@ -52,7 +52,7 @@ class RdftoRouteParser {
                     let route = new Route(name, description, points, webID, comments, image, video, fileName);
                     this.pushRoutes(route);
                     }catch(err){
-                        errorToaster("There's a route that can't be read because of it syntax", "Error")
+                        errorToaster("The route '"+fileName+"' can't be read because of it syntax", "Error")
                     }
                 },
                 err => errorToaster(err, "Error")
