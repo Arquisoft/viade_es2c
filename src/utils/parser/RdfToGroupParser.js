@@ -7,8 +7,10 @@ let groups = [];
 
 class RdfToGroupParse {
         async addGroups(url, webId, callback) {
-        FileWriter.readFolder(url, this.multiParse.bind(this), webId);
-        callback(groups);
+            FileWriter.createFolder(url, webId,this, function (url, webId, objet) {
+                FileWriter.readFolder(url, objet.multiParse.bind(objet), webId);
+                callback(groups);
+            });
     }
 
     multiParse(url, documentos, webID) {

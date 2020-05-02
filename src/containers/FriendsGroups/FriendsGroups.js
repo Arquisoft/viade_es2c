@@ -60,7 +60,7 @@ function FriendsGroups(){
         });
        
     });
-    
+
     
     /*groupsLi.push(
         <li key = 'ejemplo'>
@@ -121,6 +121,7 @@ async function loadGroups(url,webId,callback){
     parser.addGroups(url,webId,async function(groupsParsed){
         return callback(groupsParsed);
     });
+
 
 }
 

@@ -52,14 +52,11 @@ function renderCreateGroup(){
 }
 
 function handleFriendSelected(event){
-    console.log(event.target.name);
     if(event.target.checked){
         friendsSelected.push(event.target.name)//añadimos url al array
-        console.log(friendsSelected);
     }else{
         // si deseleccionamos lo eliminamos del array
         friendsSelected = friendsSelected.filter(friend => friend !== event.target.name);
-        console.log(friendsSelected);
     }
 }
 
@@ -67,7 +64,6 @@ function handleFriendSelected(event){
  * function for Creating the group into the POD
  */
 function handleCreate(){
-    console.log(friendsSelected);
     if(name.trim().length === 0){
         errorToaster('El grupo debe tener un nombre','Error');
     }
@@ -75,12 +71,8 @@ function handleCreate(){
         errorToaster('Debes añadir al menos un amigo','Error');
     }
     else if(name.trim().length > 0 && friendsSelected.length > 0){
-            console.log('Nombre de el grupo: ' + name);
-            console.log('Descripcion de el grupo: ' + description);
-            console.log(author);
             let filename = name.trim().replace(/ /g, "") + new Date().getTime();
             let parser = new GroupToRdfParser(friendsSelected,name,description,filename,author);
-
             parser.parse();
             cleanInputs();
             successToaster('Creando grupo', 'Éxito');
