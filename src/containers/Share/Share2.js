@@ -17,7 +17,7 @@ const Share2 = props => {
     const handleShow = () => setShow(true);
     for (let i = 0; i < friends.length; i++) {
         friendList.push(
-            <ShareCard friendWebID={friends[i].value} WebID={route.author} url={routeFileName}/>
+            <ShareCard friendWebID={friends[i].value} WebID={route.author} url={routeFileName} route={route}/>
         )
     }
     if(friendList.length===0){

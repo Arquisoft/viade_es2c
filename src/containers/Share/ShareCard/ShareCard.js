@@ -11,6 +11,7 @@ const TimeLineRoute = props => {
     let friendWebID = props.friendWebID;
     let WebID = props.WebID;
     let url = props.url;
+    let route = props.route;
     const {createNotification} = useNotification(WebID);
 
     function handleShare() {
@@ -24,6 +25,16 @@ const TimeLineRoute = props => {
             const ACLFile = new AccessControlList(WebID, url);
             ACLFile.createACL(permissions);
             successToaster(t('notifications.accessGranted'));
+
+            for (let i = 0; i < route.image.length; i++) {
+                const ACLFile = new AccessControlList(WebID, route.image[i]);
+                ACLFile.createACL(permissions);
+            }
+
+            for (let i = 0; i < route.video.length; i++) {
+                const ACLFile = new AccessControlList(WebID, route.video[i]);
+                ACLFile.createACL(permissions);
+            }
 
             const contentNotif = {
                 title: "Route share",
@@ -78,8 +89,9 @@ const TimeLineRoute = props => {
     return (
         <Card className="text-left my-2" data-testid="share-card">
             <Card.Body>
-                <Card.Title  data-testid="share-card-title"><Name src={"[" + friendWebID + "]"}/></Card.Title>
-                <Button  data-testid="share-card-share" variant="outline-success" onClick={handleShare}>{t('route.share')}</Button>
+                <Card.Title data-testid="share-card-title"><Name src={"[" + friendWebID + "]"}/></Card.Title>
+                <Button data-testid="share-card-share" variant="outline-success"
+                        onClick={handleShare}>{t('route.share')}</Button>
             </Card.Body>
         </Card>
     );
