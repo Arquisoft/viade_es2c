@@ -9,7 +9,7 @@ import Route from "../../utils/route/Route"
 import {errorToaster, successToaster} from '@utils';
 import {useTranslation} from "react-i18next";
 import MediaLoader from "../../utils/InOut/MediaLoader";
-import GPXToRouteParser from "../../utils/parser/GPToRouteParser";
+import GPXToRouteParser from "../../utils/parser/GPXToRouteParser";
 import {Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
