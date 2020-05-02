@@ -31,16 +31,16 @@ function renderCreateGroup(){
                     <FullGridSize>
                         <Label>
                             Nombre
-                            <Input type="text" size="100" placeholder="Nombre del grupo" onChange={handleNameChange}/>
+                            <Input data-testid={"input-nombre"} type="text" size="100" placeholder="Nombre del grupo" onChange={handleNameChange}/>
                         </Label>
                         <Label>
                             Descripción
-                            <Input type="text" size="100" placeholder="Descripción del grupo" onChange={handleDescriptionChange}/>
+                            <Input data-testid={"input-descripcion"} type="text" size="100" placeholder="Descripción del grupo" onChange={handleDescriptionChange}/>
                         </Label>
                         <FriendSelector parentCallback = {handleFriendSelected}/>
                     </FullGridSize>
                     <FullGridSize>
-                        <Button variant="success" onClick={handleCreate}>
+                        <Button variant="success" onClick={handleCreate} data-testid={"buttonsubmit"}>
                             Crear Grupo
                         </Button>
                     </FullGridSize>

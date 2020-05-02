@@ -103,6 +103,7 @@ function renderFriendsGroups(){
                     <Button 
                         variant="outline-success" 
                         onClick={() => goTo('#/createGroup')}
+                        data-testid={"createGroup"}
                     >
                         Crear nuevo grupo
                     </Button>

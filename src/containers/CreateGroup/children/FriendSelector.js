@@ -14,7 +14,6 @@ const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
 const store = $rdf.graph();
 
 let friendsLi = null;
-let friendsSelected = [];
 
 const defaultProfilePhoto = 'img/icon/empty-profile.svg';
 
