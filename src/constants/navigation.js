@@ -22,6 +22,7 @@ export const NavigationItems = [
   },
   {
     id: 'friendsGroups',
+    icon: 'img/icon/friendsGroups.svg',
     label: 'navBar.friendsGroups',
     to: '/friendsGroups'
 
