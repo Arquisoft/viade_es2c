@@ -9,6 +9,7 @@ import Route from "../../utils/route/Route"
 import {errorToaster, successToaster} from '@utils';
 import {useTranslation} from "react-i18next";
 import MediaLoader from "../../utils/InOut/MediaLoader";
+import GPXToRouteParser from "../../utils/parser/GPToRouteParser";
 import {Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -33,17 +34,8 @@ const CreateRouteGPX = ({webId, test}: Props) => {
     let video = React.createRef();
 
     function parsergpx(file) {
-        var xmlParser = new DOMParser();
-        var xmlDoc = xmlParser.parseFromString(file, "text/xml");
-        var trk = xmlDoc.getElementsByTagName("trk");
-        if(trk.length === 1){
-            var trkpts = xmlDoc.getElementsByTagName("trkpt");
-            for (var i = 0; i < trkpts.length; i++) {
-                let lat = parseFloat(trkpts[i].getAttribute('lat'));
-                let lng = parseFloat(trkpts[i].getAttribute('lon'));
-                markers.push({position: {lat: lat, lng: lng}});
-            }
-        }
+        let parser = new GPXToRouteParser(file);
+        markers = parser.parse();
     }
 
     function handleSave(event) {
