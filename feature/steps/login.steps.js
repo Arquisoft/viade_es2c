@@ -54,7 +54,7 @@ defineFeature(feature, test => {
         and('I fill the form', async () => {
 
             await page.waitForSelector("[id='username']", {visible: true});
-            await page.type("[id='username']", "viades2c");
+            await page.type("[id='username']", "viadeees2c");
 
             await page.waitFor(500);
             await page.waitForSelector("[id='password']", {visible: true});

@@ -46,7 +46,7 @@ defineFeature(feature, test => {
             });
 
             await page.waitForSelector("[id='username']", {visible: true});
-            await page.type("[id='username']", "viades2c");
+            await page.type("[id='username']", "viadeees2c");
 
             await page.waitFor(500);
             await page.waitForSelector("[id='password']", {visible: true});
@@ -81,18 +81,22 @@ defineFeature(feature, test => {
 
         when('I try to see a route', async () => {
 
-            await page.waitFor(5000);
+            await page.waitFor(6000);
 
             await page.evaluate(() => {
-                let btns = document.getElementById("button-open-Compartir");
-                btns.click();
+                let btns = [...document.querySelectorAll("button")];
+                console.log(btns)
+                btns.forEach(function (btn) {
+                    if (btn.innerText == "Abrir ruta")
+                        btn.click();
+                });
             });
 
         });
 
         then('I can see the route', async () => {
             await page.waitFor(1000);
-            await page.waitForSelector("[id='route-title-Compartir']", {visible: true});
+            await page.waitForSelector("[id='button-close']", {visible: true});
             expect(page.url()).toBe("http://localhost:3000/#/timeline")
         });
     })
