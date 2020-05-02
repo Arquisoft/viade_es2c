@@ -45,6 +45,14 @@ class FileWriter {
             callback(url,carpetas, webID);
         }, err => errorToaster("Error: "+err+", "+url));
     }
+
+    static createFolder(url, webid, object, callback){
+        const fc = new FC(auth);
+
+        fc.createFolder(url,[]).then(promesa => {
+            callback(url, webid, object);
+        }, err => errorToaster("Error: "+err+", "+url));
+    }
 }
 
 export default FileWriter;

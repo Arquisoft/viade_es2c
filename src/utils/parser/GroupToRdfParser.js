@@ -9,7 +9,7 @@ class GroupToRdfParser{
         this.fileName = fileName;
         this.author = author;
     }
-    parse(){   
+    parse(){
         let prefixs = this.getPrefix();
         let information = this.getInformation();
         let participants = this.getParticipants();
