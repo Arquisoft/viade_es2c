@@ -3,75 +3,104 @@ import {Loader} from '@util-components'
 import {FriendListContainer, FriendListWrapper, Header} from './FriendList.style';
 import {useTranslation} from 'react-i18next';
 import {errorToaster} from '@utils';
-/*import { render } from 'react-testing-library';*/
 import auth from "solid-auth-client";
+import data from "@solid/query-ldflex";
 
 //authentication
 //rdf 
 const $rdf = require('rdflib');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
 const store = $rdf.graph();
-//const fetcher = new $rdf.Fetcher(store);
 
-//var person = null;
-// var person = 'https://ruben.verborgh.org/profile/#me';//example person with friends
+let friendsLi = null;
 
-var friendsLi = null;
+const defaultProfilePhoto = 'img/icon/empty-profile.svg';
 
 /**
  * Container component to show the user´s friends
- * TODO: retornar ademas de la url el nombrey pasarselo al callback,
- * funcionamiento cuando usuario no tenga amigos, arreglar que se carguen datos antes de vista
+ *
  */
 function FriendsList() {
     const {t} = useTranslation();
     //obtaining webId of the user in session
-    trackSession(function(persona){
-        loadFriends(persona,function(friendsUrls){
-            if(friendsUrls == null || friendsUrls === undefined){
+    trackSession(function (persona) {
+        loadFriends(persona, async function (friendsUrls) {
+            if (friendsUrls == null || friendsUrls === undefined) {
                 errorToaster(t('friends.errorObtaining'), "Error");
-            }
-            else{
-                    friendsLi = friendsUrls.map(friend =>
+            } else {
+                friendsLi = [];
+                for (let i = 0; i < friendsUrls.length; i++) {
+                    let friend = friendsUrls[i];
+
+                    const user = await data[friend];
+                    const nameLd = await user.vcard_fn;
+
+                    const name = nameLd && nameLd.value.trim().length > 0 ? nameLd.value : friend.toString();
+
+                    const imageLd = await user.vcard_hasPhoto;
+
+                    let image;
+                    if (imageLd && imageLd.value) {
+                        image = imageLd.value;
+                    } else {
+                        image = defaultProfilePhoto;
+                    }
+
+                    friendsLi.push(
                         <li key={friend.toString()}>
-                        <h2>{friend}</h2>
-                        <a href={friend}>{t("friends.profile")}</a>
-                    </li>
-                    );   
+                            <section>
+                                <img alt={""} src={image}/>
+                                <p>{name}</p>
+                            </section>
+                            <a href={friend}>{t("friends.profile")}</a>
+                        </li>
+                    );
+                }
+                if (friendsLi.length === 0) {
+                    friendsLi.push(
+                        <li key="noFriends">
+                            <section>
+                                <p>{t("friends.noFriends")}</p>
+                            </section>
+                        </li>
+                    );
+                }
             }
         });
     });
-    
+
     return renderFriendsList();
 }
+
 /**
  * this function returns the view, must be called after
  * obtaining the friendsList
  */
-function renderFriendsList(){
+function renderFriendsList() {
     const {t} = useTranslation();
-    const [isLoading,setIsLoading] = useState(true);
-    var loaded = () => setIsLoading(false);
-    return( 
-    <FriendListWrapper>
-        {setTimeout(loaded,3000)}
-        <FriendListContainer>
-        <div>
-            <Header>
-                <h1>{t("friends.list")}</h1>
-            </Header>
-                <ul>
-                    {friendsLi}
-                </ul>     
-        </div>
-        </FriendListContainer>
-        {isLoading && <Loader absolute/>}
-    </FriendListWrapper>)
+    const [isLoading, setIsLoading] = useState(true);
+    let loaded = () => setIsLoading(false);
+    setTimeout(loaded, 3000);
+    return (
+        <FriendListWrapper>
+            <FriendListContainer>
+                <div>
+                    <Header>
+                        <h1 className={"text--white"}>{t("friends.list")}</h1>
+                    </Header>
+                    <ul>
+                        {friendsLi}
+                    </ul>
+                </div>
+            </FriendListContainer>
+            {isLoading && <Loader absolute/>}
+        </FriendListWrapper>
+    );
 }
 
 /**
  * this function obtains the name of a person url
- * @param personUrl 
+ * @param personUrl
  * @param callback function executed when friend is loaded
  */
 // async function obtainFullName(personUrl,callback){
@@ -89,18 +118,18 @@ function renderFriendsList(){
  * @param p user in session
  * @param callback function executed when the friends list is loaded, with urls and names
  */
-async function loadFriends(p,callback) {
+async function loadFriends(p, callback) {
     const fetcher = new $rdf.Fetcher(store);
-    if(p == null){
+    if (p == null) {
         return callback(null);
-    }else{
+    } else {
         await fetcher.load(p);
         const friends = store.each($rdf.sym(p), FOAF('knows'));
 
         var friendsUrls = friends.map(friend =>
-             friend.value        
+            friend.value
         );
-    }   
+    }
     return callback(friendsUrls);
 }
 
@@ -112,8 +141,7 @@ function trackSession(callback) {
     auth.trackSession(session => {
         if (session) {
             return callback(session.webId);
-        }
-        else {
+        } else {
             errorToaster(t('friends.userlogged'), "Error");
             return callback(null);
         }

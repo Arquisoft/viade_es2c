@@ -35,11 +35,14 @@ const CreateRouteGPX = ({webId, test}: Props) => {
     function parsergpx(file) {
         var xmlParser = new DOMParser();
         var xmlDoc = xmlParser.parseFromString(file, "text/xml");
-        var trkpts = xmlDoc.getElementsByTagName("trkpt")
-        for (var i = 0; i < trkpts.length; i++) {
-            let lat = parseFloat(trkpts[i].getAttribute('lat'));
-            let lng = parseFloat(trkpts[i].getAttribute('lon'));
-            markers.push({position: {lat: lat, lng: lng}});
+        var trk = xmlDoc.getElementsByTagName("trk");
+        if(trk.length === 1){
+            var trkpts = xmlDoc.getElementsByTagName("trkpt");
+            for (var i = 0; i < trkpts.length; i++) {
+                let lat = parseFloat(trkpts[i].getAttribute('lat'));
+                let lng = parseFloat(trkpts[i].getAttribute('lon'));
+                markers.push({position: {lat: lat, lng: lng}});
+            }
         }
     }
 
@@ -50,17 +53,25 @@ const CreateRouteGPX = ({webId, test}: Props) => {
             errorToaster(t('notifications.description'), t('notifications.error'));
         } else {
             if (!test && gpx === "") {
-                errorToaster("suba un archivo", t('notifications.error'));
+                errorToaster(t('notifications.uploadfile'), t('notifications.error'));
             } else {
                 parsergpx(test ? gpxTest : gpx);
                 if (markers.length === 0) {
-                    errorToaster("error en el parser: es posible que su archivo no sea valido", t('notifications.error'));
+                    errorToaster(t('notifications.parsererror'), t('notifications.error'));
                 } else {
                     let loader = new MediaLoader();
                     loader.saveImage(photoURL, imgFile);
                     loader.saveVideo(videoURL, videoFile);
                     let filename = title.trim().replace(/ /g, "") + new Date().getTime();
-                    let route = new Route(title, description, markers, webID, null, photoURL === "" ? null : photoURL, videoURL === "" ? null : videoURL, filename);
+                    let arrayphoto = [];
+                    if(photoURL !== ""){
+                        arrayphoto.push(photoURL);
+                    }
+                    let arrayvideo = [];
+                    if(videoURL !== ""){
+                        arrayvideo.push(videoURL);
+                    }
+                    let route = new Route(title, description, markers, webID, [], arrayphoto, arrayvideo, filename);
                     let parser = new RouteToRdfParser(route, webID);
                     parser.parse();
                     successToaster(t('notifications.save'), t('notifications.success'));

@@ -9,10 +9,11 @@ const markers = [
     {position: {lat: 43.361836, lng: -5.850547}}
 ];
 
-const ruta = new Route("prueba", "prueba", markers, null, null, "https://viades2c.solid.community/viade/resources/image.png","https://viades2c.solid.community/viade/resources/video.mp4");
+const ruta = new Route("prueba", "prueba", markers, null, [], "https://viades2c.solid.community/viade/resources/image.png","https://viades2c.solid.community/viade/resources/video.mp4");
 
 const props = {
-    route: ruta
+    route: ruta,
+    test: true
 };
 
 describe.only('Ruta', () => {
@@ -43,5 +44,16 @@ describe.only('Ruta', () => {
 
         fireEvent.click(button_media);
     });
+
+    test('add comment', () => {
+        const button_comment = getByTestId(container, 'button-add-comment');
+        const input_comment = getByTestId(container, 'input-add-comment');
+
+        fireEvent.change(input_comment, {target: {value: "comentario"}});
+
+        fireEvent.click(button_comment);
+    });
+
+
 
 });

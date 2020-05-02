@@ -3,12 +3,14 @@ import {media} from '../../utils';
 
 export const WelcomeWrapper = styled.section`
   width: 100%;
-  background-image: url('img/pattern-geo.png'),
-    radial-gradient(#00B010, #00B010, #005F11);
-    // linear-gradient(25deg, #C5D8DF 40%, #C5D8DF 50%, #00B020 100%);
-  background-repeat: repeat, no-repeat;
+  background-image: url('img/concentric-hex-pattern_2x.png');
+  background-repeat: repeat;
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+  justify-content: center;
     
-  padding: 50px 0;
+  //padding: 50px 0;
 
   h3 {
     color: #666666;
@@ -23,12 +25,14 @@ export const WelcomeWrapper = styled.section`
 
 export const WelcomeCard = styled.div`
   background-color: #fff;
-  margin: 30px auto;
+  // margin: auto;
+  // vertical-align: middle;
 
   //Overriding the style guide card flexbox settings
   max-width: 80% !important;
   flex-direction: row !important;
   padding: 50px 0 !important; //temporary fix to a style guide bug
+  height: 500px;
 
   align-items: center;
 
@@ -46,10 +50,10 @@ export const WelcomeCard = styled.div`
 
 export const WelcomeLogo = styled.div`
   width: 50%;
-  height: 100%;
+  height: 50%;
 
   img {
-    width: 60%;
+    width: 50%;
     display: block;
     margin: 0 auto;
   }
@@ -59,6 +63,7 @@ export const WelcomeProfile = styled.div`
   height: 100%;
   text-align: center;
   position: relative;
+  margin: auto;
 
   img {
     width: 120px;
@@ -98,7 +103,7 @@ export const ImageWrapper = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  background-image: ${({ image }) => (image ? `url(${image})` : '#cccccc')};
+  background-image: ${({image}) => (image ? `url(${image})` : '#cccccc')};
   background-size: cover;
   border-radius: 50%;
   width: 128px;

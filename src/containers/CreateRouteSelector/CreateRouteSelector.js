@@ -3,11 +3,11 @@
 /* eslint-disable no-console */
 
 import React from 'react';
-import {SelectorCard, SelectorOption, SelectorWrapper} from "./RouteSelector.style";
 import {withRouter} from 'react-router-dom';
 import {useTranslation} from 'react-i18next';
-import {Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {SelectorCard, SelectorOption, SelectorWrapper} from "./RouteSelector.style";
+import {Button} from "react-bootstrap";
 
 
 type Props = {webId: String};
@@ -37,6 +37,13 @@ const CreateRouteSelector = ({ webId }: Props) => {
                         data-testid="goTo-geojson"
                     >
                         GeoJSON
+                    </Button>
+                    <Button
+                        variant="outline-success"
+                        onClick={() => goTo('#/createroutejsonld')}
+                        data-testid="goTo-jsonld"
+                    >
+                        JSON-LD
                     </Button>
                 </SelectorOption>
                 <SelectorOption data-testid="selector-option-map">

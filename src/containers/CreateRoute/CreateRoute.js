@@ -43,13 +43,22 @@ const CreateRoute = ({webId, test}: Props) => {
         } else if (description.length === 0) {
             errorToaster(t('notifications.description'), t('notifications.error'));
         } else if (!test && markers.length === undefined) {
-            errorToaster("Añada marcadores al mapa para crear la ruta", t('notifications.error'));
+            errorToaster(t('notifications.markers'), t('notifications.error'));
         } else {
             let loader = new MediaLoader();
             loader.saveImage(photoURL, imgFile);
             loader.saveVideo(videoURL, videoFile);
             let filename = title.trim().replace(/ /g, "") + new Date().getTime();
-            let route = new Route(title, description, markers, webID, null, photoURL === "" ? null : photoURL, videoURL === "" ? null : videoURL, filename);
+            let arrayphoto = [];
+            if(photoURL !== ""){
+                arrayphoto.push(photoURL);
+            }
+            let arrayvideo = [];
+            if(videoURL !== ""){
+                arrayvideo.push(videoURL);
+            }
+            console.log(arrayphoto)
+            let route = new Route(title, description, markers, webID, [], arrayphoto, arrayvideo, filename);
             let parser = new RouteToRdfParser(route, webID);
             parser.parse();
             successToaster(t('notifications.save'), t('notifications.success'));
@@ -122,7 +131,7 @@ const CreateRoute = ({webId, test}: Props) => {
                                id="input-video"
                                accept={".mp4"}/>
                     </FullGridSize>
-                    <h4>{"Mapa"}</h4>
+                    <h4>{t('createRoute.mapTitle')}</h4>
                     <FullGridSize>
                         <CreateMap parentCallback={callbackFunction}/>
                     </FullGridSize>

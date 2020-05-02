@@ -23,7 +23,10 @@
     "description": "La ruta debe tener una descripción.",
     "save": "La ruta se ha guardado correctamente.",
     "notShareRoute" : "No se ha podido compartir la ruta",
-    "sendNotification": "Error: RouteConst > sendNotification"
+    "sendNotification": "Error: RouteConst > sendNotification",
+    "markers": "Añada marcadores al mapa para crear la ruta",
+    "uploadfile": "Suba un archivo",
+    "parsererror": "Algo ha salido mal. Es posible que su archivo no sea válido"
   },
   "login": {
     "title": "Hola! Bienvenido a Viade",
@@ -63,6 +66,7 @@
     "timeline":"Ver rutas",
     "createroute":"Crear ruta",
     "friends":"Amigos",
+    "friendsGroups":"Grupos de amigos",
     "languages": {
       "en": "EN",
       "es": "ES"
@@ -192,6 +196,7 @@
     "addVideo": "Agregar video",
     "saveRoute" : "Guardar ruta",
     "uploadGeoJson" : "Sube tu archivo GeoJson",
+    "uploadJsonLD" : "Sube tu archivo Json-LD",
     "uploadGPX" : "Sube tu archivo GPX",
     "archive" : "A partir de un archivo:",
     "map": "Crea tu propia ruta usando el mapa:",
@@ -203,12 +208,46 @@
     "profile" : "Ver perfil",
     "errorObtaining": "Error obteniendo los amigos",
     "erroruser" : "Error obteniendo la sesión del usuario",
-    "userlogged" : "El usuario no está loggeado"
+    "userlogged" : "El usuario no está loggeado",
+    "noFriends" : "No tienes ningún amigo :("
+  },
+  "friendsGroups": {
+    "errorParticipants" : "Aún no hay participantes",
+    "errorDescription" : "Aún no hay descripción",
+    "description" : "Descripción ",
+    "participants": "Participantes : ",
+    "title" : "Grupos de amigos",
+    "create" : "Crear nuevo grupo",
+    "groupName" : "Nombre del grupo",
+    "name" : "Nombre",
+    "newGroup" : "Nuevo grupo",
+    "groupDescription": "Descripción del grupo",
+    "select" : "Selecciona amigos para añadir al grupo",
+    "errorGroupName" : "El grupo necesita un nombre",
+    "errorFriend" : "Necesitas añadir al menos un amigo al grupo",
+    "creating" : "Creando el grupo",
+    "done" : "Éxito",
+    "mapTitle": "Mapa"
   },
   "route" : {
     "share" : "Compartir",
     "open" : "Abrir ruta",
     "close" : "Cerrar ruta",
-    "media" : "Ver Multimedia"
+    "media" : "Ver Multimedia",
+    "comments": "Comentarios",
+    "closeFriends": "Cerrar"
+  },
+  "comment": {
+    "add": "Añadir comentario",
+    "show": "Mostrar comentarios",
+    "noComments": "No hay comentarios en esta ruta.",
+    "createdAt": "Creado el "
+  },
+  "covid": {
+    "carefull": "Por favor tenga cuidado.",
+    "tip" : "Somos conscientes esta aplicación está muy guay pero por favor quédese en casa. Salga solo cuando esté permitido.",
+    "tip1": "Quédese casa lo máximo posible.",
+    "tip2": "Lávese las manos con frecuencia. Use agua y jabón o un desinfectante de manos a base de alcohol.",
+    "tip3": "Manténgase a una distancia segura de cualquier persona que tosa o estornude."
   }
 }

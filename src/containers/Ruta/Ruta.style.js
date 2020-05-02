@@ -7,29 +7,28 @@ export const RouteContainer = styled.div`
   flex: 1 0 auto;
 `;
 
-export const Header = styled.div`
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  background-image: url('img/pattern-geo.png'),
-    linear-gradient(135deg, #00B020 0%, #00B020 30%, #00B020 50%);
-  background-repeat: repeat, no-repeat;
-  padding: 5px;
-`;
-
 export const Form = styled.div`
   overflow: auto;
-  max-height: 25em;
+  max-height: 85vh;
   padding: 20px 40px;
   align-items: center;
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px 40px;
-     h4{
-     color:#00B020 ;
-     margin-bottom: 0px;
-   }
+  h1{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-image: url('img/pattern-geo.png'),
+      linear-gradient(135deg, #00B020 0%, #00B020 30%, #00B020 50%);
+    background-repeat: repeat, no-repeat;
+    padding: 5px;
+  }
+  h4{
+    color: #00B020;
+    margin-bottom: 0px;
+  }
   ${media.tablet`
     grid-template-columns: 1fr 1fr;
   `}

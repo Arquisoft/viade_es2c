@@ -35,7 +35,7 @@ class Map extends Component {
 
         for (let i = 0; i < list.length; i++) {
             markers.push(
-                <Marker text="" lat={list[i].lat} lng={list[i].lng}/>
+                <Marker text="" lat={list[i].lat} lng={list[i].lng} key={i}/>
             )
         }
         return markers;

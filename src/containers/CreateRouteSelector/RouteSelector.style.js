@@ -2,11 +2,13 @@ import styled from 'styled-components';
 import {media} from '../../utils';
 
 export const SelectorWrapper = styled.section`
-  width: 100%;
-  background-image: url('img/pattern-geo.png'),
-    radial-gradient(#00B010, #00B010, #005F11);
-    // linear-gradient(25deg, #C5D8DF 40%, #C5D8DF 50%, #00B020 100%);
-  background-repeat: repeat, no-repeat;
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+  justify-content: center;
+  background-image: url('img/concentric-hex-pattern_2x.png');
+  background-repeat: repeat;
+  padding: 60px 0;
     
   padding: 50px 0;
 
@@ -85,6 +87,38 @@ export const SelectorContainer = styled.div`
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
   background-color: white;
   max-width: 900px;
+  margin: 0 20px;
+  width: 100%;
+  flex: 1 0 auto;
+`;
+
+export const WelcomeDetail = styled.div`
+  padding: 1rem 3.5rem;
+
+  p,
+  li {
+    color: #666666;
+  }
+  ul {
+    list-style: disc;
+    margin: 0 18px;
+  }
+`;
+
+export const TimelineWrapper = styled.section`
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+  justify-content: center;
+  background-image: url('img/concentric-hex-pattern_2x.png');
+  background-repeat: repeat;
+  padding: 60px 0;
+`;
+export const TimelineContainer = styled.div`
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  max-width: 80%;
+  min-width: 20%;
   margin: 0 20px;
   width: 100%;
   flex: 1 0 auto;

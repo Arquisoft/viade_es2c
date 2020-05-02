@@ -14,9 +14,12 @@ import {
     RegistrationSuccess,
     Ruta,
     TimeLine,
-    Welcome
+    Welcome,
+    CreateRouteJSONLD
 } from './containers';
 import FriendsList from './containers/FriendsList/FriendsList';
+import FriendsGroups from './containers/FriendsGroups/FriendsGroups';
+import CreateGroup from './containers/CreateGroup';
 
 const privateRoutes = [
     {
@@ -43,8 +46,12 @@ const privateRoutes = [
         id: 'friends',
         path: '/friends',
         component: FriendsList
-    }
-    ,
+    },
+    {
+        id: 'friendsGroups',
+        path: '/friendsGroups',
+        component : FriendsGroups
+    },
     {
         id: 'createroute',
         path: '/createroute',
@@ -61,9 +68,24 @@ const privateRoutes = [
         component: CreateRouteGeoJSON
     },
     {
+        id: 'createroutejsonld',
+        path: '/createroutejsonld',
+        component: CreateRouteJSONLD
+    },
+    {
         id: 'createrouteselector',
         path: '/createrouteselector',
         component: CreateRouteSelector
+    },
+    {
+        id: 'createGroup',
+        path: '/createGroup',
+        component : CreateGroup
+    }
+    ,{
+        id: 'friendsGroups',
+        path: '/friendsGroups',
+        component : FriendsGroups
     }
 ];
 

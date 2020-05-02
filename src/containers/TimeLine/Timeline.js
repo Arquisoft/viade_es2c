@@ -21,10 +21,10 @@ class TimeLine extends React.Component {
 
     constructor({webId}: Props) {
         super();
+        this.parserShared = new SharedNotificationToRouteParser(webId);
         this.webID = webId.replace("profile/card#me", "viade/");
         this.parser = new RdftoRouteParser();
-        this.parser.addRoutes(this.webID);
-        this.parserShared = new SharedNotificationToRouteParser();
+        this.parser.addRoutes(this.webID, webId);
         this.parserShared.addRoutes(this.webID);
     }
 
@@ -37,7 +37,7 @@ class TimeLine extends React.Component {
             <TimelineWrapper data-testid="timeline-wrapper">
                 <TimelineContainer data-testid="timeline-container">
                     <Header data-testid="timeline-header">
-                        <h1>{t('timeline.seeRoutes')}</h1>
+                        <h1 className={"text--white"}>{t('timeline.seeRoutes')}</h1>
                     </Header>
                     <SmallRow webID={this.webID}/>
                 </TimelineContainer>
