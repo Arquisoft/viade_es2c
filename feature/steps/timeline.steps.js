@@ -29,7 +29,7 @@ defineFeature(feature, test => {
             });
 
             await page.waitForSelector(".sc-EHOje.cffgrt");
-            await page.type(".sc-EHOje.cffgrt", "https://viades2c.solid.community/profile/card#me");
+            await page.type(".sc-EHOje.cffgrt", "https://viadeees2c.solid.community/profile/card#me");
 
             await page.evaluate(() => {
                 let btns = [...document.querySelectorAll("button")];

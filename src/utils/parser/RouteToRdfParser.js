@@ -78,7 +78,6 @@ class RouteToRdfParser {
                     media += "viade:hasMediaAttached [ \n schema:contentUrl \""+this.route.video[i] +"\" \n ];\n"
                 }
             }
-
         }
        return media;
 
