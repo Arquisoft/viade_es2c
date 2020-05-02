@@ -3,7 +3,7 @@ import Group from "./Group";
 
 afterAll(cleanup);
 
-describe('Route class domain', () => {
+describe('Group class', () => {
     it('class create correctly', () => {
         const group = new Group("Prueba", "Prueba", ["Prueba"]);
         group.name = "Prueba";
