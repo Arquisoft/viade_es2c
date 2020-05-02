@@ -36,7 +36,7 @@ const Toaster = (props: Props) => {
   return (
     <Toastr>
       <span>{title}</span>
-      <p></p>
+      <p>{content}</p>
       {link && (
         <a href={link.href} target="_blank" rel="noopener noreferrer">
           {link.label}

@@ -35,11 +35,14 @@ const CreateRouteGPX = ({webId, test}: Props) => {
     function parsergpx(file) {
         var xmlParser = new DOMParser();
         var xmlDoc = xmlParser.parseFromString(file, "text/xml");
-        var trkpts = xmlDoc.getElementsByTagName("trkpt")
-        for (var i = 0; i < trkpts.length; i++) {
-            let lat = parseFloat(trkpts[i].getAttribute('lat'));
-            let lng = parseFloat(trkpts[i].getAttribute('lon'));
-            markers.push({position: {lat: lat, lng: lng}});
+        var trk = xmlDoc.getElementsByTagName("trk");
+        if(trk.length === 1){
+            var trkpts = xmlDoc.getElementsByTagName("trkpt");
+            for (var i = 0; i < trkpts.length; i++) {
+                let lat = parseFloat(trkpts[i].getAttribute('lat'));
+                let lng = parseFloat(trkpts[i].getAttribute('lon'));
+                markers.push({position: {lat: lat, lng: lng}});
+            }
         }
     }
 

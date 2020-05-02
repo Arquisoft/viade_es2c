@@ -32,6 +32,7 @@ export const WelcomeCard = styled.div`
   max-width: 80% !important;
   flex-direction: row !important;
   padding: 50px 0 !important; //temporary fix to a style guide bug
+  height: 500px;
 
   align-items: center;
 
@@ -49,10 +50,10 @@ export const WelcomeCard = styled.div`
 
 export const WelcomeLogo = styled.div`
   width: 50%;
-  height: 100%;
+  height: 50%;
 
   img {
-    width: 60%;
+    width: 50%;
     display: block;
     margin: 0 auto;
   }
@@ -62,6 +63,7 @@ export const WelcomeProfile = styled.div`
   height: 100%;
   text-align: center;
   position: relative;
+  margin: auto;
 
   img {
     width: 120px;

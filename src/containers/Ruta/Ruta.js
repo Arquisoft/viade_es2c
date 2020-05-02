@@ -16,7 +16,6 @@ type Props = {
     test: boolean
 };
 
-let ruta = null;
 let comentario = "";
 
 class Ruta extends Component {
@@ -25,11 +24,10 @@ class Ruta extends Component {
         super();
 
         this.route = route;
-        ruta = route;
         this.state = {
             visible: false,
             comment: ""
-        }
+        };
         this.test = test;
     }
 
@@ -52,7 +50,7 @@ class Ruta extends Component {
                 const domContainer = document.querySelector('#foto' + rutaAux.fileName);
                 let html = '<ul>';
                 for(let i = 0; i<rutaAux.image.length; i++){
-                    html += '<li></li><img src="" alt="foto'+ rutaAux.fileName+i+'" id="foto'+rutaAux.fileName+i+'" style="max-width:100%;max-height:100%;"/></li>';
+                    html += '<li><img src="" alt="foto'+ rutaAux.fileName+i+'" id="foto'+rutaAux.fileName+i+'" style="max-width:100%;max-height:100%;"/></li>';
                 }
                 html += '</ul>';
                 domContainer.innerHTML = html;
@@ -66,7 +64,6 @@ class Ruta extends Component {
                     domContainer.src = imageUrl;
                 });
             }
-
         }
         if (rutaAux.video != null) {
             if(rutaAux.video.length > 0){
@@ -135,7 +132,6 @@ class Ruta extends Component {
 
     render() {
         const {t} = this.props;
-        ruta = this.route;
         return (
             <section>
                 <Button variant="outline-success" onClick={() => this.openModal()} data-testid="button-open"

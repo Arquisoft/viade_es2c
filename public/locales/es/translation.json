@@ -224,6 +224,12 @@
     "show": "Mostrar comentarios",
     "noComments": "No hay comentarios en esta ruta.",
     "createdAt": "Creado el "
-
+  },
+  "covid": {
+    "carefull": "Por favor tenga cuidado.",
+    "tip" : "Somos conscientes esta aplicación está muy guay pero por favor quédese en casa. Salga solo cuando esté permitido.",
+    "tip1": "Quédese casa lo máximo posible.",
+    "tip2": "Lávese las manos con frecuencia. Use agua y jabón o un desinfectante de manos a base de alcohol.",
+    "tip3": "Manténgase a una distancia segura de cualquier persona que tosa o estornude."
   }
 }

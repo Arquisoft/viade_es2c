@@ -22,7 +22,7 @@
     "title": "The route must have a title.",
     "description": "The route must have a description.",
     "save": "The route has been successfully saved.",
-    "notShareRoute" : "Could not share the route",
+    "notShareRoute": "Could not share the route",
     "sendNotification": "Error: RouteConst > sendNotification",
     "markers": "Add markers to the map to create the route",
     "uploadfile": "Please upload a file",
@@ -59,10 +59,10 @@
     "profile": "Profile",
     "changeLanguage": "Change Language",
     "map": "Map",
-    "timeline":"Routes",
-    "createroute":"New route",
-    "friends":"Friends",
-    "friendsGroups":"Groups of friends",
+    "timeline": "Routes",
+    "createroute": "New route",
+    "friends": "Friends",
+    "friendsGroups": "Groups of friends",
     "languages": {
       "en": "EN",
       "es": "ES"
@@ -172,46 +172,46 @@
   },
   "timeline": {
     "seeRoutes": "See Routes",
-    "seeRoute" : "See route"
+    "seeRoute": "See route"
   },
   "globalError": {
     "title": "Error",
-    "info" : "Something Went Wrong",
-    "msg" : "You may refresh the page, or try again at a later time."
+    "info": "Something Went Wrong",
+    "msg": "You may refresh the page, or try again at a later time."
   },
   "imageProfile": {
     "text": "Upload New Photo",
-    "upload" : "Uploading"
+    "upload": "Uploading"
   },
-  "createRoute":{
-    "newRoute" : "New Route",
-    "description" : "Description",
+  "createRoute": {
+    "newRoute": "New Route",
+    "description": "Description",
     "title": "Title",
     "media": "Media",
     "addPhoto": "Add photo",
     "addVideo": "Add video",
-    "saveRoute" : "Save route",
-    "uploadGeoJson" : "Upload your GeoJson file",
-    "uploadJsonLD" : "Upload your Json-LD file",
-    "uploadGPX" : "Upload your GPX file",
-    "archive" : "Using a file:",
+    "saveRoute": "Save route",
+    "uploadGeoJson": "Upload your GeoJson file",
+    "uploadJsonLD": "Upload your Json-LD file",
+    "uploadGPX": "Upload your GPX file",
+    "archive": "Using a file:",
     "map": "Create your own route using the map:",
-    "here" : "Here",
+    "here": "Here",
     "data": "Route data"
   },
   "friends": {
-    "list" : "List of friends",
-    "profile" : "Check profile",
+    "list": "List of friends",
+    "profile": "Check profile",
     "errorObtaining": "Error obtaining the friends",
-    "erroruser" : "Error getting the user's session",
-    "userlogged" : "The user is not logged in",
-    "noFriends" : "You don't have any friends :("
+    "erroruser": "Error getting the user's session",
+    "userlogged": "The user is not logged in",
+    "noFriends": "You don't have any friends :("
   },
-  "route" : {
-    "share" : "Share",
-    "open" : "Open route",
-    "close" : "Close route",
-    "media" : "Display Media",
+  "route": {
+    "share": "Share",
+    "open": "Open route",
+    "close": "Close route",
+    "media": "Display Media",
     "comments": "Comments",
     "closeFriends": "Close"
   },
@@ -220,5 +220,12 @@
     "show": "Show comment",
     "noComments": "No comments.",
     "createdAt": "Created at "
+  },
+  "covid": {
+    "carefull": "Please be carefull.",
+    "tip": "We are aware that this application is very cool but please stay home. Go outside only when allowed.",
+    "tip1": "Stay home as much as possible.",
+    "tip2": "Wash your hands often. Use soap and water or an alcohol-based hand sanitizer.",
+    "tip3": "Keep a safe distance from anyone who coughs or sneezes."
   }
 }
