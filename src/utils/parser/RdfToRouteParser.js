@@ -39,19 +39,24 @@ class RdftoRouteParser {
             query: querySparql,
             wanted: "Array"
         };
-        sparqlFiddle.run(fiddle).then(
-            results => {
-                let name = results[0]["name"];
-                let description = results[0]["description"];
-                let points = this.getPoints(results);
-                let comments = this.getComments(results);
-                let image = this.getImage(results);
-                let video = this.getVideo(results);
-                let route = new Route(name, description, points, webID, comments, image, video, fileName);
-                this.pushRoutes(route);
-            },
-            err => errorToaster(err, "Error")
-        );
+
+            sparqlFiddle.run(fiddle).then(
+                results => {
+                    try {
+                    let name = results[0]["name"];
+                    let description = results[0]["description"];
+                    let points = this.getPoints(results);
+                    let comments = this.getComments(results);
+                    let image = this.getImage(results);
+                    let video = this.getVideo(results);
+                    let route = new Route(name, description, points, webID, comments, image, video, fileName);
+                    this.pushRoutes(route);
+                    }catch(err){
+                        errorToaster("There's a route that can't be read because of it syntax", "Error")
+                    }
+                },
+                err => errorToaster(err, "Error")
+            );
     }
 
     pushRoutes(route) {
