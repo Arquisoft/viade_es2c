@@ -71,7 +71,7 @@ function handleCreate(){
     if(name.trim().length === 0){
         errorToaster('El grupo debe tener un nombre','Error');
     }
-    if(friendsSelected.length === 0){
+    else if(friendsSelected.length === 0){
         errorToaster('Debes añadir al menos un amigo','Error');
     }
     else if(name.trim().length > 0 && friendsSelected.length > 0){

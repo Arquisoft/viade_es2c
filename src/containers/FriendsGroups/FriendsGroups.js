@@ -3,6 +3,10 @@ import {Loader} from '@util-components'
 import {FriendsGroupsWrapper,FriendsGroupsContainer,Header} from './FriendsGroups.style';
 import { Button } from 'react-bootstrap';
 import {withRouter} from 'react-router-dom';
+import auth from "solid-auth-client";
+import {useTranslation} from 'react-i18next';
+import {errorToaster} from '@utils';
+import RdfToGroupParse from '../../utils/parser/RdfToGroupParser';
 
 let groupsLi = null;
 /**
@@ -10,7 +14,13 @@ let groupsLi = null;
  */
 function FriendsGroups(){
     groupsLi = [];
-    
+    trackSession(function(webId){
+        let url = webId.replace("profile/card#me", "viade/groups/");
+        let parser = new RdfToGroupParse();
+        parser.addGroups(url,webId,function(groups){
+            console.log(groups);
+        });
+    });
     /*if(groupsLi.length === 0){
         groupsLi.push(
             <li key = 'noGroups'>
@@ -51,7 +61,7 @@ function FriendsGroups(){
 function renderFriendsGroups(){
     const [isLoading, setIsLoading] = useState(true);
     let loaded = () => setIsLoading(false);
-    setTimeout(loaded,3000);
+    setTimeout(loaded,4000);
     return (
         <FriendsGroupsWrapper>
             <FriendsGroupsContainer>
@@ -77,6 +87,21 @@ function renderFriendsGroups(){
 
 function goTo(path) {
     window.location.href=path;
+}
+
+/**
+ * This function is used for tracking the user session
+ */
+function trackSession(callback) {
+    const {t} = useTranslation();
+    auth.trackSession(session => {
+        if (session) {
+            return callback(session.webId);
+        } else {
+            errorToaster(t('friends.userlogged'), "Error");
+            return callback(null);
+        }
+    });
 }
 
 export default withRouter(FriendsGroups) ;
