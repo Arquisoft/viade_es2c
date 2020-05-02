@@ -66,7 +66,7 @@ class RouteToRdfParser {
             media = "";
             for(i = 0; i<this.route.image.length; i++){
                 if(i===this.route.image.length-1){
-                    media += "viade:hasMediaAttached [ \n schema:contentUrl \""+this.route.image[i] +"\" \n ]."
+                    media += "viade:hasMediaAttached [ \n schema:contentUrl \""+this.route.image[i] +"\" \n ] ."
                 }else{
                     media += "viade:hasMediaAttached [ \n schema:contentUrl \""+this.route.image[i] +"\" \n ];\n"
                 }
@@ -78,7 +78,6 @@ class RouteToRdfParser {
                     media += "viade:hasMediaAttached [ \n schema:contentUrl \""+this.route.video[i] +"\" \n ];\n"
                 }
             }
-
         }
        return media;
 
