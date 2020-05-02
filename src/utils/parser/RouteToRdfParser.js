@@ -65,7 +65,7 @@ class RouteToRdfParser {
             let i;
             media = "";
             for(i = 0; i<this.route.image.length; i++){
-                if(i===this.route.image.length-1){
+                if(this.route.image.length !==0 || this.route.video.length !== 0 ){
                     media += "viade:hasMediaAttached [ \n schema:contentUrl \""+this.route.image[i] +"\" \n ]."
                 }else{
                     media += "viade:hasMediaAttached [ \n schema:contentUrl \""+this.route.image[i] +"\" \n ];\n"

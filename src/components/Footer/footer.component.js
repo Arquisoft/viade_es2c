@@ -21,7 +21,7 @@ const Footer = (props: Props) => {
             <li>© Viade</li>
             <li>
               {t('footer.version')}
-              {''} <span className="build-value">0.2.0</span>
+              {''} <span className="build-value">1.0.0</span>
             </li>
           </ul>
         </div>
