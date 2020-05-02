@@ -131,7 +131,7 @@ const CreateRoute = ({webId, test}: Props) => {
                                id="input-video"
                                accept={".mp4"}/>
                     </FullGridSize>
-                    <h4>{"Mapa"}</h4>
+                    <h4>{t('createRoute.mapTitle')}</h4>
                     <FullGridSize>
                         <CreateMap parentCallback={callbackFunction}/>
                     </FullGridSize>

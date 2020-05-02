@@ -197,7 +197,8 @@
     "archive" : "Using a file:",
     "map": "Create your own route using the map:",
     "here" : "Here",
-    "data": "Route data"
+    "data": "Route data",
+    "mapTitle": "Map"
 },
   "friends": {
     "list" : "List of friends",
@@ -206,6 +207,23 @@
     "erroruser" : "Error getting the user's session",
     "userlogged" : "The user is not logged in",
     "noFriends" : "You don't have any friends :("
+  },
+  "friendsGroups": {
+    "errorParticipants" : "There's no participants",
+    "errorDescription" : "There's no description",
+    "description" : "Description ",
+    "participants": "Participants : ",
+    "title" : "Groups of friends",
+    "create" : "Create new group",
+    "groupName" : "Name of the group",
+    "name" : "Name",
+    "newGroup" : "New group",
+    "groupDescription": "Group's description",
+    "select" : "Select friends to add to the group",
+    "errorGroupName" : "The group needs a name",
+    "errorFriend" : "You need at least one friend in the group",
+    "creating" : "Creating the group",
+    "done" : "Done"
   },
   "route" : {
     "share" : "Share",

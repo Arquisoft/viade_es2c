@@ -71,6 +71,7 @@ const FriendSelector = ({parentCallback}) => {
 }
 
 function renderFriendSelector(){
+    const {t} = useTranslation();
     const [isLoading, setIsLoading] = useState(true);
     let loaded = () => setIsLoading(false);
     setTimeout(loaded, 3000);
@@ -80,7 +81,7 @@ function renderFriendSelector(){
             <FriendSelectorContainer>
                 <div>
                     <Header>
-                        <h1>Selecciona amigos para añadir</h1>
+                        <h1>{t('friendsGroups.select')}</h1>
                     </Header>
                     <ul>
                         {friendsLi}
