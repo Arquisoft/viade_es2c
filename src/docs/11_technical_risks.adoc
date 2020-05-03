@@ -4,10 +4,8 @@
 |===
 | Priority | Risk | Consequence | Possible Solution
 | LOW | Using a deprecated library | Impossibility of using new features | Find a new library or include new complementary library
-| LOW | Using png instead of PlantUML | It is difficult to do changes of diagrams | Implement diagram in PlantUML
-| HIGH | Groups were not implemented | It is not possible to share routes with more than one user at the same time | Create and share groups option
-| HIGH | Comments were not implemented | It is not possible to comment the route | The user's can't add comments to the routes
-| MEDIUM | Low documented code | Difficulty to understand some parts | Document the most important methods
+| HIGH | Friend groups | It is not possible to share routes with more than one user at the same time | Create a service to share routes to groups
+| MEDIUM | Comments spec | The comments doesnt follow the Viade specification | The user's cant see who posted a comment
 | MEDIUM | Not all parsers use sparql | The code can fail in some situations | Add sparql to all parsers
-| HIGH | Lack of security | Vulnerable code | Implement some security techniques or using any security library
+| MEDIUM | Map markers | User cannot delete an marker from the map | Use another map API
 |===

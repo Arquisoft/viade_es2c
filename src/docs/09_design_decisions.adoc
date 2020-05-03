@@ -4,10 +4,9 @@
 [options="header",cols="1,2,2"]
 |===
 |Decision|Pro|Con
-| sliding menu stile like most of mobile applications | It will be easier to use in a mobile app | We will have to use a special library and maybe we will need to change some working code
 | Minimalist style | It will be more usable and simple to distinguise the options | It maybe would look boring if we dont do it properly
-| The timeline page will contain all routes ordered by time | It will be easier for the user to find his routes and will be more usable | It would be hard to do in the code (we will have to work with dates)
+| The timeline page will contain all user routes and all routes shared to the user.  | The user will be able to see all the routes at once | it can be difficult to find a route if there are many created and shared routes
 | The profile will contain routes created by the user | More intuitive and organized for the user | We will have to contain all the data in an accesible POD
-| The new route page will users starting and creating a new route | Intuitive and usable | We have to learn how to create a map that allows the user to do that
+| The new route page will users starting and creating a new route with a map| Intuitive and usable | Markers cannot ben deleted
 | The routes can be accessed from timeline in a popup | It reduces the loading time | It is not possible to open more than one route at the same time
 |===

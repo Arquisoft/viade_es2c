@@ -26,6 +26,7 @@ The users use the application to manage their routes.
 
 1. The user creates a new route.
 2. The user shares a route to a friend.
+3. The user comments a route.
 
 [plantuml,"Routes creation secuence diagram",png]
 ----
@@ -58,4 +59,18 @@ Viade1 -> User2POD: 5. send notification with route uri
 Viade2 -> User2POD: 6. read inbox to search shared routes
 Viade2 -> User1POD: 7. access route
 Viade2 -> User2: 8. show route
+----
+
+[plantuml,"Routes comment secuence diagram",png]
+----
+title User comments a route
+actor User1
+participant Viade1
+database User1POD
+database User2POD
+User1 -> Viade1: 1. goes to routes list and choose one route
+User1 -> Viade1: 2. add a new comment
+Viade1 -> User1POD: 3. overwrite the route in POD
+Viade1 -> User2POD: 3. overwrite the route in POD friend (if route is shared)
+Viade1 -> User1: 4. show route comments
 ----
