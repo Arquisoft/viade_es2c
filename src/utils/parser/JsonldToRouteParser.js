@@ -37,7 +37,7 @@ class JsonldToRouteParser{
         try {
             // eslint-disable-next-line array-callback-return
             commentsAux.map(function (comment) {
-                if (comment.text != null && comment.createdAt != null) {
+                if (comment.comment.text != null && comment.comment.createdAt != null) {
                     let text = comment.text;
                     let createdAt = comment.createdAt;
                     let comentario = {comment: {text: text, createdAt: createdAt}};

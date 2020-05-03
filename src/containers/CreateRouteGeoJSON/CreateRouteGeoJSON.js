@@ -9,6 +9,7 @@ import Route from "../../utils/route/Route"
 import {errorToaster, successToaster} from '@utils';
 import {useTranslation} from "react-i18next";
 import MediaLoader from "../../utils/InOut/MediaLoader";
+import GeojsonToRouteParser from "../../utils/parser/GeojsonToRouteParser";
 import {Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -34,17 +35,8 @@ const CreateRouteGeoJSON = ({webId, test}: Props) => {
     let video = React.createRef();
 
     function parsergeojson(file) {
-        var geoObject = JSON.parse(file);
-        var features = [];
-        features = geoObject.features;
-        if (features.length === 1) {
-            if (features[0].geometry.type === "LineString") {
-                var coordinates = features[0].geometry.coordinates;
-                for (var i = 0; i < coordinates.length; i++) {
-                    markers.push({position: {lat: coordinates[i][0], lng: coordinates[i][1]}});
-                }
-            }
-        }
+        let parser = new GeojsonToRouteParser(file);
+        markers = parser.parse();
     }
 
     function handleSave(event) {
