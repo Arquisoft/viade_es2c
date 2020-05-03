@@ -69,20 +69,20 @@ class Ruta extends Component {
             if(rutaAux.video.length > 0){
                 const domContainer = document.querySelector('#video' + rutaAux.fileName);
                 let html = '<ul>';
-                for(let i = 0; i<rutaAux.image.length; i++){
-                    html += '<li><video width="320" height="240" controls> <source src="" type="video/mp4"/ id=video"'+rutaAux.fileName+i+'"> </video></li>';
+                for(let i = 0; i<rutaAux.video.length; i++){
+                    html += '<li><div id="video'+rutaAux.fileName+i+'"></div></li>';
                 }
                 html += '</ul>';
                 domContainer.innerHTML = html;
             }
-            
+
             for(let i = 0; i<rutaAux.video.length; i++){
                 // eslint-disable-next-line no-loop-func
                 loader.loadMedia(rutaAux.video, function (file) {
                     var urlCreator = window.URL || window.webkitURL;
                     var imageUrl = urlCreator.createObjectURL(file);
                     const domContainer = document.querySelector('#video' + rutaAux.fileName+i);
-                    domContainer.src = imageUrl;
+                    ReactDOM.render(<video width="320" height="240" controls> <source src={imageUrl} type="video/mp4"/> </video>, domContainer);
                 });
             }
 
