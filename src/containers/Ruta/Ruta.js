@@ -85,7 +85,6 @@ class Ruta extends Component {
                     ReactDOM.render(<video width="320" height="240" controls> <source src={imageUrl} type="video/mp4"/> </video>, domContainer);
                 });
             }
-
         }
     }
 
