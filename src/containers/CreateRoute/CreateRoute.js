@@ -125,7 +125,7 @@ const CreateRoute = ({webId, test}: Props) => {
                     <FullGridSize>
                         <Label>{t('createRoute.addPhoto')}</Label>
                         <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img" id="input-img"
-                               accept={".png"}/>
+                               accept={"image/*"}/>
                         <Label>{t('createRoute.addVideo')}</Label>
                         <Input type="file" ref={video} onChange={handleVideoChange} data-testid="input-video"
                                id="input-video"
