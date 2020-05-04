@@ -53,8 +53,12 @@ const CreateRouteGeoJSON = ({webId, test}: Props) => {
                     errorToaster(t('notifications.parsererror'), t('notifications.error'));
                 } else {
                     let loader = new MediaLoader();
-                    loader.saveImage(photoURL, imgFile);
-                    loader.saveVideo(videoURL, videoFile);
+                    if(imgFile !== null){
+                        loader.saveImage(photoURL, imgFile);
+                    }
+                    if(videoFile !== null){
+                        loader.saveVideo(videoURL, videoFile);
+                    }
                     let filename = title.trim().replace(/ /g, "") + new Date().getTime();
                     let arrayphoto = [];
                     if(photoURL !== ""){
@@ -148,7 +152,7 @@ const CreateRouteGeoJSON = ({webId, test}: Props) => {
                     <FullGridSize>
                         <Label>{t('createRoute.addPhoto')}</Label>
                         <Input type="file" ref={img} onChange={handlePhotoChange} data-testid="input-img"
-                               accept={".png"}/>
+                               accept={"image/*"}/>
                         <Label>{t('createRoute.addVideo')}</Label>
                         <Input type="file" ref={video} onChange={handleVideoChange} data-testid="input-video"
                                accept={".mp4"}/>
