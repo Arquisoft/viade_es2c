@@ -46,8 +46,12 @@ const CreateRoute = ({webId, test}: Props) => {
             errorToaster(t('notifications.markers'), t('notifications.error'));
         } else {
             let loader = new MediaLoader();
-            loader.saveImage(photoURL, imgFile);
-            loader.saveVideo(videoURL, videoFile);
+            if(imgFile !== null){
+                loader.saveImage(photoURL, imgFile);
+            }
+            if(videoFile !== null){
+                loader.saveVideo(videoURL, videoFile);
+            }
             let filename = title.trim().replace(/ /g, "") + new Date().getTime();
             let arrayphoto = [];
             if(photoURL !== ""){

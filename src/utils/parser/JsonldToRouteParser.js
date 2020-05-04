@@ -7,7 +7,12 @@ class JsonldToRouteParser{
     }
 
     parse(){
-        var jsonld = JSON.parse(this.file);
+        var jsonld = null;
+        try{
+            jsonld = JSON.parse(this.file);
+        }catch (e) {
+            return new Route("", "", [], "", [], [], [], "");
+        }
         let name = jsonld.name;
         let description = jsonld.description;
         let points = [];
