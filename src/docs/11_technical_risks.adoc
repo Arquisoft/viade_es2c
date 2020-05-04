@@ -6,6 +6,7 @@
 | LOW | Using a deprecated library | Impossibility of using new features | Find a new library or include new complementary library
 | HIGH | Friend groups | It is not possible to share routes with more than one user at the same time | Create a service to share routes to groups
 | MEDIUM | Comments spec | The comments doesnt follow the Viade specification | The user's cant see who posted a comment
-| MEDIUM | Not all parsers use sparql | The code can fail in some situations | Add sparql to all parsers
+| MEDIUM | Media | In Viade you can only add one video and one image | Change the code to let the use add more media
 | MEDIUM | Map markers | User cannot delete an marker from the map | Use another map API
+| HIGH | Interoperability | Viade is not interoperable with other Viade's apps | Work more with ViadeEspec
 |===
