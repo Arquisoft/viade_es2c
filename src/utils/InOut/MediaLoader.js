@@ -9,7 +9,7 @@ class MediaLoader {
             method: 'PUT',
             body: file,
             headers: {
-                'Content-Type': 'image/png'
+                'Content-Type': file.type
             }
         });
     }

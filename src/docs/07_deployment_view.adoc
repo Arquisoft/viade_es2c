@@ -1,8 +1,14 @@
 [[section-deployment-view]]
 
-By default, SOLID Servers have a 25 MB disk limit. This can be a problem, for example, if the users want upload photos or videos to their routes.
-
 == Deployment View
-This product is a descentralized application based in SOLID PODs, this means that a central server wont store any user information, using the SOLID Community sistem already implemented for the signing up/login process.
 
-By default, SOLID Servers have a 25 MB disk limit. This can be a problem, for example, if the users want upload photos or videos to their routes.
+image::deployment.png[Deployment View]
+
+[cols="1,2" options="header"]
+|===
+| **Node** | **Description**
+| User computer | Device that connects to the internet to access to Viade.
+| Host | Gh-pages. Web host where the application is deployed.
+| Viade | Decentralised route tracker. It interacts with the POD to store and load the routes, media, information about the user, etc
+| SOLID POD | Decentralised store unit of the user data. Is the part that contains tha information Viade uses.
+|===
