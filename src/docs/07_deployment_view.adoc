@@ -2,33 +2,7 @@
 
 == Deployment View
 
-[plantuml,"Deployment View",png]
-----
-@startuml
-
-agent user_computer
-
-node host{
-}
-
-node Viade {
- rectangle React
- rectangle business_services
- rectangle data_services
-}
-
-cloud {
-database POD
-}
-
-
-user_computer --> host: internet
-host --> Viade: internet
-data_services --> POD: data access
-
-
-@enduml
-----
+image::deployment.png[Deployment View]
 
 [cols="1,2" options="header"]
 |===
