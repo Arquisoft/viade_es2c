@@ -2,8 +2,9 @@ import FileWriter from "../InOut/FileWriter";
 import Route from "../route/Route";
 import rutasGlobales from "../../constants/rutasGlobales";
 import {errorToaster} from '@utils';
+import JsonldToRouteParser from "./JsonldToRouteParser";
 
-var sparqlFiddle = require("./fiddle/sparql-fiddle")
+var sparqlFiddle = require("./fiddle/sparql-fiddle");
 
 class RdftoRouteParser {
 
@@ -16,8 +17,13 @@ class RdftoRouteParser {
     }
 
     singleParse(fileName, text, webID) {
-        let querySparql =
-            `PREFIX schema: <http://schema.org/>
+        let parserJSONLD = new JsonldToRouteParser(webID, text);
+        var rutaJson = parserJSONLD.parse();
+        if(rutaJson !== null){
+            errorToaster("If you want to upload "+fileName +", please download it and use our jsonld parser. " + window.location.href.replace("timeline", "createroutejsonld"),  "Error" )
+        }else{
+            let querySparql =
+                `PREFIX schema: <http://schema.org/>
       PREFIX viade:<http://arquisoft.github.io/viadeSpec/>
       PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       
@@ -34,29 +40,30 @@ class RdftoRouteParser {
         OPTIONAL {?comment schema:text ?commentText;
                            schema:publishedDate ?createdAt.}
       }`;
-        let fiddle = {
-            data: text,
-            query: querySparql,
-            wanted: "Array"
-        };
+            let fiddle = {
+                data: text,
+                query: querySparql,
+                wanted: "Array"
+            };
 
             sparqlFiddle.run(fiddle).then(
                 results => {
                     try {
-                    let name = results[0]["name"];
-                    let description = results[0]["description"];
-                    let points = this.getPoints(results);
-                    let comments = this.getComments(results);
-                    let image = this.getImage(results);
-                    let video = this.getVideo(results);
-                    let route = new Route(name, description, points, webID, comments, image, video, fileName);
-                    this.pushRoutes(route);
+                        let name = results[0]["name"];
+                        let description = results[0]["description"];
+                        let points = this.getPoints(results);
+                        let comments = this.getComments(results);
+                        let image = this.getImage(results);
+                        let video = this.getVideo(results);
+                        let route = new Route(name, description, points, webID, comments, image, video, fileName);
+                        this.pushRoutes(route);
                     }catch(err){
                         errorToaster("The route '"+fileName+"' can't be read because of it syntax", "Error")
                     }
                 },
                 err => errorToaster(err, "Error")
             );
+        }
     }
 
     pushRoutes(route) {

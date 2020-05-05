@@ -11,7 +11,7 @@ class JsonldToRouteParser{
         try{
             jsonld = JSON.parse(this.file);
         }catch (e) {
-            return new Route("", "", [], "", [], [], [], "");
+            return null;
         }
         let name = jsonld.name;
         let description = jsonld.description;
