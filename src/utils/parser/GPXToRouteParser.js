@@ -17,6 +17,18 @@ class GPXToRouteParser{
                     markers.push({position: {lat: lat, lng: lng}});
                 }
             }
+
+            if(trk.length === 0){
+                var rte = xmlDoc.getElementsByTagName("rte");
+                if(rte.length > 0 ){
+                    let rtept = rte[0].getElementsByTagName("rtept");
+                    for (let j = 0; j < rtept.length; j++) {
+                        let lat = parseFloat(rtept[j].getAttribute('lat'));
+                        let lng = parseFloat(rtept[j].getAttribute('lon'));
+                        markers.push({position: {lat: lat, lng: lng}});
+                    }
+                }
+            }
             return markers;
 
         }catch (e) {
