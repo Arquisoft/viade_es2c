@@ -11,7 +11,7 @@ const Share2 = props => {
     const friends = useLDflexList('user.friends');
     const [show, setShow] = useState(false);
     let friendList = [];
-    let routeFileName =  route.author.replace("profile/card#me", "viade/" + route.fileName);
+    let routeFileName =  route.author.replace("profile/card#me", "viade/routes/" + route.fileName);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
