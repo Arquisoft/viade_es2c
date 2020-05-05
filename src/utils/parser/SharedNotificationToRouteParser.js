@@ -9,7 +9,8 @@ class SharedNotificationToRouteParser {
     }
 
     addRoutes(url) {
-        url = url.replace("viade", "inbox");
+        url = url.replace("viade/routes", "inbox");
+        console.log(url)
         FileWriter.readFolder(url, this.multiParse.bind(this), this.user);
     }
 

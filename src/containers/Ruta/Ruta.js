@@ -125,7 +125,9 @@ class Ruta extends Component {
         if (commentarios.length === 0) {
             ReactDOM.render(<Card><Card.Body><Card.Title>{t('comment.noComments')}</Card.Title></Card.Body></Card>, domContainer);
         } else {
+            console.log(commentarios)
             ReactDOM.render(commentarios, domContainer);
+
         }
     }
 
