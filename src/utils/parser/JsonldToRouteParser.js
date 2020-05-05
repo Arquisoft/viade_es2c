@@ -1,4 +1,5 @@
 import Route from "../route/Route";
+import {errorToaster} from '@utils';
 
 class JsonldToRouteParser{
     constructor(webID, file) {
@@ -13,52 +14,57 @@ class JsonldToRouteParser{
         }catch (e) {
             return null;
         }
-        let name = jsonld.name;
-        let description = jsonld.description;
-        let points = [];
-        let author = this.webID;
-        let commentsAux = jsonld.comments;
-        let media = jsonld.media;
-        let filename = name.trim().replace(/ /g, "") + new Date().getTime();
-        let images = [];
-        let videos = [];
-        let comments = [];
-        try {
-            // eslint-disable-next-line array-callback-return
-            media.map(function (media) {
-                if (media["@id"].toString().includes(".mp4")) {
-                    videos.push(media["@id"]);
-                }
-                if (media["@id"].toString().includes(".jpg")) {
-                    images.push(media["@id"]);
-                }
-                if (media["@id"].toString().includes(".png")) {
-                    images.push(media["@id"]);
-                }
+        try{
+            let name = jsonld.name;
+            let description = jsonld.description;
+            let points = [];
+            let author = this.webID;
+            let commentsAux = jsonld.comments;
+            let media = jsonld.media;
+            let filename = name.trim().replace(/ /g, "") + new Date().getTime();
+            let images = [];
+            let videos = [];
+            let comments = [];
+            try {
+                // eslint-disable-next-line array-callback-return
+                media.map(function (media) {
+                    if (media["@id"].toString().includes(".mp4")) {
+                        videos.push(media["@id"]);
+                    }
+                    if (media["@id"].toString().includes(".jpg")) {
+                        images.push(media["@id"]);
+                    }
+                    if (media["@id"].toString().includes(".png")) {
+                        images.push(media["@id"]);
+                    }
 
-            });
-        } catch (e) {}
+                });
+            } catch (e) {}
 
-        try {
-            // eslint-disable-next-line array-callback-return
-            commentsAux.map(function (comment) {
-                if (comment.comment.text != null && comment.comment.createdAt != null) {
-                    let text = comment.text;
-                    let createdAt = comment.createdAt;
-                    let comentario = {comment: {text: text, createdAt: createdAt}};
-                    comments.push(comentario)
-                }
-            });
-        } catch (e) {}
+            try {
+                // eslint-disable-next-line array-callback-return
+                commentsAux.map(function (comment) {
+                    if (comment.comment.text != null && comment.comment.createdAt != null) {
+                        let text = comment.text;
+                        let createdAt = comment.createdAt;
+                        let comentario = {comment: {text: text, createdAt: createdAt}};
+                        comments.push(comentario)
+                    }
+                });
+            } catch (e) {}
 
-        try {
-            // eslint-disable-next-line array-callback-return
-            jsonld.points.map(function (point) {
-                points.push({position: {lat: point.latitude, lng: point.longitude}});
-            });
-        } catch (e) {}
+            try {
+                // eslint-disable-next-line array-callback-return
+                jsonld.points.map(function (point) {
+                    points.push({position: {lat: point.latitude, lng: point.longitude}});
+                });
+            } catch (e) {}
 
-        return new Route(name, description, points, author, comments, images, videos, filename);
+            return new Route(name, description, points, author, comments, images, videos, filename);
+        }catch (e) {
+            errorToaster("A route can't be read because of it syntax", "Error")
+        }
+
     }
 
 }
