@@ -7,6 +7,5 @@ Security and privacy is Viade priority. Users can store their routes in their ow
 
 Viade can import created routes in some of the most used formats in the routes management apps.
 
-=== Business & Technical Context
-
-image::03-Context.png[Business Diagram]
+.Business & Technical Context
+image::03-Context.png[Business & Technical Context]
