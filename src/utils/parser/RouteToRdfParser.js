@@ -12,7 +12,7 @@ class RouteToRdfParser {
         let viadePoints = this.getViadePoints();
         let comments = this.getComments();
         let media = this.getMedia();
-        FileWriter.handleSave(this.route.author.replace("/profile/card#me", "/") + "viade/" + this.route.fileName, (String)(prefixs + information + viadePoints + comments + media))
+        FileWriter.handleSave(this.route.author.replace("/profile/card#me", "/") + "viade/routes/" + this.route.fileName, (String)(prefixs + information + viadePoints + comments + media))
     }
 
     ovewrite() {
@@ -21,7 +21,7 @@ class RouteToRdfParser {
         let viadePoints = this.getViadePoints();
         let comments = this.getComments();
         let media = this.getMedia();
-        FileWriter.overWrite(this.route.author.replace("/profile/card#me", "/") + "viade/" + this.route.fileName, (String)(prefixs + information + viadePoints + comments + media))
+        FileWriter.overWrite(this.route.author.replace("/profile/card#me", "/") + "viade/routes/" + this.route.fileName, (String)(prefixs + information + viadePoints + comments + media))
     }
 
     getPrefix() {
