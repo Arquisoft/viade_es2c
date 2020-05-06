@@ -1,7 +1,7 @@
 [[section-solution-strategy]]
 == Solution Strategy
 
-In this section, we are going to summarize the fundamental strategies and decisions during the development of our project.
+In this section, we summarize the fundamental strategies and decisions during the development of our project.
 
 First of all, we have to remember that Viade is a decentralized routes management system based on the solid specifications and React framework, so our plans and resolutions need to be consistent with those characteristics.
 
@@ -9,15 +9,33 @@ Let's talk about Technical decisions:
 
 * *Using JavaScript*: We talked about how to implement the logic of the project. We can take advantage of the functionalities of React, but perhaps we would need to implements something more complicated, so we agreed on using JavaScript because we have already used it and it allows us to do all the logic we thought about.
 
-* *Use the React Solid template as a base*: We don't have much time or experience, so we used a template to start our project.
+* *Use the React Solid template as a base*: We didn't have much time or experience, so we used a template to start our project. https://github.com/inrupt/generator-solid-react[Here] is the link.
 
-* *Libraries*: We opened an link:https://github.com/Arquisoft/viade_es2c/issues/5[issue] in our GitHub repository where we researched possible libraries to use.
+* *Libraries*: Here you can see some of the libraries we used:
+[options="header",cols="1,2,2"]
+|===
+|Name|Link|Comments
+| react-i18next | https://github.com/i18next/react-i18next | We used it to for internationalization
+| react | https://es.reactjs.org/ |  Its the software we used for the interface
+| react-toastify | https://github.com/fkhadra/react-toastify |  We used it to show some notifications to the user (like success messages)
+| solid-react-components | https://github.com/solid/react-components | some of our components come from here 
+| react-bootstrap | https://react-bootstrap.github.io/ | To create some components  
+| solid-auth-client | https://github.com/solid/solid-auth-client | We used it for the login part and uploading data to the POD 
+| solid-file-client | https://github.com/jeff-zucker/solid-file-client | We used it to search in the POD, load from it, delete files, etc
+| sparql-fiddle | https://github.com/jeff-zucker/sparql-fiddle | We implemented it to be able to use sparql queries in our parsers.
+| jest | https://jestjs.io/ | We used it to implement some test
+| shx | https://github.com/shelljs/shx | To execute some commands (like the one that compiles this documentation) 
+| cucumber | https://cucumber.io/ | For BBDD testing
+| query-ldflex | https://github.com/solid/query-ldflex | We used it to find some info from solid 
+| google-maps-react | https://www.npmjs.com/package/google-maps-react | We created our map with it, but we do not recommend it because the author stopped maintaining it 
+|===
 
-* *Pull request*: We decided that we are going to use the "pull request" functionality of GitHub because it seems that it helps you get better results in your commits.
 
-* *Puppeteer*: We are going to use Puppeteer to create our tests.
+* *Pull request*: We decided to use the "pull request" functionality of GitHub because it seems that it helps you get better results in your commits.
 
-* *WebStorm*: We will use WebStorm to develop our app because of all the facilities that it gives us for the React programming part
+* *Jest*: We used Jest to create our tests.
+
+* *WebStorm*: We used WebStorm to develop our app because of all the facilities that it gives us for the React programming part
 
 * *Parsers*: A good application should be able to admit differents formats, so we used some parsers to let the user create a route through them.
 
@@ -31,12 +49,12 @@ We want to fulfill some quality goals:
 
 And this are our organization decisions:
 
-* *Kanban*: We also talked about using the "Project" tab of GitHub that resembles a kanban board. We are going to use it to get organized because we use that methodology last semester and it works fine.
+* *Kanban*: We also talked about using the "Project" tab of GitHub that resembles a kanban board. We used it to get organized because we used that methodology last semester and it works fine.
 
-* *Issues*: We want to register our group communications to show all of our work throughout the making of Viade, so we are going to try to create a lot of issues in the GitHub repository.
+* *Issues*: We want to register our group communications to show all of our work throughout the making of Viade, so we created a lot of issues in the GitHub repository.
 
-* *WhatsApp*: It is quicker and simpler to communicate using a group chat, so we are going to use WhatsApp (the common chat app used in Spain) while trying not to stop creating GitHub issues.
+* *WhatsApp*: It is quicker and simpler to communicate using a group chat, so we used WhatsApp (the common chat app used in Spain) while trying not to stop creating GitHub issues.
 
 * *English*: We agreed on writing it in English because is the prevalent language used in informatic's documentation projects.
 
-With these decisions and plans, we want to create a good decentralized routes management system and fulfill all the requisites of the problem statement.
+With these decisions and plans, we wanted to create a good decentralized routes management system and fulfill all the requisites of the problem statement.
