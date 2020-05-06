@@ -5,13 +5,19 @@
 |===
 | Term              | Definition
 | Asciidoctor | Lightweight markup language for authoring notes, articles, documentation, books, web pages, ...
+| Bootstrap | The most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.
 |Cucumber | Software tool that supports behavior-driven development (BDD).
 | Descentralized    | Something that is not controlled from one central place.
 | Docker | Open source software platform to create, deploy and manage virtualized application containers on a common operating system (OS).
 | Framework | A basic structure underlying a system, concept, or text..
+| Geojson | Format for encoding a variety of geographic data structures.
 | GitHub | Web-based version-control and collaboration platform for software developers.
+| Gpx | Gpx, or GPS Exchange Format, is an XML schema designed as a common GPS data format for software applications. It can be used to describe waypoints, tracks, and routes.
 | I/O | Short for input/output (pronounced "eye-oh"). The term I/O is used to describe any program, operation or device that transfers data to or from a computer and to or from a peripheral device.
 |JavaScript | An object-oriented computer programming language commonly used to create interactive effects within web browsers.
+|Jest | A delightful JavaScript Testing Framework with a focus on simplicity.
+|JSON | JavaScript Object Notation is a lightweight data-interchange format.
+| JSON-LD | JavaScript Object Notation for Linked Data is a method of encoding linked data using JSON.
 | Kanban | Visual system for managing work as it moves through a process.
 | Minimalist | Design approach that is characterized by austerity and laconism in decoration.
 | Parser | Compiler or interpreter component that breaks data into smaller elements for easy translation into another language.
