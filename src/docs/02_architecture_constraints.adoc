@@ -7,13 +7,13 @@
 
 Previous architecture decisions that may impact the solution design.
 
-[options="header",cols="1,2"]ne
+[options="header",cols="1,2"]
 |===
 |Constraint|Explanation
 | SOLID and its PODs for a decentralized  architecture | One of the aims of 'Viade' is to be a decentralized app, so we need a decentralized  technology like SOLID and its PODs
 | React for presentation | We were told to use 'React' in our project
 | Use of GitHub | Our project is going to be hosted on a GitHub repository
-| Testing | We need to create tests so we can be sure that our project is correct and it is working like it has to work and we need to have at least a 60% of coverage
+| Jest | We need to create tests so we can be sure that our project is correct and it is working like it has to work and we need to have at least a 60% of coverage
 | Cucumber | Our project needs to implements some cucumber tests
 | Gatling | We need to test how the app would work if it's used by more than one user
 | Docker | Viade has to have a Dockerfile and a docker-compose.yml file

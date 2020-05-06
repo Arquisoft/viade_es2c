@@ -6,12 +6,19 @@
 image::10_QualityRequirements.png[Quality Tree]
 
 === Quality Scenarios
-[options="header",cols="1,2,1"]
+[options="header",cols="1,1,2,1"]
 |===
-| Quality attribute | Quality scenario | Priority
-| Privacy | The user is the owner of his data according to the SOLID principles | HIGH/HIGH 
-| Usability | The user must have to use all the features of the application easily  | HIGH/HIGH
-| Maintainability | The architecture of the system should be well designed, this will allow to the developers to add features and modify it easily | MEDIUM/LOW
-| Scalability | The response times of the app must be less than 1 second while the application is not overloaded | MEDIUM/HIGH
-| Availability | The users must have his routes available when they want to look for it | HIGH/HIGH
+|ID| Quality attribute | Quality scenario | Priority
+|1-P| Privacy | The user is the owner of his data according to the SOLID principles but we store the user comments in a route in the pod of the author routes, so we can't say that the user is the only proprietary of all of his data. We can say that he can control more than 90% of his data | HIGH/HIGH 
+|2-P| Privacy | The user can control the media that he attached to a route | HIGH/HIGH 
+|1-U| Usability | The user must have to use all the features of the application easily  | HIGH/HIGH
+|2-U| Usability | AA daltonic user could use viade because we use colors that don't usually give them problems | MEDIUM/LOW
+|3-U| Usability | The user can automatically give the necessary permissions to a friend while sharing a route with him | MEDIUM/LOW
+|4-U| Usability | The user can easily find an option in the viade menu | MEDIUM/LOW
+|1-I | Interoperability | The user can upload a route in a geojson format | MEDIUM/MEDIUM
+|2-I | Interoperability | The user can upload a route in a gpx format | MEDIUM/MEDIUM
+|3-I | Interoperability | The user can upload a route in a json-ld format | MEDIUM/MEDIUM
+|1-M| Maintainability | The architecture of the system should be well designed, this will allow the developers to add features and modify it easily | MEDIUM/LOW
+|1-S| Scalability | We did some tests and when our app received 2900 request, could process 2534 in less than 800 ms, 270 in less than 1200 ms and only 96 failed, so we can assume that our viade app could process the 95% of the requests in less than 800 ms. | MEDIUM/HIGH
+|1-A| Availability | In our tests, viade only failed in the 3% of the request, so we can be available the 97% of the time. | HIGH/HIGH
 |===

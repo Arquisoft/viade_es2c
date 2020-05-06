@@ -32,3 +32,59 @@ The feature folder has some other files for testing the app.
 The public folder has the images that viade is using (like icons or the actual logo) and the locales with the texts of the app in different folders so viade can be internationalized.
 
 At last, the scripts folder has some js scripts to start the app, build it and execute the tests, to run them you just have to type "npm run " + the name of the script without the extension.
+
+=== What do we use
+
+To create our files and work with them, we do not use all of the data that the user gives to us. Of course, if the user creates a route using our map, we would only ask for the necessary data, but if he uses our parsers (geojson, gpx or json-ld) we will only take some data from them, like track points from gpx or name, points, description,... from json-ld. In summary, we will only take the necessary data to create a simple route with the same fields that appear in the page where you create a route with our map (and some others like the author o the fileName, but viade does that automatically)
+
+=== Error handling
+
+We decided to show the user some errors that can be important for him. An example is showing wich routes viade can't show in the timeline because of a bad syntax or internal error. We also try to be consistent and try to make viade be still operative even if there are some errors.
+
+=== A valid file
+
+We use turtle to write the routes in the POD. You can use json-ld or any other typical format but only if you use the parsers that viade gives to you. If you want viade to upload a json-ld route from your POD and show it, it won't happend (at least in this version of viade). A valid route wrote in turtle for viade would be:
+
+....
+@prefix viade:  <http://arquisoft.github.io/viadeSpec/>.
+@prefix :   <http://example.org/>. 
+@prefix schema: <http://schema.org/>.
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#>.
+:myRoute a viade:Route ;
+schema:name "Route" ;
+schema:description "Description" ;
+viade:point [ 
+ schema:latitude 43.52288176910197 ;
+ schema:longitude -5.672779401110839 
+ ];
+viade:point [ 
+ schema:latitude 43.52618017535388 ;
+ schema:longitude -5.653982480334472 
+ ];
+viade:point [ 
+ schema:latitude 43.531469695619926 ;
+ schema:longitude -5.659475644396972 
+ ];
+viade:hasComments [ 
+ schema:text "This is a comment!" ; 
+ schema:publishedDate "7/5/2020" 
+ ];
+viade:hasMediaAttached [ 
+ schema:contentUrl "https://anagciaschz4.solid.community/viade/resources/stay-home.png" 
+ ];
+viade:hasMediaAttached [ 
+ schema:contentUrl "https://anagciaschz4.solid.community/viade/resources/videoplayback.mp4" 
+ ] .
+....
+
+=== Internationalization
+
+In this version, we only support Spanish and English. We have the infrastructure  to add more languages just by creating a new file, so in the future, we can add more if viade becomes popular.
+
+=== Testability
+
+At this moment, more than the 65% of our code include test so we can say that more of our code lines seems to work perfectly. 
+
+
+

@@ -32,13 +32,8 @@ According to the priority of each requirement, we can order them as you can read
 | Teacher | https://github.com/labra | He will evaluate our project 
 | Solid community | https://solid.mit.edu | Resource for the Solid project
 | Developers | https://github.com/Arquisoft/viade_es2c | They will develop the architecture and the code of the application
+|Inrupt | https://inrupt.com/ | They will judge our app because it will be shown in the inrupt challenge
 |Technical Users | | People that have some experience in the route's world and know some technical concepts
 |Non-technical users | | People that is new in the world and have never used a route's management app before
 | Disabled users | | Users who have some kind of disability
-|Users without an account | | People new in the SOLID or Inrupt community and want to use our app
-|Users with an account | | User's from SOLID or Inrupt who want to use our app
-| Young users | | Young people who will use our app
-| Old users | | Old people who will use our app 
-| Users with computers | | Users that will use Viade through a computer
-| Users with phones | | Users that will use our app through a movile phone
 |===
