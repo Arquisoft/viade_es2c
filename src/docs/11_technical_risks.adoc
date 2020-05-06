@@ -17,4 +17,7 @@ Actually, the technical debts are the following:
 | MEDIUM | Comments spec | The comments doesnt follow the Viade specification | The user's cant see who posted a comment
 | MEDIUM | Map markers | User cannot delete an marker from the map | Use another map API
 | HIGH | Interoperability | Viade is not interoperable with other Viade's apps | Work more with ViadeEspec
+| MEDIUM | Internationalization |We have some parts that are not correctly internationalized | have more time to fix it
+| MEDIUM | Parsers | The parser that writes the turtle has the lines directly in the code and it's not elegant | Use ldflex or another library to create the triplets of turtle
+| HIGH | Security | We have the queries directly in the code so we can suffer an SQLInjection | extract the query and add it to a protected file
 |===

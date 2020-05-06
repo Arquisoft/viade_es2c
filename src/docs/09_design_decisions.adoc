@@ -4,9 +4,13 @@
 [options="header",cols="1,2,2"]
 |===
 |Decision|Pro|Con
-| Minimalist style | It will be more usable and simple to distinguise the options | It maybe would look boring if we dont do it properly
+| Minimalist style | It will be more usable and simple to distinguish the options | It maybe would look boring if we don't do it properly
 | The timeline page will contain all user routes and all routes shared to the user.  | The user will be able to see all the routes at once | it can be difficult to find a route if there are many created and shared routes
-| The profile will contain routes created by the user | More intuitive and organized for the user | We will have to contain all the data in an accesible POD
-| The new route page will users starting and creating a new route with a map| Intuitive and usable | Markers cannot ben deleted
-| The routes can be accessed from timeline in a popup | It reduces the loading time | It is not possible to open more than one route at the same time
+| The new route page will let users create a new route with a map| Intuitive and usable | Markers cannot ben deleted
+| We will accept routes in the common formats so viade van be a little interoperable| We give more options to the user | We have to learn about other formats and how to get the data that we need for viade from them
+| The routes can be accessed from the timeline in a popup | It reduces the loading time | It is not possible to open more than one route at the same time
+| We will show all necessary errors to the user | It gives the user important information | If the user has a lot of errors it could give a bad impression of viade
+| Information about covid-19 in the main page | We can inform our users about it | It's not information about routes or viade so maybe a user would not like it
+| Internationalization | We can be used by people from other countries | We can forget to internationalize come parts because we do not have much time
+| Use green, purple and white colors | We can have a consistent look | It can cause problems to some daltonic users
 |===
