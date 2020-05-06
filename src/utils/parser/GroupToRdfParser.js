@@ -13,7 +13,7 @@ class GroupToRdfParser{
         let prefixs = this.getPrefix();
         let information = this.getInformation();
         let participants = this.getParticipants();
-        FileWriter.handleSave(this.author.replace("/profile/card#me","/") +"viade/groups/"+this.fileName,(String)(prefixs+information+participants));
+        FileWriter.handleSave(this.author.replace("/profile/card#me","/") +"viade/viade2cgroups/"+this.fileName,(String)(prefixs+information+participants));
     }
 
     getPrefix(){

@@ -97,33 +97,46 @@ const CreateRouteJSONLD = ({webId, test}: Props) => {
         geojson = file.target.result.toString();
         let parser = new JsonldToRouteParser(webID, geojson);
         let route = parser.parse();
-        const title = document.getElementById("input-title");
-        title.value = route.name;
-        setTitle(route.name);
-        const description = document.getElementById("input-description");
-        description.value = route.description;
-        setDescription(route.description);
-        markers = route.points;
+        if(route !== null && route !== true){
+            const title = document.getElementById("input-title");
+            title.value = route.name;
+            setTitle(route.name);
+            const description = document.getElementById("input-description");
+            description.value = route.description;
+            setDescription(route.description);
+            markers = route.points;
 
-        if (route.image.length !== 0) {
-            setPhotoURLJSON(route.image)
+            if (route.image.length !== 0) {
+                setPhotoURLJSON(route.image)
+            }
+            if (route.video.length !== 0) {
+                setVideoURLJSON(route.video);
+            }
+            if (route.comments.length !== 0) {
+                setcommentsJSON(route.comments);
+            }
+            const domContainer = document.querySelector('#multimediacargada');
+            let multimediacargada = '<h5>Archivos multimedia cargados:</h5><ul>';
+            for(let i = 0; i<route.image.length; i++){
+                multimediacargada += '<li>'+route.image[i]+'</li>';
+            }
+            for(let i = 0; i<route.video.length; i++){
+                multimediacargada += '<li>'+route.video[i]+'</li>';
+            }
+            multimediacargada += '</ul>';
+            domContainer.innerHTML = multimediacargada;
+        }else{
+            markers = [];
+            errorToaster(t('notifications.parsererror'), t('notifications.error'));
+            const domContainer = document.querySelector('#multimediacargada');
+            domContainer.innerHTML= '';
+            setTitle("");
+            setDescription("");
+            setPhotoURLJSON([]);
+            setVideoURLJSON([]);
+            setcommentsJSON([]);
         }
-        if (route.video.length !== 0) {
-            setVideoURLJSON(route.video);
-        }
-        if (route.comments.length !== 0) {
-            setcommentsJSON(route.comments);
-        }
-        const domContainer = document.querySelector('#multimediacargada');
-        let multimediacargada = '<h5>Archivos multimedia cargados:</h5><ul>';
-        for(let i = 0; i<route.image.length; i++){
-            multimediacargada += '<li>'+route.image[i]+'</li>';
-        }
-        for(let i = 0; i<route.video.length; i++){
-            multimediacargada += '<li>'+route.video[i]+'</li>';
-        }
-        multimediacargada += '</ul>';
-        domContainer.innerHTML = multimediacargada;
+
     }
 
     function handleUpload(event) {
