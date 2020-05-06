@@ -32,11 +32,9 @@ Giving a deeper insight into Viade application.
 |Parsers | They let the user import a created route from other app
 | PODs | Where Viade obtains the routes information, media or user's data and where viade stores the routes and media created in their classes.
 |User | Same user as the last level
-| Routes in a non-turtle format | Viade can create a route to work with from a GEP or Geojson route and then create a turtle version to store it in the User's POD
+| Routes in a non-turtle format | Viade can create a route to work with from a GPX, JSON-LD or Geojson route and then create a turtle version to store it in the User's POD
 |===
 
-Level 3::
+*Level 3*
 
-Viade will have to be meant as a decentralised route tracker application, which will also have to implement several requirements such as services, models & any other needed component. SOLID is the decentralisation specification that the team is going to be following all over the project development.
-
-Some essential technologies such as RDF, which coordinates the POD data, are going to be establishing the foundation of the project.
+In viade we have a lot of components in the 3rd level that shoul be described, like the functionaliti of the parsers (when you read a route from the pod is the filewriter class the component that calls the parser, but when you write a route the parser calls the filewriter component), the classes that creates a route calls a parser so they can store the new routein the user's POD, the media is taken from the POD in the moment that the user wanto to see the route's details, etc
