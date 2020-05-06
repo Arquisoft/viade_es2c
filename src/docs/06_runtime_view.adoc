@@ -76,3 +76,14 @@ User -> ShowRoutes: Comment
 ShowRoutes -> UserPOD: Overwrite the route
 ShowRoutes -> User: Show route comments
 ----
+
+[plantuml,"MAP KEYS",png]
+----
+title MAP KEYS
+actor User
+participant Page
+database POD
+User -> Page: Action
+Page -> POD: Action
+POD -> User: Action
+----
