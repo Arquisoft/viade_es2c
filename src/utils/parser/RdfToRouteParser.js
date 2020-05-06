@@ -87,7 +87,9 @@ class RdftoRouteParser {
         for (let i = 0; i < documentos.length; i++) {
             FileWriter.handleLoad(url + documentos[i], documentos[i], this.singleParse.bind(this), webID);
         }
-        warningToaster("Algunas de tus rutas no son compatibles con esta aplicación", "AVISO")
+        if(this.errorLoading){
+            warningToaster("Algunas de tus rutas no son compatibles con esta aplicación", "AVISO")
+        }
     }
 
 
