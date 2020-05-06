@@ -8,7 +8,9 @@ image::deployment.png[Deployment View]
 |===
 | **Node** | **Description**
 | User computer | Device that connects to the internet to access to Viade.
-| Host | Gh-pages. Web host where the application is deployed.
+| Browser | Software application for accessing information on the World Wide Web. When a user requests a particular website, the web browser retrieves the necessary content from a web server and then displays the resulting web page on the user's device.
+| Host | Gh-pages. Web host where the application is deployed. The user's browser accesses it with https requests
 | Viade | Decentralised route tracker. It interacts with the POD to store and load the routes, media, information about the user, etc
+| POD Provider | Solid, Inrupt, own node solid server...
 | SOLID POD | Decentralised store unit of the user data. Is the part that contains tha information Viade uses.
 |===
