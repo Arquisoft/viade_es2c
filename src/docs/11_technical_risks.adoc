@@ -1,12 +1,20 @@
 [[section-technical-risks]]
 == Risks and Technical Debts
-[options="header",cols="1,3,3,3"]
+
+The project has hardly any risks in the usage scenario, but there are some risks contemplated:
+[options="header",cols="3,3,3"]
 |===
-| Priority | Risk | Consequence | Possible Solution
-| LOW | Using a deprecated library | Impossibility of using new features | Find a new library or include new complementary library
+| Risk | Consequence | Possible Solution
+| Limit the possibility of including videos and images in posts | Add only one of each (video and image) | Change the code to let the user add more media
+| Use deprecated libraries | Implement new features can be impossible or quite tedious | Find new libraries or include new complementary libraries
+|===
+
+Actually, the technical debts are the following:
+[options="header",cols="3,3,3,3"]
+|===
+| Priority | Technical Debt | Consequence | Possible Solution
 | HIGH | Friend groups | It is not possible to share routes with more than one user at the same time | Create a service to share routes to groups
 | MEDIUM | Comments spec | The comments doesnt follow the Viade specification | The user's cant see who posted a comment
-| MEDIUM | Media | In Viade you can only add one video and one image | Change the code to let the use add more media
 | MEDIUM | Map markers | User cannot delete an marker from the map | Use another map API
 | HIGH | Interoperability | Viade is not interoperable with other Viade's apps | Work more with ViadeEspec
 |===

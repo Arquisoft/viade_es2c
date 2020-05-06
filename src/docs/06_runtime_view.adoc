@@ -32,45 +32,47 @@ The users use the application to manage their routes.
 ----
 title User creates a new route
 actor User1
-participant Viade1
+participant CreateRoutePage
+participant TimelinePage
 database POD
-User1 -> Viade1: 1. goes to create new route page
-User1 -> Viade1: 2. select one of the available methods to create it
-User1 -> Viade1: 3. fill in the route information and add multimedia
-Viade1 -> POD: 4. saves the route
-Viade1 -> User1: returns a message of correct stored
+User1 -> CreateRoutePage: Click in navegation bar option "Create route"
+User1 -> CreateRoutePage: Select the method to create the route
+User1 -> CreateRoutePage: Fill the route information
+CreateRoutePage -> POD: Parse route to turtle and stores it
+CreateRoutePage -> User1: Show message reporting success
+CreateRoutePage -> TimelinePage: Redirect the page to show the route
+POD -> TimelinePage: Parse turtle to route and loads it
 ----
 
 [plantuml,"Routes share 1 secuence diagram",png]
 ----
 title User shares route to a friend
+title User shares route to a friend
 actor User1
-participant Viade1
+participant ShowRoutes1
 database User1POD
 database User2POD
-participant Viade2
+participant ShowRoutes2
 actor User2
-User1 -> Viade1: 1. create new route
-Viade1 -> User1POD: 1. saves the route
-User1 -> Viade1: 2. user search his route in the route list page
-User1 -> Viade1: 3. user type friend's weID
-Viade1 -> User1POD: 4. gives read permissions to the friend
-Viade1 -> User2POD: 5. send notification with route uri
-Viade2 -> User2POD: 6. read inbox to search shared routes
-Viade2 -> User1POD: 7. access route
-Viade2 -> User2: 8. show route
+User1 -> ShowRoutes1: Click in navegation bar option "Show Routes"
+User1 -> ShowRoutes1: Search the route
+User1 -> ShowRoutes1: Click share and select friend
+ShowRoutes1 -> User1POD: Give User2 read permission in the route
+ShowRoutes1 -> User2POD: Send a notification reporting the route has been shared
+ShowRoutes2 -> User2POD: Search for shared routes
+ShowRoutes2 -> User1POD: Read the route
+ShowRoutes2 -> User2: Show the route
 ----
 
 [plantuml,"Routes comment secuence diagram",png]
 ----
 title User comments a route
-actor User1
-participant Viade1
-database User1POD
-database User2POD
-User1 -> Viade1: 1. goes to routes list and choose one route
-User1 -> Viade1: 2. add a new comment
-Viade1 -> User1POD: 3. overwrite the route in POD
-Viade1 -> User2POD: 3. overwrite the route in POD friend (if route is shared)
-Viade1 -> User1: 4. show route comments
+actor User
+participant ShowRoutes
+database UserPOD
+User -> ShowRoutes: Click in navegation bar option "Show Routes"
+User -> ShowRoutes: Search the route
+User -> ShowRoutes: Comment
+ShowRoutes -> UserPOD: Overwrite the route
+ShowRoutes -> User: Show route comments
 ----
