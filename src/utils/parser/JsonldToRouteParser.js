@@ -1,5 +1,4 @@
 import Route from "../route/Route";
-import {errorToaster} from '@utils';
 
 class JsonldToRouteParser{
     constructor(webID, file) {
@@ -62,7 +61,7 @@ class JsonldToRouteParser{
 
             return new Route(name, description, points, author, comments, images, videos, filename);
         }catch (e) {
-            errorToaster("A route can't be read because of it syntax", "Error")
+            return true;
         }
 
     }

@@ -26,7 +26,7 @@
     "sendNotification": "Error: RouteConst > sendNotification",
     "markers": "Add markers to the map to create the route",
     "uploadfile": "Please upload a file",
-    "parsererror": "Something went wrong. Your file may be invalid"
+    "parsererror": "Something went wrong. Your file may not be compatible with this application."
   },
   "login": {
     "title": "Hi! Welcome to Viade.",
@@ -237,6 +237,7 @@
     "add": "Add comment",
     "show": "Show comment",
     "noComments": "No comments.",
+    "noMedia": "No media.",
     "createdAt": "Created at "
   },
   "covid": {

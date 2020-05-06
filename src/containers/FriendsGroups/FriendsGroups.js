@@ -16,7 +16,7 @@ let groupsLi = null;
 function FriendsGroups(){
     const {t} = useTranslation();
     trackSession(function(webId){
-        let url = webId.replace("profile/card#me", "viade/groups/");
+        let url = webId.replace("profile/card#me", "viade/viade2cgroups/");
         loadGroups(url,webId,async function(groups){
             groupsLi = [];
             console.log(groups);

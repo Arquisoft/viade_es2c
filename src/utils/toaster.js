@@ -16,3 +16,10 @@ export const successToaster = (content: String, title: String = null, link: Obje
     type: 'success',
     position: toast.POSITION.BOTTOM_CENTER
   });
+
+export const warningToaster = (content: String, title: String = null, link: Object) =>
+    toast(<Toaster {...{ content, title, type: 'success', link }} />, {
+        className: 'solid-toaster toaster-warning',
+        type: 'warning',
+        position: toast.POSITION.BOTTOM_CENTER
+    });

@@ -67,8 +67,6 @@ const CreateRouteGPX = ({webId, test}: Props) => {
                     if(videoURL !== ""){
                         arrayvideo.push(videoURL);
                     }
-                    console.log(arrayphoto)
-                    console.log(arrayvideo)
                     let route = new Route(title, description, markers, webID, [], arrayphoto, arrayvideo, filename);
                     let parser = new RouteToRdfParser(route, webID);
                     parser.parse();

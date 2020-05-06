@@ -26,7 +26,7 @@
     "sendNotification": "Error: RouteConst > sendNotification",
     "markers": "Añada marcadores al mapa para crear la ruta",
     "uploadfile": "Suba un archivo",
-    "parsererror": "Algo ha salido mal. Es posible que su archivo no sea válido"
+    "parsererror": "Algo ha salido mal. Es posible que su archivo no sea compatible con esta aplicacion"
   },
   "login": {
     "title": "Hola! Bienvenido a Viade",
@@ -241,6 +241,7 @@
     "add": "Añadir comentario",
     "show": "Mostrar comentarios",
     "noComments": "No hay comentarios en esta ruta.",
+    "noMedia": "No hay multimedia en esta ruta.",
     "createdAt": "Creado el "
   },
   "covid": {

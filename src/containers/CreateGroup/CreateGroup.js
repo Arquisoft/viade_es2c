@@ -65,19 +65,18 @@ function handleFriendSelected(event){
  * function for Creating the group into the POD
  */
 function handleCreate(){
-    const {t} = useTranslation();
     if(name.trim().length === 0){
-        errorToaster(t('friendsGroups.errorGroupName'),'Error');
+        errorToaster('El grupo necesita un nombre','Error');
     }
     else if(friendsSelected.length === 0){
-        errorToaster(t('friendsGroups.errorFriend'),'Error');
+        errorToaster('Necesitas añadir al menos un amigo al grupo','Error');
     }
     else if(name.trim().length > 0 && friendsSelected.length > 0){
             let filename = name.trim().replace(/ /g, "") + new Date().getTime();
             let parser = new GroupToRdfParser(friendsSelected,name,description,filename,author);
             parser.parse();
             cleanInputs();
-            successToaster(t('friendsGroups.creating'), t('friendsGroups.done'));
+            successToaster("Creando el grupo", 'Éxito');
             setTimeout(function () {
             window.location.href = '#/friendsGroups'
             }, 3000);

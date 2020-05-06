@@ -1,6 +1,6 @@
 import {media} from './styledComponents';
 import {expandedProperty} from './context';
-import {errorToaster, successToaster} from './toaster';
+import {errorToaster, successToaster, warningToaster} from './toaster';
 import * as ldflexHelper from './ldflex-helper';
 import * as notification from './notification';
 import * as storageHelper from './storage';
@@ -21,5 +21,6 @@ export {
   successToaster,
   errorToaster,
   notification,
-  permissionHelper
+  permissionHelper,
+  warningToaster
 };

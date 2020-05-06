@@ -1,12 +1,16 @@
 import FileWriter from "../InOut/FileWriter";
 import Route from "../route/Route";
 import rutasGlobales from "../../constants/rutasGlobales";
-import {errorToaster} from '@utils';
+import {warningToaster} from '@utils';
 import JsonldToRouteParser from "./JsonldToRouteParser";
 
 var sparqlFiddle = require("./fiddle/sparql-fiddle");
 
 class RdftoRouteParser {
+
+    constructor() {
+        this.errorLoading = false;
+    }
 
     addRoute(fileName, url, webId) {
         FileWriter.handleLoad(url, fileName, this.singleParse.bind(this), webId);
@@ -19,9 +23,10 @@ class RdftoRouteParser {
     singleParse(fileName, text, webID) {
         let parserJSONLD = new JsonldToRouteParser(webID, text);
         var rutaJson = parserJSONLD.parse();
-        if(rutaJson !== null){
-            errorToaster("If you want to upload "+fileName +", please download it and use our jsonld parser. " + window.location.href.replace("timeline", "createroutejsonld"),  "Error" )
-        }else{
+        if (rutaJson !== null) {
+            // errorToaster("If you want to upload " + fileName + ", please download it and use our jsonld parser. " + window.location.href.replace("timeline", "createroutejsonld"), "Error")
+            this.errorLoading = true;
+        } else {
             let querySparql =
                 `PREFIX schema: <http://schema.org/>
       PREFIX viade:<http://arquisoft.github.io/viadeSpec/>
@@ -57,12 +62,15 @@ class RdftoRouteParser {
                         let video = this.getVideo(results);
                         let route = new Route(name, description, points, webID, comments, image, video, fileName);
                         this.pushRoutes(route);
-                    }catch(err){
-                        errorToaster("The route '"+fileName+"' can't be read because of it syntax", "Error")
+                    } catch (err) {
+                        // errorToaster("The route '" + fileName + "' can't be read because of it syntax", "Error")
+                        this.errorLoading = true;
                     }
                 },
-                err => errorToaster(err, "Error")
+                err => this.errorLoading = true
+
             );
+            // err => errorToaster(err, "Error")
         }
     }
 
@@ -78,6 +86,9 @@ class RdftoRouteParser {
     multiParse(url, documentos, webID) {
         for (let i = 0; i < documentos.length; i++) {
             FileWriter.handleLoad(url + documentos[i], documentos[i], this.singleParse.bind(this), webID);
+        }
+        if(this.errorLoading){
+            warningToaster("Algunas de tus rutas no son compatibles con esta aplicación", "AVISO")
         }
     }
 

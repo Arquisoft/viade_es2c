@@ -53,8 +53,10 @@ As you can see, we have a Dockerfile and a docker-compose.yml file in our reposi
 To do that, you just need to clone this repository and execute the following command into the folder that was created:
 
 ```shell
-sudo docker-compose up -d
+sudo docker-compose -f docker-compose.yml up
 ```
+
+Container will be deployed at http://localhost/viade_es2c
 
 ### Use the gh-pages version
 The easiest way to try Viade is to go to this link [https://arquisoft.github.io/viade_es2c/](https://arquisoft.github.io/viade_es2c/). It shows the master branch version of Viade and you wont need to download anything
