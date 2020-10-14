@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>Viade es2c</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment @import statement to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite::before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+:not(pre)>code.nobreak{word-wrap:normal}
+:not(pre)>code.nowrap{white-space:nowrap}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details>summary:first-of-type{cursor:pointer;display:list-item;outline:none;margin-bottom:.75em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class="highlight"],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos{border-right:1px solid currentColor;opacity:.35;padding-right:.5em}
+pre.pygments .lineno{border-right:1px solid currentColor;opacity:.35;display:inline-block;margin-right:.75em}
+pre.pygments .lineno::before{content:"";margin-right:-.125em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+table.tableblock{max-width:100%;border-collapse:separate}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+td.tableblock>.content>:last-child.sidebarblock{margin-bottom:0}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot,table.frame-ends{border-width:1px 0}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media print,amzn-kf8{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1><span class="image"><img src="./images/LogoViade.png" alt="arc42"></span> Viade es2c</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#section-introduction-and-goals">1. Introduction and Goals</a>
+<ul class="sectlevel2">
+<li><a href="#_requirements_overview">1.1. Requirements Overview</a></li>
+<li><a href="#_quality_goals">1.2. Quality Goals</a></li>
+<li><a href="#_stakeholders">1.3. Stakeholders</a></li>
+</ul>
+</li>
+<li><a href="#section-architecture-constraints">2. Architecture Constraints</a>
+<ul class="sectlevel2">
+<li><a href="#_technical_constraints">2.1. <em>Technical Constraints</em></a></li>
+<li><a href="#_organizational_constraints">2.2. <em>Organizational Constraints</em></a></li>
+<li><a href="#_documentation_constraints">2.3. <em>Documentation Constraints</em></a></li>
+</ul>
+</li>
+<li><a href="#section-system-scope-and-context">3. System Scope and Context</a></li>
+<li><a href="#section-solution-strategy">4. Solution Strategy</a></li>
+<li><a href="#section-building-block-view">5. Building Block View</a>
+<ul class="sectlevel2">
+<li><a href="#_whitebox_overall_system">5.1. Whitebox Overall System</a></li>
+</ul>
+</li>
+<li><a href="#section-runtime-view">6. Runtime View</a>
+<ul class="sectlevel2">
+<li><a href="#_log_in">6.1. Log in</a></li>
+<li><a href="#_routes_management">6.2. Routes Management</a></li>
+</ul>
+</li>
+<li><a href="#section-deployment-view">7. Deployment View</a></li>
+<li><a href="#section-concepts">8. Cross-cutting Concepts</a>
+<ul class="sectlevel2">
+<li><a href="#_dissecting_viade">8.1. Dissecting Viade</a></li>
+<li><a href="#_folder_structure">8.2. Folder Structure</a></li>
+<li><a href="#_what_do_we_use">8.3. What do we use</a></li>
+<li><a href="#_error_handling">8.4. Error handling</a></li>
+<li><a href="#_a_valid_file">8.5. A valid file</a></li>
+<li><a href="#_internationalization">8.6. Internationalization</a></li>
+<li><a href="#_testability">8.7. Testability</a></li>
+</ul>
+</li>
+<li><a href="#section-design-decisions">9. Design Decisions</a></li>
+<li><a href="#section-quality-scenarios">10. Quality Requirements</a>
+<ul class="sectlevel2">
+<li><a href="#_quality_tree">10.1. Quality Tree</a></li>
+<li><a href="#_quality_scenarios">10.2. Quality Scenarios</a></li>
+</ul>
+</li>
+<li><a href="#section-technical-risks">11. Risks and Technical Debts</a></li>
+<li><a href="#section-glossary">12. Glossary</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<style>
+.arc42help {font-size:small; width: 14px; height: 16px; overflow: hidden; position: absolute; right: 0px; padding: 2px 0px 3px 2px;}
+.arc42help::before {content: "?";}
+.arc42help:hover {width:auto; height: auto; z-index: 100; padding: 10px;}
+.arc42help:hover::before {content: "";}
+@media print {
+	.arc42help {display:hidden;}
+}
+</style>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-introduction-and-goals">1. Introduction and Goals</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The aim of the project is to develop a decentralised route tracker, which has to be able to give an excellent performance meanwhile the privacy of the customer is well kept.</p>
+</div>
+<div class="sect2">
+<h3 id="_requirements_overview">1.1. Requirements Overview</h3>
+<div class="paragraph">
+<p>According to the priority of each requirement, we can order them as you can read next.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The application must implement a decentralised architecture based in the SOLID (Social Linked Data) specifications, therefore stored data must be separated from the app.</p>
+</li>
+<li>
+<p>Information must be stored in pods.</p>
+</li>
+<li>
+<p>Routes will be shown to users on the map.</p>
+</li>
+<li>
+<p>A route should be fed back with relative data, such as shared pictures, videos or comments.</p>
+</li>
+<li>
+<p>Notifications will be sent as a result of a friend sharing a route.</p>
+</li>
+<li>
+<p>There can exist user groups for multiple sharing purposes.</p>
+</li>
+<li>
+<p>Interoperability is an essential part of our specific application, so several apps are able to work with the same information of a route.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_quality_goals">1.2. Quality Goals</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">Objective</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Privacy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As a SOLID project, keeping the personal data is a main quality purpose.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The app must be easy to use, at least the average user should be able to interact comfortably with viade.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Efficiency</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The times of response of Viade should be within a minimum so that the user can interact dynamically and comfortably</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Consistency</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The application should be consistent.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interoperability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">with other Viade apps that our classmates are creating.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_stakeholders">1.3. Stakeholders</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Role/Name</th>
+<th class="tableblock halign-left valign-top">Contact</th>
+<th class="tableblock halign-left valign-top">Expectations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Teacher</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/labra" class="bare">https://github.com/labra</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">He will evaluate our project</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solid community</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://solid.mit.edu" class="bare">https://solid.mit.edu</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Resource for the Solid project</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Developers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/Arquisoft/viade_es2c" class="bare">https://github.com/Arquisoft/viade_es2c</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">They will develop the architecture and the code of the application</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Inrupt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://inrupt.com/" class="bare">https://inrupt.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">They will judge our app because it will be shown in the inrupt challenge</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Technical Users</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">People that have some experience in the route&#8217;s world and know some technical concepts</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Non-technical users</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">People that is new in the world and have never used a route&#8217;s management app before</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disabled users</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Users who have some kind of disability</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-architecture-constraints">2. Architecture Constraints</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Here are the tables that include all the project constraints and their explanations.</strong></p>
+</div>
+<div class="sect2">
+<h3 id="_technical_constraints">2.1. <em>Technical Constraints</em></h3>
+<div class="paragraph">
+<p>Previous architecture decisions that may impact the solution design.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Constraint</th>
+<th class="tableblock halign-left valign-top">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SOLID and its PODs for a decentralized  architecture</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One of the aims of 'Viade' is to be a decentralized app, so we need a decentralized  technology like SOLID and its PODs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">React for presentation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We were told to use 'React' in our project</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use of GitHub</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Our project is going to be hosted on a GitHub repository</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We need to create tests so we can be sure that our project is correct and it is working like it has to work and we need to have at least a 60% of coverage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cucumber</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Our project needs to implements some cucumber tests</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gatling</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We need to test how the app would work if it&#8217;s used by more than one user</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Docker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Viade has to have a Dockerfile and a docker-compose.yml file</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_organizational_constraints">2.2. <em>Organizational Constraints</em></h3>
+<div class="paragraph">
+<p>The project&#8217;s environment. It affects the developing process.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Constraint</th>
+<th class="tableblock halign-left valign-top">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time limit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have to develop the project during our 'Architecture of Software' course, so we have less than 3 months</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Team members</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Our team is formed by 4 software engineering students at 'Universidad de Oviedo' university, so we only can use our free time and course lessons to develop it (and we need to organize our free time so we can study others subjects)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Course deadlines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have 4 deadlines during our course and we need to accomplish the requirements of them during our project developing</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_documentation_constraints">2.3. <em>Documentation Constraints</em></h3>
+<div class="paragraph">
+<p>Decisions about how to document our project.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Constraint</th>
+<th class="tableblock halign-left valign-top">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arc42</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have to use 'Arc42' structure for our project documentation because it is clear, simple and effective and a common tool used in current companies</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Asciidoctor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have to use 'Asciidoctor' to create our documentation</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-system-scope-and-context">3. System Scope and Context</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Viade must allow a user to create and  view a route and share pictures, videos or information about a route with other friends. It should be possible to view routes loaded by users that are using a different app, so interoperability with other route management systems should be taken into account.</p>
+</div>
+<div class="paragraph">
+<p>Security and privacy is Viade priority. Users can store their routes in their own pods and Viade should have online independence, thats it, no central control of data.</p>
+</div>
+<div class="paragraph">
+<p>Viade can import created routes in some of the most used formats in the routes management apps.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/03-Context.png" alt="Business &amp; Technical Context">
+</div>
+<div class="title">Figure 1. Business &amp; Technical Context</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-solution-strategy">4. Solution Strategy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section, we summarize the fundamental strategies and decisions during the development of our project.</p>
+</div>
+<div class="paragraph">
+<p>First of all, we have to remember that Viade is a decentralized routes management system based on the solid specifications and React framework, so our plans and resolutions need to be consistent with those characteristics.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s talk about Technical decisions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Using JavaScript</strong>: We talked about how to implement the logic of the project. We can take advantage of the functionalities of React, but perhaps we would need to implements something more complicated, so we agreed on using JavaScript because we have already used it and it allows us to do all the logic we thought about.</p>
+</li>
+<li>
+<p><strong>Use the React Solid template as a base</strong>: We didn&#8217;t have much time or experience, so we used a template to start our project. <a href="https://github.com/inrupt/generator-solid-react">Here</a> is the link.</p>
+</li>
+<li>
+<p><strong>Libraries</strong>: Here you can see some of the libraries we used:</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Link</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comments</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">react-i18next</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/i18next/react-i18next" class="bare">https://github.com/i18next/react-i18next</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We used it to for internationalization</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">react</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://es.reactjs.org/" class="bare">https://es.reactjs.org/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Its the software we used for the interface</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">react-toastify</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/fkhadra/react-toastify" class="bare">https://github.com/fkhadra/react-toastify</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We used it to show some notifications to the user (like success messages)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">solid-react-components</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/solid/react-components" class="bare">https://github.com/solid/react-components</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">some of our components come from here</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">react-bootstrap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://react-bootstrap.github.io/" class="bare">https://react-bootstrap.github.io/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">To create some components</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">solid-auth-client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/solid/solid-auth-client" class="bare">https://github.com/solid/solid-auth-client</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We used it for the login part and uploading data to the POD</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">solid-file-client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/jeff-zucker/solid-file-client" class="bare">https://github.com/jeff-zucker/solid-file-client</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We used it to search in the POD, load from it, delete files, etc</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sparql-fiddle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/jeff-zucker/sparql-fiddle" class="bare">https://github.com/jeff-zucker/sparql-fiddle</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We implemented it to be able to use sparql queries in our parsers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://jestjs.io/" class="bare">https://jestjs.io/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We used it to implement some test</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shx</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/shelljs/shx" class="bare">https://github.com/shelljs/shx</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">To execute some commands (like the one that compiles this documentation)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cucumber</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://cucumber.io/" class="bare">https://cucumber.io/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For BBDD testing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">query-ldflex</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/solid/query-ldflex" class="bare">https://github.com/solid/query-ldflex</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We used it to find some info from solid</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">google-maps-react</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.npmjs.com/package/google-maps-react" class="bare">https://www.npmjs.com/package/google-maps-react</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We created our map with it, but we do not recommend it because the author stopped maintaining it</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pull request</strong>: We decided to use the "pull request" functionality of GitHub because it seems that it helps you get better results in your commits.</p>
+</li>
+<li>
+<p><strong>Jest</strong>: We used Jest to create our tests.</p>
+</li>
+<li>
+<p><strong>WebStorm</strong>: We used WebStorm to develop our app because of all the facilities that it gives us for the React programming part</p>
+</li>
+<li>
+<p><strong>Parsers</strong>: A good application should be able to admit differents formats, so we used some parsers to let the user create a route through them.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We want to fulfill some quality goals:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Usability</strong>: Viade has to be intuitive. We are going to use the knowledge acquired during this career.</p>
+</li>
+<li>
+<p><strong>Testability</strong>: It is a constraint to create tests, so Viade has to be testable.</p>
+</li>
+<li>
+<p><strong>Availability</strong>: You should be able to manage a route at any moment, so Viade has to be consistent.</p>
+</li>
+<li>
+<p><strong>Interoperability</strong>: We want out routes to be exportable to other apps so we need to investigate it.</p>
+</li>
+<li>
+<p><strong>Decentralization</strong>: It is a constraint on this project.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>And this are our organization decisions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Kanban</strong>: We also talked about using the "Project" tab of GitHub that resembles a kanban board. We used it to get organized because we used that methodology last semester and it works fine.</p>
+</li>
+<li>
+<p><strong>Issues</strong>: We want to register our group communications to show all of our work throughout the making of Viade, so we created a lot of issues in the GitHub repository.</p>
+</li>
+<li>
+<p><strong>WhatsApp</strong>: It is quicker and simpler to communicate using a group chat, so we used WhatsApp (the common chat app used in Spain) while trying not to stop creating GitHub issues.</p>
+</li>
+<li>
+<p><strong>English</strong>: We agreed on writing it in English because is the prevalent language used in informatic&#8217;s documentation projects.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With these decisions and plans, we wanted to create a good decentralized routes management system and fulfill all the requisites of the problem statement.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-building-block-view">5. Building Block View</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_whitebox_overall_system">5.1. Whitebox Overall System</h3>
+<div class="paragraph">
+<p><strong>Level 1</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/05_viadeDescription.png" alt="Viade Description">
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Responsibility</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> Person who requires the functionality of this application. Is the one who interacts with the application and give the orders.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Viade</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> Decentralised route tracker. It interacts with the POD to store and load the routes, media, information about the user, etc</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SOLID POD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decentralised store unit of the user data. Is the part that contains tha information Viade uses.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Level 2</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/05_viadeRepresentation.png" alt="Viade Representation">
+</div>
+</div>
+<div class="paragraph">
+<p>Giving a deeper insight into Viade application.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Responsibility</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Viade</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> Decentralized route tracker.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Components and containers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">They describe the code to show the different parts of the application and ints functionality</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parsers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">They let the user import a created route from other app</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PODs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Where Viade obtains the routes information, media or user&#8217;s data and where viade stores the routes and media created in their classes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Same user as the last level</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Routes in a non-turtle format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Viade can create a route to work with from a GPX, JSON-LD or Geojson route and then create a turtle version to store it in the User&#8217;s POD</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Level 3</strong></p>
+</div>
+<div class="paragraph">
+<p>In viade we have a lot of components in the 3rd level that shoul be described, like the functionaliti of the parsers (when you read a route from the pod is the filewriter class the component that calls the parser, but when you write a route the parser calls the filewriter component), the classes that creates a route calls a parser so they can store the new routein the user&#8217;s POD, the media is taken from the POD in the moment that the user wanto to see the route&#8217;s details, etc</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-runtime-view">6. Runtime View</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_log_in">6.1. Log in</h3>
+<div class="paragraph">
+<p>The login process will be done by users when they log in with their pesonal id to access the application.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user click login button.</p>
+</li>
+<li>
+<p>The user enters his credentials.</p>
+</li>
+<li>
+<p>Their data is sent to a LoginManager to try to log in.</p>
+</li>
+<li>
+<p>The server can deny or approve the authentication.</p>
+</li>
+<li>
+<p>The user can start using the application&#8217;s features.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/Log%20in%20secuence%20diagram.png" alt="Log in secuence diagram" width="557" height="402">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_routes_management">6.2. Routes Management</h3>
+<div class="paragraph">
+<p>The users use the application to manage their routes.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user creates a new route.</p>
+</li>
+<li>
+<p>The user shares a route to a friend.</p>
+</li>
+<li>
+<p>The user comments a route.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/Routes%20creation%20secuence%20diagram.png" alt="Routes creation secuence diagram" width="851" height="431">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/Routes%20share%201%20secuence%20diagram.png" alt="Routes share 1 secuence diagram" width="1051" height="460">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/Routes%20comment%20secuence%20diagram.png" alt="Routes comment secuence diagram" width="521" height="373">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/MAP%20KEYS.png" alt="MAP KEYS" width="184" height="314">
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-deployment-view">7. Deployment View</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="./images/deployment.png" alt="Deployment View">
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Node</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User computer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> Device that connects to the internet to access to Viade.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Browser</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Software application for accessing information on the World Wide Web. When a user requests a particular website, the web browser retrieves the necessary content from a web server and then displays the resulting web page on the user&#8217;s device.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Host</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> Gh-pages. Web host where the application is deployed. The user&#8217;s browser accesses it with https requests</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Viade</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"> Decentralised route tracker. It interacts with the POD to store and load the routes, media, information about the user, etc</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POD Provider</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solid, Inrupt, own node solid server&#8230;&#8203;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SOLID POD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decentralised store unit of the user data. Is the part that contains tha information Viade uses.</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-concepts">8. Cross-cutting Concepts</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_dissecting_viade">8.1. Dissecting Viade</h3>
+<div class="paragraph">
+<p>In Viade we can differentiate 2 parts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Before the Route objects are created</p>
+</li>
+<li>
+<p>After the Route objects are created</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the first part, the objective is to create a route that our app understands and can work with. That is the object Route. Our app will try to convert every route into this object (it can come from a POD, from another file or the user). The reason behind this is that we want to be able to work with different formats so the user won&#8217;t have restrictions, but there are a lot of different extensions to represent a route and in the future, it can appear more.</p>
+</div>
+<div class="paragraph">
+<p>Creating parsers to transform the routes into the same object allows us to separate the logic that has come possibilities to change from the one that is more general and doesn&#8217;t have that characteristic. We also can change the way our parsers get the information without the rest of the app noticing.</p>
+</div>
+<div class="paragraph">
+<p>After we have the Route objects, we can manipulate them. We can show the information, store it, share it,&#8230;&#8203; and in the future we could edit it or show it in different styles.</p>
+</div>
+<div class="paragraph">
+<p>In our app, we work with routes but we also work with the user&#8217;s information. We let him login and logout from different providers, we let him change its profile image, he can choose whether he wants to use Viade in English or Spanish and he can see his friends and share the routes with them.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_folder_structure">8.2. Folder Structure</h3>
+<div class="imageblock">
+<div class="content">
+<img src="./images/08-datafolders.png" alt="Folder Structure">
+</div>
+</div>
+<div class="paragraph">
+<p>Here you can see a general folder structure of Viade where you can see the important ones.</p>
+</div>
+<div class="paragraph">
+<p>In the root directory, we have the configuration folder where we have some .config files like the webpack.config.js file that we use for the app tests ad the jest folder.</p>
+</div>
+<div class="paragraph">
+<p>Then we have the test_mocks_ folders that have some libraries and files that we use for our tests and through all the application like @fontawesome.</p>
+</div>
+<div class="paragraph">
+<p>The src folder is the most important one because is where our source code is allocated. There you can see the components, constants, and containers of the app (some of the general logic and interface), the resources folder with all of the logos that we have created for Viade, the docs folder with the documentation related files and the utils folder with the parsers, the Route object, the I/O classes, etc.</p>
+</div>
+<div class="paragraph">
+<p>The feature folder has some other files for testing the app.</p>
+</div>
+<div class="paragraph">
+<p>The public folder has the images that viade is using (like icons or the actual logo) and the locales with the texts of the app in different folders so viade can be internationalized.</p>
+</div>
+<div class="paragraph">
+<p>At last, the scripts folder has some js scripts to start the app, build it and execute the tests, to run them you just have to type "npm run " + the name of the script without the extension.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_do_we_use">8.3. What do we use</h3>
+<div class="paragraph">
+<p>To create our files and work with them, we do not use all of the data that the user gives to us. Of course, if the user creates a route using our map, we would only ask for the necessary data, but if he uses our parsers (geojson, gpx or json-ld) we will only take some data from them, like track points from gpx or name, points, description,&#8230;&#8203; from json-ld. In summary, we will only take the necessary data to create a simple route with the same fields that appear in the page where you create a route with our map (and some others like the author o the fileName, but viade does that automatically)</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_error_handling">8.4. Error handling</h3>
+<div class="paragraph">
+<p>We decided to show the user some errors that can be important for him. An example is showing wich routes viade can&#8217;t show in the timeline because of a bad syntax or internal error. We also try to be consistent and try to make viade be still operative even if there are some errors.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_valid_file">8.5. A valid file</h3>
+<div class="paragraph">
+<p>We use turtle to write the routes in the POD. You can use json-ld or any other typical format but only if you use the parsers that viade gives to you. If you want viade to upload a json-ld route from your POD and show it, it won&#8217;t happend (at least in this version of viade). A valid route wrote in turtle for viade would be:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>@prefix viade:  &lt;http://arquisoft.github.io/viadeSpec/&gt;.
+@prefix :   &lt;http://example.org/&gt;.
+@prefix schema: &lt;http://schema.org/&gt;.
+@prefix rdfs:   &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
+@prefix xsd:    &lt;http://www.w3.org/2001/XMLSchema#&gt;.
+:myRoute a viade:Route ;
+schema:name "Route" ;
+schema:description "Description" ;
+viade:point [
+ schema:latitude 43.52288176910197 ;
+ schema:longitude -5.672779401110839
+ ];
+viade:point [
+ schema:latitude 43.52618017535388 ;
+ schema:longitude -5.653982480334472
+ ];
+viade:point [
+ schema:latitude 43.531469695619926 ;
+ schema:longitude -5.659475644396972
+ ];
+viade:hasComments [
+ schema:text "This is a comment!" ;
+ schema:publishedDate "7/5/2020"
+ ];
+viade:hasMediaAttached [
+ schema:contentUrl "https://anagciaschz4.solid.community/viade/resources/stay-home.png"
+ ];
+viade:hasMediaAttached [
+ schema:contentUrl "https://anagciaschz4.solid.community/viade/resources/videoplayback.mp4"
+ ] .</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_internationalization">8.6. Internationalization</h3>
+<div class="paragraph">
+<p>In this version, we only support Spanish and English. We have the infrastructure  to add more languages just by creating a new file, so in the future, we can add more if viade becomes popular.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testability">8.7. Testability</h3>
+<div class="paragraph">
+<p>At this moment, more than the 65% of our code include test so we can say that more of our code lines seems to work perfectly.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-design-decisions">9. Design Decisions</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Decision</th>
+<th class="tableblock halign-left valign-top">Pro</th>
+<th class="tableblock halign-left valign-top">Con</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minimalist style</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It will be more usable and simple to distinguish the options</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It maybe would look boring if we don&#8217;t do it properly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The timeline page will contain all user routes and all routes shared to the user.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user will be able to see all the routes at once</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">it can be difficult to find a route if there are many created and shared routes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The new route page will let users create a new route with a map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Intuitive and usable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Markers cannot ben deleted</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We will accept routes in the common formats so viade van be a little interoperable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We give more options to the user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have to learn about other formats and how to get the data that we need for viade from them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The routes can be accessed from the timeline in a popup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It reduces the loading time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is not possible to open more than one route at the same time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We will show all necessary errors to the user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It gives the user important information</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the user has a lot of errors it could give a bad impression of viade</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Information about covid-19 in the main page</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We can inform our users about it</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It&#8217;s not information about routes or viade so maybe a user would not like it</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Internationalization</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We can be used by people from other countries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We can forget to internationalize come parts because we do not have much time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use green, purple and white colors</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We can have a consistent look</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It can cause problems to some daltonic users</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-quality-scenarios">10. Quality Requirements</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_quality_tree">10.1. Quality Tree</h3>
+<div class="imageblock">
+<div class="content">
+<img src="./images/10_QualityRequirements.png" alt="Quality Tree">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_quality_scenarios">10.2. Quality Scenarios</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">ID</th>
+<th class="tableblock halign-left valign-top">Quality attribute</th>
+<th class="tableblock halign-left valign-top">Quality scenario</th>
+<th class="tableblock halign-left valign-top">Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1-P</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Privacy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user is the owner of his data according to the SOLID principles but we store the user comments in a route in the pod of the author routes, so we can&#8217;t say that the user is the only proprietary of all of his data. We can say that he can control more than 90% of his data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HIGH/HIGH</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-P</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Privacy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user can control the media that he attached to a route</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HIGH/HIGH</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1-U</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user must have to use all the features of the application easily</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HIGH/HIGH</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-U</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AA daltonic user could use viade because we use colors that don&#8217;t usually give them problems</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MEDIUM/LOW</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3-U</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user can automatically give the necessary permissions to a friend while sharing a route with him</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MEDIUM/LOW</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4-U</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user can easily find an option in the viade menu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MEDIUM/LOW</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1-I</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interoperability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user can upload a route in a geojson format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MEDIUM/MEDIUM</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-I</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interoperability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user can upload a route in a gpx format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MEDIUM/MEDIUM</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3-I</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interoperability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user can upload a route in a json-ld format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MEDIUM/MEDIUM</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1-M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maintainability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The architecture of the system should be well designed, this will allow the developers to add features and modify it easily</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MEDIUM/LOW</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1-S</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scalability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We did some tests and when our app received 2900 request, could process 2534 in less than 800 ms, 270 in less than 1200 ms and only 96 failed, so we can assume that our viade app could process the 95% of the requests in less than 800 ms.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MEDIUM/HIGH</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1-A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Availability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In our tests, viade only failed in the 3% of the request, so we can be available the 97% of the time.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HIGH/HIGH</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-technical-risks">11. Risks and Technical Debts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The project has hardly any risks in the usage scenario, but there are some risks contemplated:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Risk</th>
+<th class="tableblock halign-left valign-top">Consequence</th>
+<th class="tableblock halign-left valign-top">Possible Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Limit the possibility of including videos and images in posts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add only one of each (video and image)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Change the code to let the user add more media</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use deprecated libraries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Implement new features can be impossible or quite tedious</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find new libraries or include new complementary libraries</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Actually, the technical debts are the following:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">Technical Debt</th>
+<th class="tableblock halign-left valign-top">Consequence</th>
+<th class="tableblock halign-left valign-top">Possible Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HIGH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Friend groups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is not possible to share routes with more than one user at the same time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a service to share routes to groups</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MEDIUM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comments spec</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The comments doesnt follow the Viade specification</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user&#8217;s cant see who posted a comment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MEDIUM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Map markers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User cannot delete an marker from the map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use another map API</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HIGH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interoperability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Viade is not interoperable with other Viade&#8217;s apps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Work more with ViadeEspec</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MEDIUM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Internationalization</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have some parts that are not correctly internationalized</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have more time to fix it</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MEDIUM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parsers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The parser that writes the turtle has the lines directly in the code and it&#8217;s not elegant</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use ldflex or another library to create the triplets of turtle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HIGH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Security</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have the queries directly in the code so we can suffer an SQLInjection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">extract the query and add it to a protected file</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-glossary">12. Glossary</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Term</th>
+<th class="tableblock halign-left valign-top">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Asciidoctor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lightweight markup language for authoring notes, articles, documentation, books, web pages, &#8230;&#8203;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bootstrap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cucumber</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Software tool that supports behavior-driven development (BDD).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Descentralized</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Something that is not controlled from one central place.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Docker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open source software platform to create, deploy and manage virtualized application containers on a common operating system (OS).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A basic structure underlying a system, concept, or text..</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Geojson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Format for encoding a variety of geographic data structures.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GitHub</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Web-based version-control and collaboration platform for software developers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gpx</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gpx, or GPS Exchange Format, is an XML schema designed as a common GPS data format for software applications. It can be used to describe waypoints, tracks, and routes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I/O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Short for input/output (pronounced "eye-oh"). The term I/O is used to describe any program, operation or device that transfers data to or from a computer and to or from a peripheral device.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JavaScript</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An object-oriented computer programming language commonly used to create interactive effects within web browsers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A delightful JavaScript Testing Framework with a focus on simplicity.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JavaScript Object Notation is a lightweight data-interchange format.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON-LD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JavaScript Object Notation for Linked Data is a method of encoding linked data using JSON.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kanban</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Visual system for managing work as it moves through a process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minimalist</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Design approach that is characterized by austerity and laconism in decoration.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parser</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Compiler or interpreter component that breaks data into smaller elements for easy translation into another language.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A personal storage space in SOLID.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Popup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Graphical user interface (GUI) display area, usually a small window, that suddenly appears ("pops up") in the foreground of the visual interface.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Puppeteer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node library which provides a high-level API to control headless Chrome or Chromium over the DevTools Protocol. It can also be configured to use full (non-headless) Chrome or Chromium.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">React</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A declarative, efficient, and flexible JavaScript library for building user interfaces.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Script</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A type of language for programming computers that is used for finding and showing websites on the internet.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SOLID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A web decentralization project. Its mission is to reshape the web as we know it.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Viade</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decentralized routes management system based on the solid specifications and React framework. It&#8217;s the project that we are talking about.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WebStorm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Powerful IDE for modern JavaScript development.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WhatsApp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Free to download messenger app for smartphones.</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+<div class="paragraph">
+<p><strong>About arc42</strong></p>
+</div>
+<div class="paragraph lead">
+<p>arc42, the Template for documentation of
+software and system architecture.</p>
+</div>
+<div class="paragraph">
+<p>By Dr. Gernot Starke, Dr. Peter Hruschka and contributors.</p>
+</div>
+<div class="paragraph">
+<p>Template Revision: 7.0 EN (based on asciidoc), January 2017</p>
+</div>
+<div class="paragraph">
+<p>&#169;
+We acknowledge that this document uses material from the
+arc 42 architecture template, <a href="http://www.arc42.de" class="bare">http://www.arc42.de</a>.
+Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
+</div>
+<div class="paragraph">
+<p>&#169;
+The Viade_ES2C team</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-10-14 12:25:10 UTC
+</div>
+</div>
+</body>
+</html>
